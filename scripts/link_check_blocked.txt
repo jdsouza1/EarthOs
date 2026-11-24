@@ -1,0 +1,5 @@
+# Sites that refuse automated visitors from GitHub's servers but load in a browser (checked by hand).
+# The monthly link check lists their links as "blocked by the site", not "broken". One domain per line.
+epi.yale.edu
+www.globalhungerindex.org
+theedgemalaysia.com

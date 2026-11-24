@@ -15,6 +15,7 @@ import concurrent.futures as cf
 import os
 import re
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -58,10 +59,21 @@ def check(url: str) -> tuple[str, str]:
     return "broken", "no answer"
 
 
+def known_blocked() -> set[str]:
+    f = ROOT / "scripts" / "link_check_blocked.txt"
+    if not f.exists():
+        return set()
+    return {ln.strip() for ln in f.read_text(encoding="utf-8").splitlines() if ln.strip() and not ln.startswith("#")}
+
+
 def main() -> None:
     links = collect()
     with cf.ThreadPoolExecutor(max_workers=16) as pool:
         results = dict(zip(links, pool.map(check, links)))
+    hosts = known_blocked()
+    for u, (status, code) in results.items():
+        if status == "broken" and urllib.parse.urlsplit(u).hostname in hosts:
+            results[u] = ("blocked", f"{code}, known to refuse automated checks")
     broken = sorted(u for u, (s, _) in results.items() if s == "broken")
     blocked = sorted(u for u, (s, _) in results.items() if s == "blocked")
     lines = [f"### Source links: {len(links)} checked, {len(broken)} broken, {len(blocked)} blocked by the site", ""]
