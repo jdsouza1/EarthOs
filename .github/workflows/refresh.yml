@@ -39,6 +39,9 @@ jobs:
           node-version: '22'
           cache: npm
 
+      - name: Save this month's Brief to the archive
+        run: node --experimental-strip-types --no-warnings --import ./scripts/ts-register.mjs scripts/snapshot-brief.ts
+
       - name: Build the site with the new data (a broken file stops the run here; nothing is saved)
         run: |
           npm ci
@@ -55,6 +58,11 @@ jobs:
           fi
           git commit -m "Monthly data refresh $(date -u +%Y-%m-%d)"
           git push
+
+      - name: Check every source link (reports only; never stops the refresh)
+        if: always()
+        continue-on-error: true
+        run: python scripts/check_links.py
 
       - name: Flag sources that could not be reached
         if: steps.ingest.outputs.status != '0'

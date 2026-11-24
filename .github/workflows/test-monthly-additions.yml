@@ -1,0 +1,31 @@
+name: One-off test of the Brief archive and link check
+on:
+  push:
+    branches: [brief-archive]
+    paths: [.github/workflows/test-monthly-additions.yml]
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Snapshot test (to a scratch month, then removed)
+        run: |
+          node --experimental-strip-types --no-warnings --import ./scripts/ts-register.mjs scripts/snapshot-brief.ts 2099-01 > _test_report.md 2>&1 || echo "SNAPSHOT FAILED" >> _test_report.md
+          rm -f data/briefs/2099-01.json
+      - name: Link check
+        run: python scripts/check_links.py >> _test_report.md 2>&1 || true
+      - name: Save the report to this branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f _test_report.md
+          git commit -m "Test report" && git push
