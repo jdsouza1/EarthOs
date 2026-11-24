@@ -5,7 +5,7 @@ import { formatDay, type RefreshStatus } from './refresh';
 import { SITE_URL } from './site';
 
 /** Size the embed code asks for. The card itself stretches to the frame's width. */
-export const EMBED_HEIGHT = 230;
+export const EMBED_HEIGHT = 200;
 
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
@@ -22,7 +22,7 @@ export function sparkPath(points: { value: number }[], w: number, h: number, pad
 }
 
 export function embedCode(id: string) {
-  return `<iframe src="${SITE_URL}/embed/${id}" title="EarthOS indicator" width="100%" height="${EMBED_HEIGHT}" style="max-width:380px;border:0" loading="lazy"></iframe>`;
+  return `<iframe src="${SITE_URL}/embed/${id}" title="EarthOS indicator" width="100%" height="${EMBED_HEIGHT}" style="max-width:380px;border:0;border-radius:12px" loading="lazy"></iframe>`;
 }
 
 /**
@@ -60,8 +60,10 @@ export function embedHtml(ind: Indicator, refresh: RefreshStatus | null) {
 :root{${palette(light)};color-scheme:light dark}
 @media (prefers-color-scheme:dark){:root{${palette(dark)}}}
 *{box-sizing:border-box;margin:0}
-body{font:13px/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:transparent;color:var(--ink);padding:4px}
-.card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px 12px;max-width:380px;margin:0 auto}
+html,body{height:100%}
+body{font:13px/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.card{min-height:100%;border:1px solid var(--line);border-radius:12px;padding:14px 16px 12px;display:flex;flex-direction:column}
+.foot{margin-top:auto!important;padding-top:8px}
 .top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .name{font-weight:700;font-size:13px}
 .brand{font-size:11px;color:var(--subtle);text-decoration:none;white-space:nowrap}

@@ -40,7 +40,7 @@ export function EmbedPicker({ options, site, height }: { options: Option[]; site
   }, [options]);
 
   const link = `${site}/embed/${id}`;
-  const code = `<iframe src="${link}" title="EarthOS indicator" width="100%" height="${height}" style="max-width:380px;border:0" loading="lazy"></iframe>`;
+  const code = `<iframe src="${link}" title="EarthOS indicator" width="100%" height="${height}" style="max-width:380px;border:0;border-radius:12px" loading="lazy"></iframe>`;
 
   return (
     <div className="grid gap-5 md:grid-cols-[minmax(0,380px)_1fr]">
