@@ -30,8 +30,13 @@ def collect() -> dict[str, set[str]]:
     for f in files:
         if f.name in {"indicators.csv", "refresh.csv"}:
             continue  # download addresses, checked by the refresh itself
-        for u in URL.findall(f.read_text(encoding="utf-8")):
-            u = u.rstrip(".;:")
+        text = f.read_text(encoding="utf-8")
+        if f.suffix == ".ts":  # skip examples in code comments
+            text = "\n".join(ln for ln in text.splitlines() if not ln.lstrip().startswith(("*", "//", "/*")))
+        for u in URL.findall(text):
+            u = u.rstrip(".;:`")
+            if not re.match(r"https://[a-z0-9-]+(\.[a-z0-9-]+)+", u, re.I):
+                continue  # not a real address (e.g. a template string)
             found.setdefault(u, set()).add(f.relative_to(ROOT).as_posix())
     return found
 
