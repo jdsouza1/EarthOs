@@ -8,6 +8,7 @@ import { ForecastTeaser } from '@/components/dashboard/ForecastTeaser';
 import { getIndicators } from '@/lib/indicators';
 import { getRefreshStatus } from '@/lib/refresh';
 import Link from 'next/link';
+import { SubscribeBox } from '@/components/report/SubscribeBox';
 
 // Built once per deploy: CSVs are read at build time. Updating data = commit new CSVs -> Vercel redeploys.
 export const dynamic = 'force-static';
@@ -47,6 +48,8 @@ export default async function DashboardPage() {
       </section>
 
       <MeasuredIndicators indicators={indicators} tiers={data.tiers} refresh={refresh} />
+
+      <SubscribeBox title="Get the monthly EarthOS Brief by email" />
     </>
   );
 }

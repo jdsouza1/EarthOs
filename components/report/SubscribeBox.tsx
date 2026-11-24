@@ -1,10 +1,10 @@
 import { SUBSTACK_URL } from '@/lib/site';
 
 /** Newsletter sign-up. Links out to Substack, so the site itself collects no email addresses. */
-export function SubscribeBox() {
+export function SubscribeBox({ title = 'Get the Brief by email' }: { title?: string }) {
   return (
     <section aria-labelledby="subscribe-title" className="panel flex flex-col gap-2 p-5 print:hidden">
-      <h2 id="subscribe-title" className="text-lg">Get the Brief by email</h2>
+      <h2 id="subscribe-title" className="text-lg">{title}</h2>
       {SUBSTACK_URL ? (
         <>
           <p className="text-sm text-body">One email a month with the latest numbers. Free, and you can unsubscribe at any time. Sign-up is handled by Substack.</p>

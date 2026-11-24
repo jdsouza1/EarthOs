@@ -4,6 +4,7 @@ import { parseCsv } from './csv';
 import type { TierId } from './types';
 import { getTargets, targetStatus, type TargetStatus } from './targets';
 import { getIndicatorInfo } from './indicatorInfo';
+import { getIndicatorNotes, type IndicatorNote } from './indicatorNotes';
 
 const FILE = 'indicators.csv';
 const TIER_IDS: TierId[] = ['existential', 'systemic', 'tech', 'flourishing'];
@@ -31,6 +32,8 @@ export interface Indicator {
   change10y: number | null;
   spark: { date: string; value: number }[];
   target: TargetStatus | null;
+  /** Sourced note shown on the card (data/indicator_notes.csv), if any. */
+  note: IndicatorNote | null;
 }
 
 export interface Series {
@@ -77,6 +80,7 @@ export async function getIndicators(): Promise<Indicator[]> {
   const groups = await loadIndicatorSeries();
   const targets = await getTargets();
   const info = await getIndicatorInfo();
+  const notes = await getIndicatorNotes();
 
   return [...groups.entries()].map(([id, { meta, illustrative, points }]) => {
     const latest = points[points.length - 1];
@@ -104,6 +108,10 @@ export async function getIndicators(): Promise<Indicator[]> {
       change10y: back(10),
       spark: annual ? points : points.slice(-SPARK_MONTHS),
       target: targets.has(id) ? targetStatus(targets.get(id)!, points, annual) : null,
+      note: (() => {
+        const n = notes.get(id);
+        return n && (n.untilYear === null || Number(latest.date.slice(0, 4)) < n.untilYear) ? n : null;
+      })(),
     };
   });
 }

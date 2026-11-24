@@ -34,6 +34,8 @@ export interface TargetStatus {
   /** limit: current level on the target's scale (e.g. °C above pre-industrial) and the limit. */
   level: number | null;
   limit: number | null;
+  /** limit: years averaged as the zero point of `level` (e.g. 1880-1900 for pre-industrial). */
+  rebase: [number, number] | null;
 }
 
 export async function getTargets(): Promise<Map<string, Target>> {
@@ -101,6 +103,7 @@ export function targetStatus(t: Target, points: { date: string; value: number }[
     baseline: null,
     level: null,
     limit: null,
+    rebase: t.rebase,
   };
 
   if (t.kind === 'reach' && t.target !== null && t.baselineYear !== null) {

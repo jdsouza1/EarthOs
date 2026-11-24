@@ -7,19 +7,21 @@ export interface NavItem {
   label: string;
   href?: string;
   batch?: string; // roadmap batch for planned pages
+  /** Shown under "More" in the header (the footer lists every page). */
+  more?: boolean;
 }
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Dashboard', href: '/' },
-  { label: 'Levers', href: '/levers' },
   { label: 'Policies', href: '/policies' },
   { label: 'Forecasts', href: '/forecasts' },
+  { label: 'Levers', href: '/levers' },
   { label: 'What if', href: '/what-if' },
   { label: 'Solved', href: '/solved' },
   { label: 'Brief', href: '/report' },
-  { label: 'Data', href: '/data' },
-  { label: 'Methodology', href: '/methodology' },
-  { label: 'Change log', href: '/changelog' },
+  { label: 'Data', href: '/data', more: true },
+  { label: 'Methodology', href: '/methodology', more: true },
+  { label: 'Change log', href: '/changelog', more: true },
 ];
 
 export function isActive(pathname: string, href: string) {

@@ -107,6 +107,20 @@ export async function getDashboardData(): Promise<DashboardData> {
     return point;
   });
 
+  const raw = new Map((await getIndicators()).map((x) => [x.id, x]));
+  const contextFor = (id: string): string | null => {
+    const r = raw.get(id);
+    if (!r) return null;
+    const short = r.unit.split(' (')[0];
+    const unit = short.startsWith('%') ? '%' : ` ${short}`;
+    const v = r.latest.value.toLocaleString('en-US', { maximumFractionDigits: Math.abs(r.latest.value) >= 100 ? 0 : 2 });
+    const now = `${v}${unit} now`;
+    const t = r.target;
+    if (t?.kind === 'reach' && t.progress !== null && t.progress < 0 && t.baseline) return `${now} · worse than in ${t.baseline.year}, its baseline year`;
+    if (t?.kind === 'limit' && t.level !== null && t.limit !== null) return `${t.level.toFixed(2)} of ${t.limit}${unit} used`;
+    if (t?.kind === 'direction') return `${now} · scored on its 10-year trend`;
+    return now;
+  };
   const bottlenecks: Bottleneck[] = [...scores.indicators]
     .sort((a, b) => a.score - b.score)
     .slice(0, MAX_BOTTLENECKS)
@@ -118,9 +132,9 @@ export async function getDashboardData(): Promise<DashboardData> {
       score: Math.round(x.score),
       basis: x.basis,
       about: info.get(x.id) ?? null,
+      context: contextFor(x.id),
     }));
 
-  const raw = new Map((await getIndicators()).map((x) => [x.id, x]));
   const alerts: Alert[] = scores.indicators
     .filter((x) => x.prevScore !== null && x.prevScore - x.score >= ALERT_MIN_DROP && raw.has(x.id))
     .sort((a, b) => b.prevScore! - b.score - (a.prevScore! - a.score))

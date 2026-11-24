@@ -56,6 +56,17 @@ const REGISTRY: RegistryEntry[] = [
   },
   {
     group: 'Dashboard',
+    file: 'indicator_notes.csv',
+    title: 'Notes on indicator cards',
+    feeds: 'The sourced note on some indicator cards, such as a newer published figure the data feed has not picked up yet.',
+    method: 'Written by hand from the named source. A note with an until_year disappears once the data reaches that year.',
+    fixedSources: [
+      { name: 'FAO and partners (SOFI 2026)', url: 'https://www.fao.org/newsroom/detail/un-report--global-hunger-levels-ease-for-third-consecutive-year-as-regional-disparities-persist/en' },
+      { name: 'Federation of American Scientists', url: 'https://fas.org/issues/nuclear-weapons/status-world-nuclear-forces/' },
+    ],
+  },
+  {
+    group: 'Dashboard',
     file: 'tiers.csv',
     title: 'Area labels',
     feeds: 'Names, chart style and display order for the four areas. The status label (Improving, Stagnant, Degrading) is computed from the 5-year score change.',
@@ -305,7 +316,7 @@ const REGISTRY: RegistryEntry[] = [
 const RETIRED = new Set<string>();
 /** Files that hold configuration or EarthOS's own work, not downloaded data. */
 const CONFIG = new Set([
-  'tiers.csv', 'changelog.csv', 'targets.csv', 'indicator_info.csv', 'policy_master.csv', 'policy_gameplans.csv',
+  'tiers.csv', 'changelog.csv', 'targets.csv', 'indicator_info.csv', 'indicator_notes.csv', 'policy_master.csv', 'policy_gameplans.csv',
   'backtest.csv', 'backtest_p1.csv', 'backtest_p3.csv', 'refresh.csv',
 ]);
 

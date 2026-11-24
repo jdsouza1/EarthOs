@@ -21,7 +21,8 @@ export function BottlenecksPanel({ bottlenecks, tiers }: { bottlenecks: Bottlene
       <div className="flex items-center gap-1.5">
         <h2 id="weakest-title" className="eyebrow">Weakest points</h2>
         <InfoTip id="bottlenecks-about" label="About weakest points" align="left">
-          The five indicators with the lowest scores, out of 100. 100 means the target is met or the trend is strongly improving.
+          The five indicators with the lowest scores, out of 100. 100 means the target is met or the trend is strongly improving. A score of 0 means
+          no progress toward the target since its baseline year, not a reading of zero: the line under each name gives the actual figure.
           <span className="mt-1.5 block">
             <b className="text-critical">Critical</b> = below 15 · <b className="text-elevated">Elevated</b> = below 35 · <b className="text-warning-text">Warning</b> = 35 or more.
           </span>
@@ -38,7 +39,10 @@ export function BottlenecksPanel({ bottlenecks, tiers }: { bottlenecks: Bottlene
               <details className="group">
                 <summary className="flex cursor-pointer list-none items-center gap-3 py-3 [&::-webkit-details-marker]:hidden">
                   <span className="w-5 shrink-0 font-mono text-sm text-subtle">{b.rank}</span>
-                  <span className="min-w-0 flex-1 text-[15px] text-ink">{b.name}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[15px] text-ink">{b.name}</span>
+                    {b.context && <span className="block text-xs text-subtle">{b.context}</span>}
+                  </span>
                   <span className={`shrink-0 rounded-md border px-2 py-0.5 font-mono text-sm ${sev.border} ${sev.bg} ${sev.text}`} title={`${b.severity.toLowerCase()} · score out of 100`}>
                     {b.score}
                   </span>

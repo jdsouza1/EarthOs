@@ -80,7 +80,7 @@ export default async function MethodologyPage() {
       <section id="scoring" className="panel p-5" aria-labelledby="scoring-title">
         <h2 id="scoring-title" className="eyebrow">How scores are worked out</h2>
         <p className="mb-1 mt-1 max-w-3xl text-sm text-muted">
-          Each indicator is scored 0 to 100, where 100 is the good end. An area&apos;s score is the plain average of its scored indicators.
+          Each indicator is scored 0 to 100, where 100 is the good end. An area&apos;s score is the plain average of its scored indicators, except that indicators measuring the same thing count once: since method v3 (24 Nov 2026), carbon dioxide, methane and nitrous oxide are averaged into one greenhouse-gas item before the Existential Survival average, so the tier gives equal weight to temperature, greenhouse gases, nuclear weapons and asteroids. The three gases still show as separate cards.
           Past years use only the data available then. Method {METHOD_VERSION}.
         </p>
         <div className="flex flex-col">

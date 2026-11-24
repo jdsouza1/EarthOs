@@ -65,7 +65,9 @@ function TargetBlock({ t, unit }: { t: TargetStatus; unit: string }) {
     const ratio = t.level / t.limit;
     pct = Math.max(0, Math.min(1, ratio));
     bar = ratio >= 1 ? 'bg-critical' : ratio >= 0.9 ? 'bg-elevated' : 'bg-warning';
-    headline = `≈${t.level.toFixed(2)} ${unit} of ${t.limit} ${unit} limit`;
+    headline = t.rebase
+      ? `≈${t.level.toFixed(2)} ${unit} above ${t.rebase[0]}–${t.rebase[1]}, of a ${t.limit} ${unit} limit`
+      : `≈${t.level.toFixed(2)} ${unit} of ${t.limit} ${unit} limit`;
   }
 
   return (
@@ -109,7 +111,10 @@ export function IndicatorCard({ ind }: { ind: Indicator }) {
         <span className="font-mono text-xs text-muted">{ind.unit}</span>
       </div>
       <div className="tag mb-2 flex flex-wrap gap-x-3 gap-y-0.5 text-[10px]">
-        <span className="text-subtle">{period(ind.latest.date, ind.annual)}</span>
+        <span className="text-subtle">
+          {period(ind.latest.date, ind.annual)}
+          {ind.annual && Number(ind.latest.date.slice(0, 4)) < new Date().getFullYear() && ' (latest published)'}
+        </span>
         <Change label="1Y" delta={ind.change1y} />
         <Change label="10Y" delta={ind.change10y} />
       </div>
@@ -137,9 +142,18 @@ export function IndicatorCard({ ind }: { ind: Indicator }) {
 
       {ind.target && <TargetBlock t={ind.target} unit={ind.unit} />}
 
+      {ind.note && (
+        <p className="mt-2 border-l-2 border-warning-line pl-2 text-[11px] leading-snug text-muted">
+          {ind.note.text}{' '}
+          <a href={ind.note.url} target="_blank" rel="noreferrer" className="text-accent hover:underline" title={ind.note.source}>
+            Source
+          </a>
+        </p>
+      )}
+
       <div className="tag mt-2 flex items-center justify-between gap-2 text-[9px] text-subtle">
         <span>
-          Since {period(ind.first.date, ind.annual)} · {ind.count} {ind.annual ? 'years' : 'months'}
+          Since {period(ind.first.date, ind.annual)} · {ind.count} {ind.annual ? 'data points' : 'months'}
         </span>
         <span className="flex shrink-0 items-center gap-2">
           <a href={`/data?card=${ind.id}#embed`} className="text-accent hover:underline" title={`Share or embed the ${ind.name} card`}>

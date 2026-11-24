@@ -12,11 +12,30 @@ import type { TierId } from './types';
  *  - direction:    10-year trend. 50 means flat; each 1% change in the better direction adds
  *                  5 points (capped 0–100). Monthly series compare 12-month means.
  *  - no better direction (e.g. AI investment): not scored.
- * A tier's score is the plain average of its scored indicators (equal weights).
+ * A tier's score is the plain average of its scored indicators (equal weights), except that
+ * indicators measuring the same thing are first averaged into one group (v3: CO2, methane and
+ * nitrous oxide form one greenhouse-gas group), so one cause cannot fill a tier on its own.
  * Scores for past years use only data published up to that year; slow series carry their
  * latest value forward.
  */
-export const METHOD_VERSION = 'v2';
+export const METHOD_VERSION = 'v3';
+/** v3: indicators that share a group count as one item in their tier's average. */
+export const SCORE_GROUPS: Record<string, { id: string; label: string }> = {
+  co2_ppm_mlo: { id: 'ghg', label: 'Greenhouse gases' },
+  ch4_ppb_global: { id: 'ghg', label: 'Greenhouse gases' },
+  n2o_ppb_global: { id: 'ghg', label: 'Greenhouse gases' },
+};
+/** Average a tier's indicator scores, with grouped indicators averaged into one item first. */
+export function tierMean(items: { id: string; score: number }[], groups: Record<string, { id: string }> = SCORE_GROUPS): number | null {
+  const buckets = new Map<string, number[]>();
+  for (const { id, score } of items) {
+    const key = groups[id]?.id ?? id;
+    buckets.set(key, [...(buckets.get(key) ?? []), score]);
+  }
+  if (items.length < 2) return null;
+  const means = [...buckets.values()].map((xs) => xs.reduce((a, b) => a + b, 0) / xs.length);
+  return means.reduce((a, b) => a + b, 0) / means.length;
+}
 /** Trend scoring: 50 = flat over TREND_SPAN years; each 1% change in the better direction adds POINTS_PER_PCT. */
 export const TREND_SPAN = 10;
 export const POINTS_PER_PCT = 5;
@@ -108,17 +127,14 @@ export async function computeScores(): Promise<Scores | null> {
 
   const tierHistory = Object.fromEntries(TIERS.map((t) => [t, [] as (number | null)[]])) as Scores['tierHistory'];
   for (const y of years) {
-    const byTier = new Map<TierId, number[]>();
+    const byTier = new Map<TierId, { id: string; score: number }[]>();
     for (const [id, s] of series) {
       const r = scoreAt(s, targets.get(id), y);
       if (!r) continue;
       const tier = s.meta.tier_id as TierId;
-      byTier.set(tier, [...(byTier.get(tier) ?? []), r.score]);
+      byTier.set(tier, [...(byTier.get(tier) ?? []), { id, score: r.score }]);
     }
-    for (const t of TIERS) {
-      const xs = byTier.get(t) ?? [];
-      tierHistory[t].push(xs.length >= 2 ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
-    }
+    for (const t of TIERS) tierHistory[t].push(tierMean(byTier.get(t) ?? []));
   }
 
   const indicators: IndicatorScore[] = [];
@@ -132,17 +148,17 @@ export async function computeScores(): Promise<Scores | null> {
   const rangeFor = (y: number) => {
     const variants: number[][] = TIERS.map(() => []);
     const scoreTiers = (opts: Opts, skip?: string) => {
-      const byTier = new Map<TierId, number[]>();
+      const byTier = new Map<TierId, { id: string; score: number }[]>();
       for (const [id, s] of series) {
         if (id === skip) continue;
         const r = scoreAt(s, targets.get(id), y, opts);
         if (!r) continue;
         const tier = s.meta.tier_id as TierId;
-        byTier.set(tier, [...(byTier.get(tier) ?? []), r.score]);
+        byTier.set(tier, [...(byTier.get(tier) ?? []), { id, score: r.score }]);
       }
       TIERS.forEach((t, k) => {
-        const xs = byTier.get(t) ?? [];
-        if (xs.length >= 2) variants[k].push(xs.reduce((a, b) => a + b, 0) / xs.length);
+        const m = tierMean(byTier.get(t) ?? []);
+        if (m !== null) variants[k].push(m);
       });
     };
     for (const trendSpan of SENSITIVITY.trendSpans)

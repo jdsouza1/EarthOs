@@ -29,6 +29,8 @@ export interface Bottleneck {
   basis: 'target' | 'limit' | 'trend';
   /** Plain-English "what this measures" text, if any. */
   about?: string | null;
+  /** Short reading beside the score, e.g. "85% now · below its 2019 level", so a 0 is not read as 0%. */
+  context?: string | null;
 }
 
 /** An indicator whose score fell over the latest year (see lib/scores.ts). */
