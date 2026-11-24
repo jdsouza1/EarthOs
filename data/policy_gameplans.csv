@@ -1,0 +1,395 @@
+topic,iso3,step,theme,action,detail
+climate,USA,1,renewables,Clean up the power grid fast,"Get renewables to about two-thirds of electricity by 2030 and over 90% by 2040, adding roughly 89 GW of solar and 40 GW of wind a year."
+climate,USA,2,fossil,Take gas out of electricity by 2035,"Use carbon capture only for industries with no alternative, not for power plants where renewables are cheaper."
+climate,USA,3,electrify,Make new cars electric,95–100% of new light-duty vehicle sales electric by 2030.
+climate,USA,4,electrify,Cut building emissions,"About 60% lower in homes and 70% lower in commercial buildings by 2030, compared with 2015."
+climate,USA,5,finance,Pay a fair share abroad,Increase international climate finance and stop supporting fossil fuels overseas.
+climate,CHN,1,coal,Cap coal,Limit new coal plants and total coal use during the 2026–2030 Five-Year Plan to avoid locking in emissions.
+climate,CHN,2,fossil,Plan the exit from fossil power,Tackle growing gas power too: a 1.5 °C path means fossil-free electricity by 2040.
+climate,CHN,3,industry,Clean up heavy industry,"Stronger incentives for low-emission steel and cement, so cuts last if demand rebounds."
+climate,CHN,4,carbon-price,Give carbon trading teeth,Set a tight cap and allocate allowances well in the national emissions trading system.
+climate,CHN,5,methane,Tackle methane,"Specific targets and measures for non-CO2 gases, especially methane from coal mines."
+climate,IND,1,targets,Raise the 2030 and 2035 targets,Clearer absolute-emissions goals and a more ambitious power-sector target.
+climate,IND,2,renewables,"Make renewables replace coal, not just add to it","Faster transmission, storage and project build-out."
+climate,IND,3,coal,Set a coal exit timetable,"No new coal plants, and retire inefficient ones early."
+climate,IND,4,fossil,Avoid new gas lock-in,"Reassess LNG terminals, pipelines and gas power where renewables plus storage can do the job."
+climate,IND,5,electrify,Prepare for rising cooling demand,"Efficient appliances, cleaner buildings, demand response and a more flexible grid."
+climate,IND,6,carbon-price,Cap emissions in the carbon market,"Move from intensity targets to absolute cuts, especially for heavy industry."
+climate,IND,7,electrify,Speed up electric cars,Build far more charging; electric cars were only about 5% of new car sales in 2025.
+climate,EU,1,targets,Raise the 2035 and 2040 targets,"At least 78% and 90% below 1990 levels (including land use), without using international credits."
+climate,EU,2,fossil,Phase out fossil fuels,"Coal by 2030, fossil gas by 2035, and no new gas infrastructure."
+climate,EU,3,methane,Cut farm emissions,"Set targets for agriculture and redirect subsidies away from emissions-heavy practices, with support for farmers."
+climate,EU,4,electrify,"Electrify transport, buildings and industry",Ambitious sector-by-sector electrification targets.
+climate,EU,5,finance,Pay more abroad,"Substantially increase climate finance, including some carbon-border-tax revenue for developing countries."
+climate,RUS,1,targets,Set a target that actually cuts emissions,Today's target is weaker than what current policies already deliver.
+climate,RUS,2,fossil,Plan for falling fossil demand,Base energy strategy on realistic demand forecasts and use investment to diversify the economy.
+climate,RUS,3,renewables,Back renewables like nuclear,Give the domestic renewables industry the same political and regulatory support.
+climate,RUS,4,coal,Support coal workers,Investment and retraining in coal regions such as Kuzbass.
+climate,RUS,5,plan,Be transparent about forests,Follow UN rules for land-use accounting so the figures can be checked.
+climate,IDN,1,coal,Make the coal exit credible,"Name the old plants to retire early, give retirement a firm legal basis, and replace planned industrial coal plants with renewables and storage."
+climate,IDN,2,targets,Strengthen targets,"Stronger 2030 and 2035 targets, with a separate land and forest target so forests can't hide energy emissions."
+climate,IDN,3,land,Protect forests and people,Impact assessments for big projects like biodiesel expansion and food estates.
+climate,IDN,4,carbon-price,Tighten carbon pricing,"Stricter trading caps, enforce the carbon tax, and sell only high-quality credits abroad."
+climate,IDN,5,finance,Fund the transition,Use the state budget for renewables and coal retirement.
+climate,BRA,1,targets,Strengthen targets,"Deeper fossil fuel cuts in every sector and less reliance on forests, while keeping deforestation goals."
+climate,BRA,2,fossil,Plan a fossil fuel phase-out,An energy transition strategy with a timeline and a fair deal for affected workers.
+climate,BRA,3,methane,Cut farm methane,"More efficient, sustainable farming, especially livestock."
+climate,BRA,4,plan,Publish a 2050 roadmap,Submit a long-term strategy to the UN with sector pathways to climate neutrality.
+climate,JPN,1,coal,Commit to a coal exit,A full coal phase-out on a timeline consistent with 1.5 °C.
+climate,JPN,2,plan,Set a 2035 power mix,"Electricity targets for 2035, the same year as its climate target."
+climate,JPN,3,renewables,Scale up renewables,"Make renewables the priority, with stronger targets."
+climate,JPN,4,electrify,End new petrol car sales by 2035,Strengthen electric vehicle targets.
+climate,JPN,5,finance,Stop funding fossil fuels abroad,"End public finance for overseas fossil projects and stop promoting ""clean coal""."
+climate,JPN,6,targets,Strengthen the 2030 target,Align it with the Paris Agreement.
+climate,SAU,1,fossil,Diversify away from oil and gas,"A Paris-compatible plan, including ending investment in new oil and gas production."
+climate,SAU,2,renewables,Scale up renewables at home,Faster deployment to cut emissions and create jobs; this needs to come before green hydrogen export plans are credible.
+climate,SAU,3,plan,Publish the numbers,Release the baseline data and assumptions behind its 2040 target.
+climate,SAU,4,plan,Clarify net zero by 2060,Explain the assumptions and set out a clear pathway.
+climate,CAN,1,targets,Strengthen targets,"Raise the 2030 and 2035 targets to a 1.5 °C path, or at least keep the current ones."
+climate,CAN,2,carbon-price,Enforce existing rules,"Methane rules, industrial carbon pricing and clean electricity rules, without carve-outs."
+climate,CAN,3,fossil,Stop expanding oil and gas,"No new projects, end fossil fuel subsidies, and plan a production phase-out."
+climate,CAN,4,coal,Stop moving US coal,End coal exports through Canadian ports.
+climate,CAN,5,renewables,Bet on proven solutions,"Renewables and electrification first, with less reliance on costly carbon capture."
+climate,GMB,1,targets,Strengthen policies to hit its target,Current policies fall short of its own target; this needs international support.
+climate,GMB,2,renewables,Speed up renewables and electric transport,This alone would put it fully on a 1.5 °C path.
+climate,GMB,3,fossil,Avoid fossil fuel lock-in,Affordable renewables cut reliance on imported oil; plans to extract oil and gas cut against this.
+climate,GMB,4,land,Turn forests back into a carbon sink,"Curb deforestation, with measurable land-use targets."
+climate,GMB,5,targets,Lower its 2030 emissions level,Its updated plan allows higher 2030 emissions than its first one.
+climate,PHL,1,coal,Set a coal phase-out timeline,With a plan to deliver it.
+climate,PHL,2,targets,Submit a 2035 target,"Ambitious conditional and unconditional targets, and update 2030, prioritising the unconditional one."
+climate,PHL,3,plan,Set net zero and a long-term plan,"An economy-wide strategy, with an estimate of the finance needed."
+climate,PHL,4,renewables,Raise renewable targets,"Speed up deployment so coal is replaced by renewables, not gas."
+climate,PHL,5,renewables,Level the playing field,Incentives and lower risk for clean power so it competes fairly with fossil power.
+climate,CHL,1,coal,Close coal sooner,"An earlier formal deadline, replacing coal with renewables rather than gas."
+climate,CHL,2,fossil,Reform fuel subsidies,End diesel subsidies and better target electric vehicle incentives.
+climate,CHL,3,renewables,Build grid and storage,Cut wasted solar and wind power: 19% was curtailed in 2024.
+climate,CHL,4,land,"Grow forests, but cut elsewhere first",Expand forests without relying on them to meet targets.
+climate,CHL,5,targets,Set firm 2030 limits,"No more than 85 MtCO2e on its own, or 79 MtCO2e with international support (excluding land use)."
+nuclear,USA,1,stocks,Reduce stocks and report them,"Regularly publish civilian and military stock reports, and run no enrichment plants that handle highly enriched uranium."
+nuclear,USA,2,reprocessing,Forgo reprocessing,"Commit to forgoing reprocessing, run no plants handling highly enriched uranium or separated plutonium, and license a permanent spent fuel site."
+nuclear,USA,3,oversight,Rebuild security culture,"Mandate annual security culture self-assessments, write security culture language into law, and hold annual joint exercises between on-site and off-site responders."
+nuclear,USA,4,people-cyber,Re-vet staff more often,Vet security and other personnel with access to nuclear material areas at intervals of two years or less.
+nuclear,USA,5,law,Ratify Additional Protocol I,"Ratify Additional Protocol I to the Geneva Conventions, which prohibits attacks on nuclear facilities."
+nuclear,USA,6,arms-control,Restart arms control talks,Open talks on a successor to New START and bring China into the process.
+nuclear,USA,7,risk-reduction,Lower the risk of use,"Keep hotlines open, take weapons off high alert, and agree launch notifications with the other nuclear-weapon states."
+nuclear,RUS,1,stocks,Reduce stocks and report them,"Actively reduce the stockpile of weapons-usable material, stop running enrichment plants that handle highly enriched uranium, and publish civilian and military stock reports."
+nuclear,RUS,2,reprocessing,Forgo reprocessing,"Commit to forgoing reprocessing, run no plants handling highly enriched uranium or separated plutonium, and license a permanent spent fuel site."
+nuclear,RUS,3,law,Rejoin international cooperation,"Join the Global Forum to Prevent Radiological and Nuclear Terrorism, ratify Additional Protocol I, and endorse the IAEA Seven Indispensable Pillars."
+nuclear,RUS,4,people-cyber,Train and re-vet staff,"Require periodic re-vetting, suspicious-behaviour reporting, and insider-threat and cyber-threat training for all personnel."
+nuclear,RUS,5,oversight,Test security and update the threat basis,"Require an updated Design Basis Threat and realistic force-on-force exercises, and mandate annual security culture self-assessments."
+nuclear,RUS,6,arms-control,Restart arms control talks,Open talks on a successor to New START and bring China into the process.
+nuclear,RUS,7,risk-reduction,Lower the risk of use,"Keep hotlines open, take weapons off high alert, and agree launch notifications with the other nuclear-weapon states."
+nuclear,CHN,1,stocks,Reduce stocks and report them,"Actively reduce the stockpile of weapons-usable material, stop running enrichment plants that handle highly enriched uranium, and publish civilian and military stock declarations."
+nuclear,CHN,2,reprocessing,Forgo reprocessing,"Commit to forgoing reprocessing, run no plants handling highly enriched uranium or separated plutonium, and license a permanent spent fuel site."
+nuclear,CHN,3,law,Join the international forum,Join the Global Forum to Prevent Radiological and Nuclear Terrorism and endorse the IAEA Seven Indispensable Pillars.
+nuclear,CHN,4,people-cyber,Vet and train staff,"Vet personnel at set intervals, set up suspicious-behaviour reporting, and require insider-threat training."
+nuclear,CHN,5,oversight,Self-assess security culture,Mandate annual nuclear security culture self-assessments.
+nuclear,CHN,6,arms-control,Restart arms control talks,Open talks on a successor to New START and bring China into the process.
+nuclear,CHN,7,risk-reduction,Lower the risk of use,"Keep hotlines open, take weapons off high alert, and agree launch notifications with the other nuclear-weapon states."
+nuclear,FRA,1,stocks,Reduce stocks and report them,"Actively reduce the stockpile of weapons-usable material, run no enrichment plants that handle highly enriched uranium, and publicly report military stocks."
+nuclear,FRA,2,reprocessing,Forgo reprocessing,"Commit to forgoing reprocessing, run no plants handling highly enriched uranium or separated plutonium, and license a permanent spent fuel site."
+nuclear,FRA,3,people-cyber,Vet and train staff,"Establish comprehensive personnel vetting, re-vet at least every two years, and require insider-threat training."
+nuclear,FRA,4,oversight,Self-assess and certify security staff,Mandate annual security culture self-assessments and require extra training or certification for security personnel.
+nuclear,FRA,5,risk-reduction,Lower the risk of use,"Keep hotlines open, take weapons off high alert, and agree launch notifications with the other nuclear-weapon states."
+nuclear,GBR,1,stocks,Reduce stocks and report them,Actively reduce the total stockpile of weapons-usable material and make regular public reports on military stocks.
+nuclear,GBR,2,reprocessing,License permanent spent fuel storage,"Fully license at least one site for permanent, irretrievable storage of spent nuclear fuel."
+nuclear,GBR,3,people-cyber,Extra training for security staff,Require personnel with security duties to complete additional training or certification.
+nuclear,GBR,4,risk-reduction,Lower the risk of use,"Keep hotlines open, take weapons off high alert, and agree launch notifications with the other nuclear-weapon states."
+nuclear,IND,1,stocks,Reduce stocks and report them,"Run no enrichment plants that handle highly enriched uranium, actively reduce the stockpile, and publicly declare civilian and military stocks."
+nuclear,IND,2,reprocessing,Forgo reprocessing,"Commit to forgoing reprocessing, run no plants handling highly enriched uranium or separated plutonium, and license a permanent spent fuel site."
+nuclear,IND,3,oversight,Create an independent regulator,"Establish an independent nuclear regulator with its own authority and budget, require an updated Design Basis Threat, and run realistic force-on-force exercises."
+nuclear,IND,4,people-cyber,Vet and train staff,"Establish comprehensive vetting, re-vet at least every two years, and require insider-threat training for all personnel."
+nuclear,IND,5,law,Ratify and join,"Ratify Additional Protocol I, endorse the IAEA Seven Indispensable Pillars, join the Global Forum, and prepare the Amended CPPNM framework before the 2027 review."
+nuclear,IND,6,risk-reduction,Lower the risk of use,"Keep the yearly exchange of nuclear installation lists with Pakistan going (the 35th exchange took place on 1 January 2026, after the May 2025 conflict), and keep crisis hotlines open."
+nuclear,PAK,1,stocks,Reduce stocks and report them,"Stop running enrichment plants that handle highly enriched uranium, actively reduce the stockpile, and publicly report civilian and military stocks."
+nuclear,PAK,2,reprocessing,Forgo reprocessing,"Commit to forgoing reprocessing, run no plants handling highly enriched uranium or separated plutonium, and license a permanent spent fuel site."
+nuclear,PAK,3,people-cyber,Vet and train staff,"Establish comprehensive vetting, re-vet at least every two years, and require suspicious-behaviour reporting and insider-threat training."
+nuclear,PAK,4,oversight,Test security systems,"Require a regularly updated Design Basis Threat and realistic force-on-force exercises, and mandate annual security culture self-assessments."
+nuclear,PAK,5,law,Ratify the treaties,"Ratify the International Convention for the Suppression of Acts of Nuclear Terrorism and Additional Protocol I, and endorse the IAEA Seven Indispensable Pillars."
+nuclear,PAK,6,risk-reduction,Lower the risk of use,"Keep the yearly exchange of nuclear installation lists with India going (the 35th exchange took place on 1 January 2026, after the May 2025 conflict), and keep crisis hotlines open."
+nuclear,ISR,1,stocks,Reduce stocks and report them,"Run no enrichment plants that handle highly enriched uranium, actively reduce the stockpile, and publicly declare civilian and military stocks."
+nuclear,ISR,2,reprocessing,Forgo reprocessing,"Commit to forgoing reprocessing, run no plants handling highly enriched uranium or separated plutonium, and license a permanent spent fuel site."
+nuclear,ISR,3,people-cyber,Vet and train staff,"Vet personnel at least every two years, set up suspicious-behaviour reporting, and require insider-threat training."
+nuclear,ISR,4,oversight,Test security and self-assess,"Require an updated Design Basis Threat and force-on-force exercises, mandate annual security culture self-assessments, and add security culture language to law."
+nuclear,ISR,5,law,Ratify the treaties,Ratify the International Convention for the Suppression of Acts of Nuclear Terrorism and Additional Protocol I.
+nuclear,ISR,6,risk-reduction,Lower the risk of use,Set up a direct crisis channel with Iran. There is none today: in January 2026 the two sides exchanged pledges not to strike first only through Russia.
+nuclear,PRK,1,stocks,Reduce stocks and report them,"Run no enrichment plants that handle highly enriched uranium, actively reduce the weapons-usable stockpile, and regularly report civilian and military stocks."
+nuclear,PRK,2,reprocessing,Forgo reprocessing,"Commit to forgoing reprocessing, run no plants handling highly enriched uranium or separated plutonium, and license a permanent spent fuel site."
+nuclear,PRK,3,people-cyber,Set up personnel security,"Establish comprehensive vetting at intervals of two years or less, with reporting protocols, insider-threat training and annual security culture self-assessments."
+nuclear,PRK,4,oversight,Create independent oversight,"Establish an independent regulator, require a regularly updated Design Basis Threat, and test security systems, including force-on-force exercises."
+nuclear,PRK,5,law,Use the 2027 review,"Sign and ratify the CPPNM and the Amended CPPNM, ratify the International Convention for the Suppression of Acts of Nuclear Terrorism, and complete the national legal framework."
+nuclear,PRK,6,risk-reduction,Lower the risk of use,Answer the inter-Korean military hotline again; North Korea stopped answering it in October 2026. Give notice of missile launches.
+nature,AUS,1,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 46.79, Biodiversity Habitat Index 55.67 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,AUS,2,species,Pull threatened species back from the edge,Red List Index scores 50.32 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,AUS,3,resilience,Keep ecosystems connected and climate-ready,Bioclimatic Ecosystem Resilience Index scores 52.42 of 100 in the EPI 2026. Restore degraded ecosystems and keep habitats joined up.
+nature,AUS,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,BRA,1,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 28.41, Biodiversity Habitat Index 63.22 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,BRA,2,species,Pull threatened species back from the edge,Red List Index scores 30.31 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,BRA,3,resilience,Keep ecosystems connected and climate-ready,Bioclimatic Ecosystem Resilience Index scores 49.37 of 100 in the EPI 2026. Restore degraded ecosystems and keep habitats joined up.
+nature,BRA,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,CHN,1,protect,Protect more of each land habitat,Terrestrial biome protection scores 2.89 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,CHN,2,resilience,Keep ecosystems connected and climate-ready,Bioclimatic Ecosystem Resilience Index scores 28.06 of 100 in the EPI 2026. Restore degraded ecosystems and keep habitats joined up.
+nature,CHN,3,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 71.91, Biodiversity Habitat Index 29.9 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,CHN,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,COL,1,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 24.3, Biodiversity Habitat Index 80.93 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,COL,2,species,Pull threatened species back from the edge,Red List Index scores 25.68 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,COL,3,resilience,Keep ecosystems connected and climate-ready,Bioclimatic Ecosystem Resilience Index scores 73.09 of 100 in the EPI 2026. Restore degraded ecosystems and keep habitats joined up.
+nature,COL,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,COD,1,protect,Protect more of each land habitat,Terrestrial biome protection scores 49.44 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,COD,2,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 74.13, Biodiversity Habitat Index 75.53 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,COD,3,species,Pull threatened species back from the edge,Red List Index scores 81.64 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,COD,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,ECU,1,species,Pull threatened species back from the edge,Red List Index scores 14.99 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,ECU,2,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 21.25, Biodiversity Habitat Index 81.47 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,ECU,3,protect,Protect more of each land habitat,Terrestrial biome protection scores 64.44 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,ECU,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,IND,1,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 72.25, Biodiversity Habitat Index 0.07 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,IND,2,protect,Protect more of each land habitat,Terrestrial biome protection scores 1.13 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,IND,3,resilience,Keep ecosystems connected and climate-ready,Bioclimatic Ecosystem Resilience Index scores 3.44 of 100 in the EPI 2026. Restore degraded ecosystems and keep habitats joined up.
+nature,IND,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,IDN,1,protect,Protect more of each land habitat,Terrestrial biome protection scores 37.84 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,IDN,2,species,Pull threatened species back from the edge,Red List Index scores 43.63 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,IDN,3,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 43.96, Biodiversity Habitat Index 57.69 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,IDN,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,MDG,1,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 11.16, Biodiversity Habitat Index 60.18 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,MDG,2,species,Pull threatened species back from the edge,Red List Index scores 11.2 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,MDG,3,protect,Protect more of each land habitat,Terrestrial biome protection scores 42.32 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,MDG,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,MYS,1,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 13.25, Biodiversity Habitat Index 56.65 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,MYS,2,species,Pull threatened species back from the edge,Red List Index scores 38.69 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,MYS,3,protect,Protect more of each land habitat,Terrestrial biome protection scores 42.78 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,MYS,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,MEX,1,species,Pull threatened species back from the edge,Red List Index scores 12.14 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,MEX,2,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 31.58, Biodiversity Habitat Index 54.94 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,MEX,3,protect,Protect more of each land habitat,Terrestrial biome protection scores 49.21 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,MEX,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,PNG,1,protect,Protect more of each land habitat,Terrestrial biome protection scores 11.84 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,PNG,2,species,Pull threatened species back from the edge,Red List Index scores 56.97 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,PNG,3,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 66.75, Biodiversity Habitat Index 81.95 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,PNG,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,PER,1,species,Pull threatened species back from the edge,Red List Index scores 20.94 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,PER,2,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 25.91, Biodiversity Habitat Index 83.62 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,PER,3,protect,Protect more of each land habitat,Terrestrial biome protection scores 71.19 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,PER,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,PHL,1,resilience,Keep ecosystems connected and climate-ready,Bioclimatic Ecosystem Resilience Index scores 25.12 of 100 in the EPI 2026. Restore degraded ecosystems and keep habitats joined up.
+nature,PHL,2,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 57.91, Biodiversity Habitat Index 33.38 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,PHL,3,species,Pull threatened species back from the edge,Red List Index scores 38.39 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,PHL,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,ZAF,1,protect,Protect more of each land habitat,Terrestrial biome protection scores 29.93 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,ZAF,2,resilience,Keep ecosystems connected and climate-ready,Bioclimatic Ecosystem Resilience Index scores 35.18 of 100 in the EPI 2026. Restore degraded ecosystems and keep habitats joined up.
+nature,ZAF,3,habitat,Stop habitat loss and degradation,"Habitat scores in the EPI 2026: Species Habitat Index 70.56, Biodiversity Habitat Index 39.13 (out of 100; higher means more habitat intact). Keep important natural areas from being converted or degraded."
+nature,ZAF,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+nature,USA,1,protect,Protect more of each land habitat,Terrestrial biome protection scores 37.81 of 100 in the Yale/Columbia EPI 2026 (100 means 30% of every land habitat type is protected). Raise protection toward 30% of each habitat type.
+nature,USA,2,resilience,Keep ecosystems connected and climate-ready,Bioclimatic Ecosystem Resilience Index scores 39.26 of 100 in the EPI 2026. Restore degraded ecosystems and keep habitats joined up.
+nature,USA,3,species,Pull threatened species back from the edge,Red List Index scores 42.77 of 100 in the EPI 2026 (higher means lower average extinction risk). Recover threatened species and tackle the main pressures on them.
+nature,USA,4,subsidies,Redirect harmful subsidies to nature,Find and reform incentives that harm nature and scale up incentives that help it (Global Biodiversity Framework Target 18).
+food,SOM,1,access,Get enough affordable food within reach,"Undernourishment is 56.5% of the population (70.6 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,SOM,2,wasting,Find and treat acute malnutrition early,"Child wasting is 14.6% of children under five (48.7 of 100, higher is worse). Screen for wasting and treat it early."
+food,SOM,3,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 23.9% of children under five (34.1 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,SOM,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,COD,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 44.1% of children under five (63.0 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,COD,2,access,Get enough affordable food within reach,"Undernourishment is 39.5% of the population (49.4 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,COD,3,mortality,Cut child deaths linked to undernutrition,"Under-five mortality is 9.0% (25.7 of 100, higher is worse). Deliver the nutrition and health basics that keep undernourished children alive."
+food,COD,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,TCD,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 36.7% of children under five (52.4 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,TCD,2,access,Get enough affordable food within reach,"Undernourishment is 33.6% of the population (42.0 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,TCD,3,wasting,Find and treat acute malnutrition early,"Child wasting is 10.8% of children under five (36.0 of 100, higher is worse). Screen for wasting and treat it early."
+food,TCD,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,MDG,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 38.4% of children under five (54.9 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,MDG,2,access,Get enough affordable food within reach,"Undernourishment is 41.8% of the population (52.3 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,MDG,3,wasting,Find and treat acute malnutrition early,"Child wasting is 7.2% of children under five (24.0 of 100, higher is worse). Screen for wasting and treat it early."
+food,MDG,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,HTI,1,access,Get enough affordable food within reach,"Undernourishment is 51.4% of the population (64.3 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,HTI,2,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 21.6% of children under five (30.9 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,HTI,3,wasting,Find and treat acute malnutrition early,"Child wasting is 5.0% of children under five (16.7 of 100, higher is worse). Screen for wasting and treat it early."
+food,HTI,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,NGA,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 39.5% of children under five (56.4 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,NGA,2,mortality,Cut child deaths linked to undernutrition,"Under-five mortality is 11.6% (33.1 of 100, higher is worse). Deliver the nutrition and health basics that keep undernourished children alive."
+food,NGA,3,wasting,Find and treat acute malnutrition early,"Child wasting is 8.4% of children under five (28.0 of 100, higher is worse). Screen for wasting and treat it early."
+food,NGA,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,NER,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 50.5% of children under five (72.1 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,NER,2,wasting,Find and treat acute malnutrition early,"Child wasting is 11.1% of children under five (37.0 of 100, higher is worse). Screen for wasting and treat it early."
+food,NER,3,mortality,Cut child deaths linked to undernutrition,"Under-five mortality is 11.1% (31.7 of 100, higher is worse). Deliver the nutrition and health basics that keep undernourished children alive."
+food,NER,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,CAF,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 38.9% of children under five (55.6 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,CAF,2,access,Get enough affordable food within reach,"Undernourishment is 29.8% of the population (37.3 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,CAF,3,mortality,Cut child deaths linked to undernutrition,"Under-five mortality is 9.0% (25.7 of 100, higher is worse). Deliver the nutrition and health basics that keep undernourished children alive."
+food,CAF,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,TLS,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 44.9% of children under five (64.1 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,TLS,2,wasting,Find and treat acute malnutrition early,"Child wasting is 18.5% of children under five (61.7 of 100, higher is worse). Screen for wasting and treat it early."
+food,TLS,3,access,Get enough affordable food within reach,"Undernourishment is 16.9% of the population (21.1 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,TLS,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,LBR,1,access,Get enough affordable food within reach,"Undernourishment is 37.3% of the population (46.6 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,LBR,2,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 26.9% of children under five (38.4 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,LBR,3,mortality,Cut child deaths linked to undernutrition,"Under-five mortality is 8.6% (24.6 of 100, higher is worse). Deliver the nutrition and health basics that keep undernourished children alive."
+food,LBR,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,PNG,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 47.6% of children under five (68.0 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,PNG,2,access,Get enough affordable food within reach,"Undernourishment is 30.5% of the population (38.1 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,PNG,3,wasting,Find and treat acute malnutrition early,"Child wasting is 6.6% of children under five (22.0 of 100, higher is worse). Screen for wasting and treat it early."
+food,PNG,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,SYR,1,access,Get enough affordable food within reach,"Undernourishment is 40.8% of the population (51.0 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,SYR,2,wasting,Find and treat acute malnutrition early,"Child wasting is 12.9% of children under five (43.0 of 100, higher is worse). Screen for wasting and treat it early."
+food,SYR,3,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 23.5% of children under five (33.6 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,SYR,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,ZMB,1,access,Get enough affordable food within reach,"Undernourishment is 41.0% of the population (51.2 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,ZMB,2,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 32.1% of children under five (45.9 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,ZMB,3,mortality,Cut child deaths linked to undernutrition,"Under-five mortality is 4.8% (13.7 of 100, higher is worse). Deliver the nutrition and health basics that keep undernourished children alive."
+food,ZMB,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,SLE,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 25.2% of children under five (36.0 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,SLE,2,access,Get enough affordable food within reach,"Undernourishment is 25.3% of the population (31.6 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,SLE,3,mortality,Cut child deaths linked to undernutrition,"Under-five mortality is 9.0% (25.7 of 100, higher is worse). Deliver the nutrition and health basics that keep undernourished children alive."
+food,SLE,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+food,AFG,1,stunting,"Protect children's growth in the first 1,000 days","Child stunting is 42.0% of children under five (60.0 of 100, higher is worse). Protect children's growth from pregnancy to age two."
+food,AFG,2,access,Get enough affordable food within reach,"Undernourishment is 27.8% of the population (34.8 of 100, higher is worse). Get enough affordable food to the people who lack it."
+food,AFG,3,mortality,Cut child deaths linked to undernutrition,"Under-five mortality is 5.3% (15.1 of 100, higher is worse). Deliver the nutrition and health basics that keep undernourished children alive."
+food,AFG,4,monitoring,Keep hunger data and early warning funded,Keep measuring hunger and nutrition. The Global Hunger Index and the food-crisis reports both depend on data that funding cuts put at risk.
+health,YEM,1,measles2,Give every child the second measles dose,"Second-dose measles coverage is 38%, against the Immunization Agenda 2030 target of 90%."
+health,YEM,2,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 39%, against the Immunization Agenda 2030 target of 90%."
+health,YEM,3,measles1,Give every child a first measles dose,First-dose measles coverage is 41%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,YEM,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 49%, so 51% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,YEM,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,PNG,1,measles2,Give every child the second measles dose,"Second-dose measles coverage is 28%, against the Immunization Agenda 2030 target of 90%."
+health,PNG,2,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 43%, against the Immunization Agenda 2030 target of 90%."
+health,PNG,3,measles1,Give every child a first measles dose,First-dose measles coverage is 45%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,PNG,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 49%, so 51% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,PNG,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,CAF,1,measles2,Give every child the second measles dose,"The second measles dose has not been introduced into the routine schedule, so the WHO/UNICEF estimate is 0%. The Immunization Agenda 2030 target is 90%."
+health,CAF,2,measles1,Give every child a first measles dose,First-dose measles coverage is 44%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,CAF,3,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 46%, against the Immunization Agenda 2030 target of 90%."
+health,CAF,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 59%, so 41% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,CAF,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,VEN,1,measles2,Give every child the second measles dose,"Second-dose measles coverage is 38%, against the Immunization Agenda 2030 target of 90%."
+health,VEN,2,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 50%, against the Immunization Agenda 2030 target of 90%."
+health,VEN,3,measles1,Give every child a first measles dose,First-dose measles coverage is 53%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,VEN,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 57%, so 43% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,VEN,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,AZE,1,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 51%, against the Immunization Agenda 2030 target of 90%."
+health,AZE,2,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 65%, so 35% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,AZE,3,measles1,Give every child a first measles dose,First-dose measles coverage is 71%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,AZE,4,measles2,Give every child the second measles dose,"Second-dose measles coverage is 88%, against the Immunization Agenda 2030 target of 90%."
+health,AZE,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,AGO,1,measles2,Give every child the second measles dose,"Second-dose measles coverage is 46%, against the Immunization Agenda 2030 target of 90%."
+health,AGO,2,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 52%, against the Immunization Agenda 2030 target of 90%."
+health,AGO,3,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 67%, so 33% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,AGO,4,measles1,Give every child a first measles dose,First-dose measles coverage is 71%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,AGO,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,LBN,1,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 52%, against the Immunization Agenda 2030 target of 90%."
+health,LBN,2,measles2,Give every child the second measles dose,"Second-dose measles coverage is 59%, against the Immunization Agenda 2030 target of 90%."
+health,LBN,3,measles1,Give every child a first measles dose,First-dose measles coverage is 67%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,LBN,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 88%, so 12% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,LBN,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,KAZ,1,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 54%, against the Immunization Agenda 2030 target of 90%."
+health,KAZ,2,measles2,Give every child the second measles dose,"Second-dose measles coverage is 62%, against the Immunization Agenda 2030 target of 90%."
+health,KAZ,3,measles1,Give every child a first measles dose,First-dose measles coverage is 65%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,KAZ,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 66%, so 34% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,KAZ,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,HTI,1,measles2,Give every child the second measles dose,"Second-dose measles coverage is 48%, against the Immunization Agenda 2030 target of 90%."
+health,HTI,2,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 58%, against the Immunization Agenda 2030 target of 90%."
+health,HTI,3,measles1,Give every child a first measles dose,First-dose measles coverage is 62%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,HTI,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 78%, so 22% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,HTI,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,BOL,1,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 59%, against the Immunization Agenda 2030 target of 90%."
+health,BOL,2,measles2,Give every child the second measles dose,"Second-dose measles coverage is 61%, against the Immunization Agenda 2030 target of 90%."
+health,BOL,3,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 65%, so 35% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,BOL,4,measles1,Give every child a first measles dose,First-dose measles coverage is 67%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,BOL,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,SYR,1,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 60%, against the Immunization Agenda 2030 target of 90%."
+health,SYR,2,measles2,Give every child the second measles dose,"Second-dose measles coverage is 62%, against the Immunization Agenda 2030 target of 90%."
+health,SYR,3,measles1,Give every child a first measles dose,First-dose measles coverage is 69%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,SYR,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 75%, so 25% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,SYR,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,AFG,1,measles2,Give every child the second measles dose,"Second-dose measles coverage is 42%, against the Immunization Agenda 2030 target of 90%."
+health,AFG,2,measles1,Give every child a first measles dose,First-dose measles coverage is 56%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,AFG,3,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 61%, against the Immunization Agenda 2030 target of 90%."
+health,AFG,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 67%, so 33% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,AFG,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,GAB,1,measles2,Give every child the second measles dose,"The second measles dose has not been introduced into the routine schedule, so the WHO/UNICEF estimate is 0%. The Immunization Agenda 2030 target is 90%."
+health,GAB,2,measles1,Give every child a first measles dose,First-dose measles coverage is 56%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,GAB,3,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 62%, against the Immunization Agenda 2030 target of 90%."
+health,GAB,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 65%, so 35% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,GAB,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,NGA,1,measles2,Give every child the second measles dose,"Second-dose measles coverage is 35%, against the Immunization Agenda 2030 target of 90%."
+health,NGA,2,measles1,Give every child a first measles dose,First-dose measles coverage is 56%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,NGA,3,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 62%, against the Immunization Agenda 2030 target of 90%."
+health,NGA,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 70%, so 30% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,NGA,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+health,MDG,1,measles2,Give every child the second measles dose,"Second-dose measles coverage is 41%, against the Immunization Agenda 2030 target of 90%."
+health,MDG,2,measles1,Give every child a first measles dose,First-dose measles coverage is 49%. WHO and UNICEF say 95% is needed to prevent outbreaks.
+health,MDG,3,complete,Help children finish their first-year vaccines,"Third-dose DTP coverage is 64%, against the Immunization Agenda 2030 target of 90%."
+health,MDG,4,zerodose,Reach children who have had no vaccines,"First-dose DTP coverage is 74%, so 26% of infants did not get a first DTP dose, the measure used to count zero-dose children."
+health,MDG,5,funding,Keep vaccines funded and coverage tracked,"Keep immunization funded and the surveys and data going. Only 18 national immunization surveys were sent in for the 2025 estimates, down from 50 the year before."
+ai,ARE,1,public,Be open about how government uses AI,AI Use in Public Service score: 27.1 of 100 in GIRAI 2026. Higher is better.
+ai,ARE,2,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 32.5 of 100 in GIRAI 2026. Higher is better.
+ai,ARE,3,labour,Protect workers and build AI skills,Labour and Skills score: 36.1 of 100 in GIRAI 2026. Higher is better.
+ai,ARE,4,trust,Keep people safe and give them a way to complain,Trust and Safety score: 42.8 of 100 in GIRAI 2026. Higher is better.
+ai,ARE,5,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 62.1 of 100 in GIRAI 2026. Higher is better.
+ai,IND,1,public,Be open about how government uses AI,AI Use in Public Service score: 33.3 of 100 in GIRAI 2026. Higher is better.
+ai,IND,2,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 39.6 of 100 in GIRAI 2026. Higher is better.
+ai,IND,3,labour,Protect workers and build AI skills,Labour and Skills score: 40.5 of 100 in GIRAI 2026. Higher is better.
+ai,IND,4,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 54.2 of 100 in GIRAI 2026. Higher is better.
+ai,IND,5,trust,Keep people safe and give them a way to complain,Trust and Safety score: 56.9 of 100 in GIRAI 2026. Higher is better.
+ai,CHN,1,public,Be open about how government uses AI,AI Use in Public Service score: 31.3 of 100 in GIRAI 2026. Higher is better.
+ai,CHN,2,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 44.0 of 100 in GIRAI 2026. Higher is better.
+ai,CHN,3,labour,Protect workers and build AI skills,Labour and Skills score: 49.2 of 100 in GIRAI 2026. Higher is better.
+ai,CHN,4,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 53.4 of 100 in GIRAI 2026. Higher is better.
+ai,CHN,5,trust,Keep people safe and give them a way to complain,Trust and Safety score: 64.2 of 100 in GIRAI 2026. Higher is better.
+ai,ISR,1,trust,Keep people safe and give them a way to complain,Trust and Safety score: 44.1 of 100 in GIRAI 2026. Higher is better.
+ai,ISR,2,labour,Protect workers and build AI skills,Labour and Skills score: 45.0 of 100 in GIRAI 2026. Higher is better.
+ai,ISR,3,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 48.0 of 100 in GIRAI 2026. Higher is better.
+ai,ISR,4,public,Be open about how government uses AI,AI Use in Public Service score: 51.1 of 100 in GIRAI 2026. Higher is better.
+ai,ISR,5,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 52.2 of 100 in GIRAI 2026. Higher is better.
+ai,SGP,1,public,Be open about how government uses AI,AI Use in Public Service score: 29.1 of 100 in GIRAI 2026. Higher is better.
+ai,SGP,2,labour,Protect workers and build AI skills,Labour and Skills score: 39.2 of 100 in GIRAI 2026. Higher is better.
+ai,SGP,3,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 43.5 of 100 in GIRAI 2026. Higher is better.
+ai,SGP,4,trust,Keep people safe and give them a way to complain,Trust and Safety score: 55.2 of 100 in GIRAI 2026. Higher is better.
+ai,SGP,5,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 59.1 of 100 in GIRAI 2026. Higher is better.
+ai,KOR,1,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 35.8 of 100 in GIRAI 2026. Higher is better.
+ai,KOR,2,public,Be open about how government uses AI,AI Use in Public Service score: 42.7 of 100 in GIRAI 2026. Higher is better.
+ai,KOR,3,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 51.9 of 100 in GIRAI 2026. Higher is better.
+ai,KOR,4,labour,Protect workers and build AI skills,Labour and Skills score: 54.5 of 100 in GIRAI 2026. Higher is better.
+ai,KOR,5,trust,Keep people safe and give them a way to complain,Trust and Safety score: 63.5 of 100 in GIRAI 2026. Higher is better.
+ai,USA,1,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 45.8 of 100 in GIRAI 2026. Higher is better.
+ai,USA,2,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 56.3 of 100 in GIRAI 2026. Higher is better.
+ai,USA,3,trust,Keep people safe and give them a way to complain,Trust and Safety score: 59.2 of 100 in GIRAI 2026. Higher is better.
+ai,USA,4,public,Be open about how government uses AI,AI Use in Public Service score: 62.1 of 100 in GIRAI 2026. Higher is better.
+ai,USA,5,labour,Protect workers and build AI skills,Labour and Skills score: 63.4 of 100 in GIRAI 2026. Higher is better.
+ai,CAN,1,labour,Protect workers and build AI skills,Labour and Skills score: 46.1 of 100 in GIRAI 2026. Higher is better.
+ai,CAN,2,trust,Keep people safe and give them a way to complain,Trust and Safety score: 53.1 of 100 in GIRAI 2026. Higher is better.
+ai,CAN,3,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 58.0 of 100 in GIRAI 2026. Higher is better.
+ai,CAN,4,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 58.9 of 100 in GIRAI 2026. Higher is better.
+ai,CAN,5,public,Be open about how government uses AI,AI Use in Public Service score: 70.8 of 100 in GIRAI 2026. Higher is better.
+ai,JPN,1,labour,Protect workers and build AI skills,Labour and Skills score: 51.9 of 100 in GIRAI 2026. Higher is better.
+ai,JPN,2,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 55.8 of 100 in GIRAI 2026. Higher is better.
+ai,JPN,3,public,Be open about how government uses AI,AI Use in Public Service score: 56.7 of 100 in GIRAI 2026. Higher is better.
+ai,JPN,4,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 62.0 of 100 in GIRAI 2026. Higher is better.
+ai,JPN,5,trust,Keep people safe and give them a way to complain,Trust and Safety score: 63.5 of 100 in GIRAI 2026. Higher is better.
+ai,CHE,1,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 35.9 of 100 in GIRAI 2026. Higher is better.
+ai,CHE,2,labour,Protect workers and build AI skills,Labour and Skills score: 47.5 of 100 in GIRAI 2026. Higher is better.
+ai,CHE,3,public,Be open about how government uses AI,AI Use in Public Service score: 66.8 of 100 in GIRAI 2026. Higher is better.
+ai,CHE,4,trust,Keep people safe and give them a way to complain,Trust and Safety score: 71.5 of 100 in GIRAI 2026. Higher is better.
+ai,CHE,5,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 76.4 of 100 in GIRAI 2026. Higher is better.
+ai,ESP,1,public,Be open about how government uses AI,AI Use in Public Service score: 38.2 of 100 in GIRAI 2026. Higher is better.
+ai,ESP,2,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 68.0 of 100 in GIRAI 2026. Higher is better.
+ai,ESP,3,trust,Keep people safe and give them a way to complain,Trust and Safety score: 73.8 of 100 in GIRAI 2026. Higher is better.
+ai,ESP,4,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 74.2 of 100 in GIRAI 2026. Higher is better.
+ai,ESP,5,labour,Protect workers and build AI skills,Labour and Skills score: 75.4 of 100 in GIRAI 2026. Higher is better.
+ai,BRA,1,trust,Keep people safe and give them a way to complain,Trust and Safety score: 61.5 of 100 in GIRAI 2026. Higher is better.
+ai,BRA,2,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 63.4 of 100 in GIRAI 2026. Higher is better.
+ai,BRA,3,public,Be open about how government uses AI,AI Use in Public Service score: 67.1 of 100 in GIRAI 2026. Higher is better.
+ai,BRA,4,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 72.0 of 100 in GIRAI 2026. Higher is better.
+ai,BRA,5,labour,Protect workers and build AI skills,Labour and Skills score: 76.3 of 100 in GIRAI 2026. Higher is better.
+ai,GBR,1,public,Be open about how government uses AI,AI Use in Public Service score: 64.9 of 100 in GIRAI 2026. Higher is better.
+ai,GBR,2,trust,Keep people safe and give them a way to complain,Trust and Safety score: 66.0 of 100 in GIRAI 2026. Higher is better.
+ai,GBR,3,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 74.8 of 100 in GIRAI 2026. Higher is better.
+ai,GBR,4,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 77.8 of 100 in GIRAI 2026. Higher is better.
+ai,GBR,5,labour,Protect workers and build AI skills,Labour and Skills score: 78.3 of 100 in GIRAI 2026. Higher is better.
+ai,DEU,1,public,Be open about how government uses AI,AI Use in Public Service score: 61.4 of 100 in GIRAI 2026. Higher is better.
+ai,DEU,2,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 72.0 of 100 in GIRAI 2026. Higher is better.
+ai,DEU,3,trust,Keep people safe and give them a way to complain,Trust and Safety score: 76.9 of 100 in GIRAI 2026. Higher is better.
+ai,DEU,4,labour,Protect workers and build AI skills,Labour and Skills score: 77.6 of 100 in GIRAI 2026. Higher is better.
+ai,DEU,5,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 83.0 of 100 in GIRAI 2026. Higher is better.
+ai,FRA,1,trust,Keep people safe and give them a way to complain,Trust and Safety score: 74.5 of 100 in GIRAI 2026. Higher is better.
+ai,FRA,2,inclusion,Protect the people AI could leave out,Inclusion and Diversity score: 74.7 of 100 in GIRAI 2026. Higher is better.
+ai,FRA,3,labour,Protect workers and build AI skills,Labour and Skills score: 74.8 of 100 in GIRAI 2026. Higher is better.
+ai,FRA,4,ethics,"Make AI fair, open and overseen by people",Ethics and Sustainability score: 75.9 of 100 in GIRAI 2026. Higher is better.
+ai,FRA,5,public,Be open about how government uses AI,AI Use in Public Service score: 78.1 of 100 in GIRAI 2026. Higher is better.

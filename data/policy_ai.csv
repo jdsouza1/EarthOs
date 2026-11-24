@@ -1,0 +1,16 @@
+iso3,country,index,rank,inclusion,ethics,labour,trust,public,note
+ARE,United Arab Emirates,38.5,55,62.1,32.5,36.1,42.8,27.1,
+IND,India,41.8,46,54.2,39.6,40.5,56.9,33.3,
+CHN,China,43.6,42,44.0,53.4,49.2,64.2,31.3,
+ISR,Israel,43.8,41,52.2,48.0,45.0,44.1,51.1,
+SGP,Singapore,45.2,40,59.1,43.5,39.2,55.2,29.1,
+KOR,South Korea,47.7,37,35.8,51.9,54.5,63.5,42.7,"GIRAI's evidence runs from November 2023 to September 2025, so South Korea's AI Basic Act, which took effect in January 2026, is not counted in this score. (GIRAI 2026 report; Korea Herald)"
+USA,United States,53.3,27,56.3,45.8,63.4,59.2,62.1,GIRAI lowered the score from 57.4 to 53.3 because it found evidence of government misuse of AI (the URAI adjustment). (GIRAI 2026 country profile)
+CAN,Canada,55.1,25,58.9,58.0,46.1,53.1,70.8,
+JPN,Japan,55.7,24,62.0,55.8,51.9,63.5,56.7,
+CHE,Switzerland,59.6,19,35.9,76.4,47.5,71.5,66.8,
+ESP,Spain,63.3,12,74.2,68.0,75.4,73.8,38.2,
+BRA,Brazil,63.3,11,72.0,63.4,76.3,61.5,67.1,
+GBR,United Kingdom,67.3,7,77.8,74.8,78.3,66.0,64.9,
+DEU,Germany,69.0,6,83.0,72.0,77.6,76.9,61.4,
+FRA,France,70.3,4,74.7,75.9,74.8,74.5,78.1,

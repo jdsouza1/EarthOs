@@ -1,0 +1,21 @@
+indicator_id,about
+co2_ppm_mlo,"How much carbon dioxide is in the air, measured at Mauna Loa, Hawaii. CO2 is the main gas warming the planet; it comes mostly from burning coal, oil and gas."
+ch4_ppb_global,"How much methane is in the air worldwide. Methane traps far more heat than CO2 but breaks down within about a decade. It comes from livestock, rice fields, landfills and oil and gas leaks."
+n2o_ppb_global,"How much nitrous oxide is in the air worldwide. A long-lasting heat-trapping gas that also harms the ozone layer, mostly from farm fertiliser and manure."
+temp_anomaly_c_global,How much warmer the Earth's surface is than its 1951-1980 average. The Paris Agreement aims to keep long-term warming to 1.5 °C above pre-industrial levels.
+nuclear_warheads_world,"Estimated number of nuclear weapons held by all countries, including retired ones waiting to be dismantled."
+near_earth_asteroids_140m_plus_world,How many near-Earth asteroids 140 m or larger (big enough to devastate a region) have been found. An asteroid can only be deflected if it is spotted years ahead.
+conflict_deaths_state_based_world,People killed each year in wars and armed conflicts where at least one side is a government.
+living_planet_index_world,"Average change in monitored wildlife populations (mammals, birds, fish, reptiles, amphibians) since 1970. A value of 0.27 means they are on average 73% smaller."
+extreme_poverty_share_pct_world,"Share of people living on less than $3 a day (adjusted for local prices), the World Bank's extreme poverty line."
+undernourishment_share_pct_world,"Share of people who regularly don't eat enough calories to live a normal, active, healthy life."
+genai_private_investment_usd_world,"Money private investors put into generative AI companies each year. Shown for context but not scored, because whether more is better is debated."
+low_carbon_electricity_share_pct_world,"Share of the world's electricity made from sources that emit little CO2: solar, wind, hydro, nuclear and others."
+internet_users_share_pct_world,Share of people who used the internet in the last three months.
+electricity_access_share_pct_world,Share of people who have electricity at home.
+solar_pv_module_price_usd_per_w_world,"Price of solar panels per watt of power, adjusted for inflation. Cheaper panels make clean electricity easier to adopt."
+human_development_index_world,"The UN's summary of wellbeing, combining life expectancy, education and income. Runs from 0 to 1; higher is better."
+life_expectancy_years_world,How many years a baby born today would live on average if today's death rates stayed the same.
+child_mortality_under5_pct_world,Share of children who die before their fifth birthday.
+dtp3_vaccination_share_pct_world,"Share of babies who got all three doses of the diphtheria, tetanus and whooping cough vaccine. The standard check on whether routine childhood vaccines are reaching families."
+clean_cooking_access_share_pct_world,"Share of people who cook with clean fuels such as gas, electricity or biogas instead of wood, charcoal, dung or kerosene. Smoke from those fuels fills homes and causes about 3.7 million early deaths a year. This is about air pollution and health, not food safety."

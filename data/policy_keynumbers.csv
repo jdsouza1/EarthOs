@@ -1,0 +1,14 @@
+topic,order,label,value,context,confidence,source_name,source_url
+climate,1,Where today's policies lead,2.7 °C,by 2100. The Paris Agreement goal is 1.5 °C.,modelled,"Climate Action Tracker, Global Update, November 2026",https://climateactiontracker.org/press/release-global-update-2026/
+climate,2,Warming so far,1.47 °C,"above pre-industrial, January to September 2026",measured,"World Meteorological Organization, State of the Climate Update for COP31, 2026",https://wmo.int/node/39185
+climate,3,If every 2030 and 2035 target is met,2.6 °C,by 2100,modelled,"Climate Action Tracker, Global Update, November 2026",https://climateactiontracker.org/press/release-global-update-2026/
+nuclear,1,Warheads in military stockpiles,"about 9,745","of about 12,187 in total. Estimates.",measured,"Federation of American Scientists, Status of World Nuclear Forces, 2026",https://fas.org/issues/nuclear-weapons/status-world-nuclear-forces/
+nuclear,2,World total at its peak,"about 70,300",in 1986. Stockpiles are rising again.,measured,"Federation of American Scientists, Status of World Nuclear Forces, 2026",https://fas.org/issues/nuclear-weapons/status-world-nuclear-forces/
+nature,1,Fall in monitored wildlife populations,73%,"on average, 1970 to 2022",measured,"WWF and Zoological Society of London, Living Planet Report 2026",https://www.worldwildlife.org/publications/2026-living-planet-report/
+nature,2,Species threatened with extinction,about 1 million,many within decades,expert,"IPBES Global Assessment, 2019 (Scientific American summary)",https://www.scientificamerican.com/article/humans-are-driving-one-million-species-to-extinction/
+food,1,People facing hunger,about 645 million,"in 2025, 7.8% of the world",measured,"PAHO, reporting the UN State of Food Security and Nutrition in the World 2026",https://www.paho.org/en/news/21-7-2026-report-global-hunger-levels-ease-third-consecutive-year-regional-disparities-persist
+food,2,Global hunger score,18.1,"in 2026, higher than in 2018",measured,"Global Hunger Index 2026, results",https://globalhungerindex.org/
+health,1,Infants who completed three DTP doses,85%,"in 2025, 1 point below 2019",measured,"UNICEF and WHO, 2025 immunization coverage estimates (press release, 15 Jul 2026)",https://www.unicef.org/press-releases/global-childhood-immunization-coverage-inches-forward-despite-conflict-and-hesitancy
+health,2,Deaths averted by vaccines,4.4 million a year,UNICEF estimate,modelled,"UNICEF Data, Vaccination and immunization statistics",https://data.unicef.org/topic/child-health/immunization/
+ai,1,Average responsible AI score,about 35 of 100,GIRAI 2026,measured,"Global Center on AI Governance, GIRAI 2026 key findings",https://www.global-index.ai/
+ai,2,Active frameworks with evidence of implementation,55%,GIRAI 2026,measured,"Global Center on AI Governance, GIRAI 2026 key findings",https://www.global-index.ai/

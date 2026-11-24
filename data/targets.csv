@@ -1,0 +1,21 @@
+indicator_id,kind,target,better,baseline_year,deadline,rebase_from,rebase_to,label,set_by,source_url,note
+extreme_poverty_share_pct_world,reach,3,lower,1990,2030,,,Below 3% by 2030,World Bank,https://www.worldbank.org/en/news/factsheet/2025/06/05/june-2025-update-to-global-poverty-lines,"UN SDG 1.1 goes further: zero extreme poverty in every country."
+undernourishment_share_pct_world,reach,0,lower,2015,2030,,,Zero hunger by 2030,UN SDG 2.1,https://sdgs.un.org/goals/goal2,"Baseline is 2015, the year the SDGs were adopted."
+child_mortality_under5_pct_world,reach,2.5,lower,1990,2030,,,25 per 1000 births or fewer by 2030,UN SDG 3.2,https://sdgs.un.org/goals/goal3,"The SDG target applies to every country; shown here against the world average."
+internet_users_share_pct_world,reach,100,higher,2005,,,,Universal access,UN SDG 9.c,https://sdgs.un.org/goals/goal9,
+nuclear_warheads_world,reach,0,lower,1986,,,,Treaty goal: zero,Treaty on the Prohibition of Nuclear Weapons,https://www.un.org/disarmament/wmd/nuclear/tpnw/,"No nuclear-armed state has joined this treaty. Baseline is the 1986 peak."
+temp_anomaly_c_global,limit,1.5,lower,,,1880,1900,1.5 °C above pre-industrial,Paris Agreement,https://unfccc.int/process-and-meetings/the-paris-agreement,"Measured against the 1880-1900 average as a pre-industrial proxy, using the latest 12-month mean. Paris refers to long-term (multi-decade) warming, so a single year above 1.5 °C is not a breach."
+conflict_deaths_state_based_world,direction,,lower,,,,,Significantly reduce,UN SDG 16.1,https://sdgs.un.org/goals/goal16,No numeric target.
+co2_ppm_mlo,direction,,lower,,,,,No official concentration target,,,
+ch4_ppb_global,direction,,lower,,,,,No official concentration target,,,
+n2o_ppb_global,direction,,lower,,,,,No official concentration target,,,
+life_expectancy_years_world,direction,,higher,,,,,No official target,,,
+human_development_index_world,direction,,higher,,,,,No official target,,,
+low_carbon_electricity_share_pct_world,direction,,higher,,,,,No official target,,,
+solar_pv_module_price_usd_per_w_world,direction,,lower,,,,,No official target,,,
+genai_private_investment_usd_world,direction,,none,,,,,No target: whether more is better is contested,,,
+near_earth_asteroids_140m_plus_world,reach,22800,higher,2005,,,,"US goal: find 90% of the ~25,300 near-Earth asteroids 140 m+","US Congress (George E. Brown Jr. NEO Survey Act, 2005)",https://science.nasa.gov/solar-system/asteroids-comets-meteors/near-earth-asteroids,"Target = 90% of NASA's estimated 140 m+ population (11,343 found + ~14,000 remaining, Dec 2025). The Act set 2020 as the deadline, which was missed."
+living_planet_index_world,direction,,higher,,,,,Halt and reverse biodiversity loss by 2030,Kunming-Montreal Global Biodiversity Framework,https://www.cbd.int/gbf,No numeric target for the index itself.
+electricity_access_share_pct_world,reach,100,higher,2015,2030,,,Universal access by 2030,UN SDG 7.1,https://sdgs.un.org/goals/goal7,
+clean_cooking_access_share_pct_world,reach,100,higher,2015,2030,,,Universal access by 2030,UN SDG 7.1,https://sdgs.un.org/goals/goal7,
+dtp3_vaccination_share_pct_world,reach,90,higher,2019,2030,,,90% coverage by 2030,WHO Immunization Agenda 2030,https://www.immunizationagenda2030.org/,"Baseline 2019, the agenda's own baseline year."

@@ -1,0 +1,10 @@
+iso3,country,nti_score,nti_change_2023,nti_rank,stockpile,total_inventory,stockpile_note
+USA,United States,66,-10,14,3700,5042,
+RUS,Russia,47,-7,18,4400,5420,Includes a reassessment of non-strategic (tactical) warheads.
+CHN,China,65,1,15,620,620,"Only about 34 are thought to be deployed, with considerable uncertainty. Growing faster than any other arsenal."
+FRA,France,69,2,13,290,370,
+GBR,United Kingdom,82,5,6,225,225,
+IND,India,37,-2,20,190,190,"About 12 may be deployed on one submarine, with considerable uncertainty."
+PAK,Pakistan,47,-1,18,170,170,
+ISR,Israel,51,-2,17,90,90,"Israel does not confirm its arsenal, so this is an estimate."
+PRK,North Korea,25,5,22,60,60,"Highly uncertain: material for up to about 90 warheads, likely fewer assembled."

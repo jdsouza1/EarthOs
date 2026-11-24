@@ -1,0 +1,5 @@
+id,name,status,chart_type,sort_order,about
+existential,Existential Survival,Degrading,line,1,"Threats that could kill most people or end civilisation: climate heating, greenhouse gases, nuclear weapons and asteroid impacts."
+systemic,Systemic Health,Stagnant,bar,2,"Whether the systems that keep people alive are holding up: peace, wildlife and nature, food, and income."
+tech,Clean Tech & Access,High Risk,line,3,"Whether technology's benefits are reaching people: clean electricity, cheaper solar, power at home and internet access. AI investment is shown for context but not scored."
+flourishing,Human Flourishing,Sub-Optimal,bar,4,"How well people are living: life expectancy, human development, child survival, vaccination and smoke-free cooking."

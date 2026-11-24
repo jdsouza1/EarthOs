@@ -1,0 +1,16 @@
+iso3,country,ghi_score,ghi_rank,undernourishment,stunting,wasting,mortality,note
+SOM,Somalia,47.0,122,56.5,23.9,14.6,10.1,"Child wasting is a GHI estimate, not an official figure."
+COD,Democratic Republic of the Congo,39.5,121,39.5,44.1,7.2,9.0,
+TCD,Chad,38.0,120,33.6,36.7,10.8,9.7,Child stunting is a survey value because official estimates were missing or newly released.
+MDG,Madagascar,36.5,119,41.8,38.4,7.2,6.2,
+HTI,Haiti,34.4,118,51.4,21.6,5.0,5.3,
+NGA,Nigeria,34.3,117,22.2,39.5,8.4,11.6,Child stunting is a survey value because official estimates were missing or newly released.
+NER,Niger,34.1,116,12.9,50.5,11.1,11.1,Child stunting is a survey value because official estimates were missing or newly released.
+CAF,Central African Republic,33.1,115,29.8,38.9,5.2,9.0,
+TLS,Timor-Leste,32.5,114,16.9,44.9,18.5,4.8,Child wasting and stunting are survey values because official estimates were missing or newly released.
+LBR,Liberia,32.3,113,37.3,26.9,3.8,8.6,"Child wasting is a GHI estimate, not an official figure."
+PNG,Papua New Guinea,31.5,111,30.5,47.6,6.6,3.9,"Child wasting is a GHI estimate, not an official figure."
+SYR,Syria,31.5,111,40.8,23.5,12.9,1.8,"Child wasting is a GHI estimate, not an official figure."
+ZMB,Zambia,30.7,110,41.0,32.1,2.5,4.8,Child stunting is a survey value because official estimates were missing or newly released.
+SLE,Sierra Leone,28.7,109,25.3,25.2,6.3,9.0,
+AFG,Afghanistan,28.6,108,27.8,42.0,3.6,5.3,

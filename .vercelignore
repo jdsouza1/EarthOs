@@ -1,0 +1,9 @@
+logs
+*.bat
+node_modules
+.next
+.env*
+_staging
+_to_delete
+supabase
+README.md

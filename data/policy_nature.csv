@@ -1,0 +1,17 @@
+iso3,country,epi_score,epi_change_10y,epi_rank,tbn,shi,rli,bhi,beri,note
+AUS,Australia,53.14,13.73,51,72.69,46.79,50.32,55.67,52.42,
+BRA,Brazil,56.88,4.51,36,76.74,28.41,30.31,63.22,49.37,
+CHN,China,10.6,0.99,169,2.89,71.91,45.15,29.9,28.06,
+COL,Colombia,62.87,6.52,18,85.85,24.3,25.68,80.93,73.09,
+COD,Dem. Rep. Congo,49.95,1.46,62,49.44,74.13,81.64,75.53,88.67,
+ECU,Ecuador,52.9,8.67,54,64.44,21.25,14.99,81.47,83.25,
+IND,India,9.09,1.63,174,1.13,72.25,31.62,0.07,3.44,
+IDN,Indonesia,32.82,2.34,126,37.84,43.96,43.63,57.69,56.67,
+MDG,Madagascar,31.01,6.36,129,42.32,11.16,11.2,60.18,67.67,
+MYS,Malaysia,29.72,0.37,133,42.78,13.25,38.69,56.65,72.14,
+MEX,Mexico,39.37,4.31,98,49.21,31.58,12.14,54.94,58.61,
+PNG,Papua New Guinea,14.08,0.12,163,11.84,66.75,56.97,81.95,99.27,
+PER,Peru,44.12,5.25,87,71.19,25.91,20.94,83.62,85.78,
+PHL,Philippines,28.3,3.31,137,51.48,57.91,38.39,33.38,25.12,
+ZAF,South Africa,28.92,3.21,134,29.93,70.56,57.95,39.13,35.18,
+USA,United States,38.34,0.24,107,37.81,45.83,42.77,44.11,39.26,"The US is not a party to the UN Convention on Biological Diversity, so the Global Biodiversity Framework is used here as a shared yardstick, not as a US commitment."
