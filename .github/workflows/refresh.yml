@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: '17 14 2 * *' # 14:17 UTC on the 2nd of every month (REFRESH_DAY in lib/refresh.ts)
   workflow_dispatch: # "Run workflow" button on the Actions tab
-  push:
-    branches: [refresh-setup] # TEMPORARY: one test run before merging
 
 permissions:
   contents: write
@@ -19,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -36,7 +34,7 @@ jobs:
           { echo '### Data check'; echo '```'; cat ingest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
           echo "status=$status" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: npm
