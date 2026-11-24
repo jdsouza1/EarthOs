@@ -36,6 +36,9 @@ CHANGELOG = ROOT / "data" / "changelog.csv"
 FIELDS = ["indicator_id", "tier_id", "name", "observed_at", "value", "unit",
           "source", "source_url", "retrieved_at", "is_illustrative"]
 CHANGELOG_FIELDS = ["date", "type", "title", "detail", "affects"]
+REFRESH = ROOT / "data" / "refresh.csv"
+REFRESH_FIELDS = ["checked_at", "trigger", "sources_checked", "sources_updated", "sources_failed"]
+REFRESH_KEEP = 36  # three years of monthly checks
 MAX_SHRINK = 0.02  # refuse if a pull has >2% fewer rows than what's on disk
 
 Rows = list[tuple[str, float]]  # (YYYY-MM-DD, value), oldest first
@@ -375,6 +378,25 @@ def log_changes(entries: list[dict]) -> None:
         w.writerows(entries)
 
 
+def log_refresh(checked: int, updated: int, failed: list[str]) -> None:
+    """Record that a full check ran, even when nothing changed, so the site can say when data was last checked."""
+    rows: list[dict] = []
+    if REFRESH.exists():
+        with REFRESH.open(newline="", encoding="utf-8") as f:
+            rows = list(csv.DictReader(f))
+    trigger = os.environ.get("EARTHOS_TRIGGER", "manual")
+    if trigger not in ("scheduled", "manual"):
+        trigger = "manual"
+    rows.append({"checked_at": dt.date.today().isoformat(), "trigger": trigger, "sources_checked": str(checked),
+                 "sources_updated": str(updated), "sources_failed": "; ".join(failed)})
+    fd, tmp = tempfile.mkstemp(dir=REFRESH.parent, suffix=".tmp")
+    with os.fdopen(fd, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=REFRESH_FIELDS)
+        w.writeheader()
+        w.writerows(rows[-REFRESH_KEEP:])
+    os.replace(tmp, REFRESH)
+
+
 def change_entry(src: Source, added: int, revised: int, rows: Rows) -> dict:
     unit_word = "year" if src.annual else "month"
     parts = []
@@ -443,7 +465,10 @@ def main() -> int:
         log_changes(entries)
         print(f"Wrote {OUT.relative_to(ROOT)} and logged {len(entries)} change(s) in {CHANGELOG.relative_to(ROOT)}")
     else:
-        print("Nothing changed; files left as they were.")
+        print("Nothing changed; data files left as they were.")
+    if not args.dry_run and not args.only:
+        log_refresh(len(selected), len(entries), [BY_KEY[k].short for k in failures])
+        print(f"Recorded this check in {REFRESH.relative_to(ROOT)}")
 
     if failures:
         print(f"{len(failures)} source(s) failed: {', '.join(failures)}. Other sources were still saved.", file=sys.stderr)

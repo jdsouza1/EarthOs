@@ -1,0 +1,65 @@
+name: Monthly data refresh
+
+on:
+  schedule:
+    - cron: '17 14 2 * *' # 14:17 UTC on the 2nd of every month (REFRESH_DAY in lib/refresh.ts)
+  workflow_dispatch: # "Run workflow" button on the Actions tab
+  push:
+    branches: [refresh-setup] # TEMPORARY: one test run before merging
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Download and check every source
+        id: ingest
+        env:
+          EARTHOS_TRIGGER: ${{ github.event_name == 'schedule' && 'scheduled' || 'manual' }}
+        run: |
+          set +e
+          python scripts/ingest.py 2>&1 | tee ingest.log
+          status=${PIPESTATUS[0]}
+          { echo '### Data check'; echo '```'; cat ingest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Build the site with the new data (a broken file stops the run here; nothing is saved)
+        run: |
+          npm ci
+          npm run build
+
+      - name: Save the new data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/
+          if git diff --cached --quiet; then
+            echo 'Nothing to save.'
+            exit 0
+          fi
+          git commit -m "Monthly data refresh $(date -u +%Y-%m-%d)"
+          git push
+
+      - name: Flag sources that could not be reached
+        if: steps.ingest.outputs.status != '0'
+        run: |
+          echo '::error::One or more sources could not be downloaded or failed their checks. The others were saved; see the Data check summary.'
+          exit 1

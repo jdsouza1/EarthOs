@@ -6,6 +6,7 @@ import { MeasuredIndicators } from '@/components/dashboard/MeasuredIndicators';
 import { TierTiles } from '@/components/dashboard/TierTiles';
 import { ForecastTeaser } from '@/components/dashboard/ForecastTeaser';
 import { getIndicators } from '@/lib/indicators';
+import { getRefreshStatus } from '@/lib/refresh';
 import Link from 'next/link';
 
 // Built once per deploy: CSVs are read at build time. Updating data = commit new CSVs -> Vercel redeploys.
@@ -14,7 +15,7 @@ export const dynamic = 'force-static';
 const list = (names: string[]) => (names.length <= 1 ? names.join('') : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`);
 
 export default async function DashboardPage() {
-  const [data, indicators] = await Promise.all([getDashboardData(), getIndicators()]);
+  const [data, indicators, refresh] = await Promise.all([getDashboardData(), getIndicators(), getRefreshStatus()]);
   const by = (status: string) => data.tiers.filter((t) => t.status === status).map((t) => t.name);
   const improving = by('Improving');
   const degrading = by('Degrading');
@@ -45,7 +46,7 @@ export default async function DashboardPage() {
         </div>
       </section>
 
-      <MeasuredIndicators indicators={indicators} tiers={data.tiers} />
+      <MeasuredIndicators indicators={indicators} tiers={data.tiers} refresh={refresh} />
     </>
   );
 }

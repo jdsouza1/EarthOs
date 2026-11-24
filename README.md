@@ -89,6 +89,17 @@ Every source gets the same checks: enough rows, every value in a plausible range
 
 **Adding a source:** add one `Source(...)` entry to `SOURCES` in `scripts/ingest.py`. Reuse a parser (`parse_noaa_gml`, `parse_gistemp`, `parse_owid_world`) or write a new one.
 
+## Monthly data refresh
+
+`.github/workflows/refresh.yml` runs `scripts/ingest.py` on GitHub on the 2nd of every month, and can be started by hand from the repo's **Actions** tab (**Monthly data refresh → Run workflow**).
+
+1. Every source is downloaded and checked. A source that fails keeps its previous numbers.
+2. The site is built with the new data. If any file breaks a rule, the run stops and nothing is saved.
+3. The new data is committed to `main`, which triggers a fresh deploy.
+4. If any source could not be reached, the run is marked as failed, so GitHub emails the owner.
+
+Every full run, scheduled or by hand, adds a row to `data/refresh.csv`. The site shows the latest one as "Data checked" in the footer and on the Dashboard.
+
 ## Design tokens
 
 All colours live in `lib/tokens.ts`. Components use them by name as Tailwind classes (`bg-surface`, `text-muted`, `border-line`, `text-critical`, `bg-accent-bg/40` …); charts read the same values directly.

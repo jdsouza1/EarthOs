@@ -222,13 +222,20 @@ const REGISTRY: RegistryEntry[] = [
     feeds: 'The Change log page.',
     method: 'Hand-written entries for site, method and decision changes. Ingest scripts add a data entry automatically whenever they change data.',
   },
+  {
+    group: 'Site',
+    file: 'refresh.csv',
+    title: 'Data checks',
+    feeds: 'The "Data checked" date in the footer of every page and on the Dashboard.',
+    method: 'Written by scripts/ingest.py at the end of every full run: the monthly scheduled run on GitHub, or one started by hand. Records when the check ran, how many sources were checked and updated, and any that could not be reached. Keeps the last 36 checks.',
+  },
 ];
 
 const RETIRED = new Set<string>();
 /** Files that hold configuration or EarthOS's own work, not downloaded data. */
 const CONFIG = new Set([
   'tiers.csv', 'changelog.csv', 'targets.csv', 'indicator_info.csv', 'policy_master.csv', 'policy_gameplans.csv',
-  'backtest.csv', 'backtest_p1.csv', 'backtest_p3.csv',
+  'backtest.csv', 'backtest_p1.csv', 'backtest_p3.csv', 'refresh.csv',
 ]);
 
 async function readRows(file: string) {
