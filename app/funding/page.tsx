@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { NextStep } from '@/components/site/NextStep';
 import Link from 'next/link';
 import { PageHeader } from '@/components/site/PageHeader';
 import { FundingCards } from '@/components/funding/FundingCards';
@@ -59,6 +60,8 @@ export default async function FundingPage() {
           <li>&quot;What else stands in the way&quot; is EarthOS&apos;s short reading of each source, not a ranking.</li>
         </ul>
       </section>
+
+      <NextStep from="/funding" />
     </>
   );
 }

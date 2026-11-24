@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import type { Bottleneck, TierSnapshot } from '@/lib/types';
 import { SEVERITY_THEME, TIER_THEME } from './theme';
@@ -59,6 +60,9 @@ export function BottlenecksPanel({ bottlenecks, tiers }: { bottlenecks: Bottlene
           );
         })}
       </ol>
+      <p className="mt-2 text-sm">
+        <Link href="/levers" className="text-accent hover:underline">See who can move these numbers →</Link>
+      </p>
     </section>
   );
 }

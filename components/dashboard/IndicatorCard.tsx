@@ -66,7 +66,7 @@ function TargetBlock({ t, unit }: { t: TargetStatus; unit: string }) {
     pct = Math.max(0, Math.min(1, ratio));
     bar = ratio >= 1 ? 'bg-critical' : ratio >= 0.9 ? 'bg-elevated' : 'bg-warning';
     headline = t.rebase
-      ? `≈${t.level.toFixed(2)} ${unit} above ${t.rebase[0]}–${t.rebase[1]}, of a ${t.limit} ${unit} limit`
+      ? `≈${t.level.toFixed(2)} ${unit} (12-month avg) above ${t.rebase[0]}–${t.rebase[1]}, of a ${t.limit} ${unit} limit`
       : `≈${t.level.toFixed(2)} ${unit} of ${t.limit} ${unit} limit`;
   }
 

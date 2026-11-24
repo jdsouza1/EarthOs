@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { NextStep } from '@/components/site/NextStep';
 import Link from 'next/link';
 import { getWhatIfs } from '@/lib/whatif';
 import { PageHeader } from '@/components/site/PageHeader';
@@ -32,6 +33,8 @@ export default async function WhatIfPage() {
           <WhatIfCard key={w.id} w={w} />
         ))}
       </div>
+
+      <NextStep from="/what-if" />
     </>
   );
 }

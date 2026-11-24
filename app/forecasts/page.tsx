@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { NextStep } from '@/components/site/NextStep';
 import Link from 'next/link';
 import { getExpertForecasts, getScenarios, OUTCOMES, OUTCOME_LABEL, type ExpertForecast, type Outcome, type Scenario } from '@/lib/forecasts';
 import { getIndicators } from '@/lib/indicators';
@@ -349,6 +350,8 @@ export default async function ForecastsPage() {
           </p>
         </details>
       </section>
+
+      <NextStep from="/forecasts" />
     </>
   );
 }

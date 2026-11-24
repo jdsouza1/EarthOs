@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import type { BriefData } from '@/lib/brief';
 import { PrintButton } from '@/components/report/PrintButton';
 import { SubscribeBox } from '@/components/report/SubscribeBox';
+import { NextStep } from '@/components/site/NextStep';
 
 function Section({ id, kicker, title, children }: { id: string; kicker: string; title: string; children: ReactNode }) {
   return (
@@ -150,6 +151,8 @@ export function BriefView({ b, archived, picker }: { b: BriefData; archived: boo
       )}
 
       <SubscribeBox />
+
+      <NextStep from="/report" />
 
       <footer className="border-t border-line pt-4 text-sm text-subtle">
         The Brief is generated from EarthOS data each month and saved to the archive. How the scores work: <Link href="/methodology" className={link}>Methodology</Link>. What changed: <Link href="/changelog" className={link}>Change log</Link>. Printed from https://earth-os-blond.vercel.app/report{archived ? `/${b.key}` : ''}

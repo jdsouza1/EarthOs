@@ -1,3 +1,4 @@
+import { NextStep } from '@/components/site/NextStep';
 import type { ReactNode } from 'react';
 import { POLICY_TOPICS } from '@/lib/policyTopics';
 import { getKeyNumbers } from '@/lib/keyNumbers';
@@ -52,6 +53,7 @@ export async function TopicPage({
           <KeyNumbers items={keyNumbers} />
         </div>
         {children}
+        <NextStep from="/policies" />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { NextStep } from '@/components/site/NextStep';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { getSolved, type Kind, type Status } from '@/lib/solved';
@@ -152,6 +153,8 @@ export default async function SolvedPage() {
           .
         </p>
       </section>
+
+      <NextStep from="/solved" />
     </>
   );
 }
