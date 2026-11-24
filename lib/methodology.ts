@@ -263,6 +263,30 @@ const REGISTRY: RegistryEntry[] = [
     ],
   },
   {
+    group: 'Forecasts',
+    file: 'long_view_series.csv',
+    title: 'Long view: chart details',
+    feeds: 'The Long view charts on the Deep time page.',
+    method: 'Hand-written: title, unit, labels and sources for each long-view chart, and which live indicator it links to.',
+    fixedSources: [
+      { name: 'NOAA World Data Service for Paleoclimatology', url: 'https://www.ncei.noaa.gov/access/paleo-search/study/17975' },
+      { name: 'PAGES 2k Consortium (2019)', url: 'https://www.ncei.noaa.gov/pub/data/paleo/pages2k/neukom2019temp/' },
+      { name: 'Our World in Data, population sources', url: 'https://ourworldindata.org/population-sources' },
+    ],
+  },
+  {
+    group: 'Forecasts',
+    file: 'long_view.csv',
+    title: 'Long view: reconstructed history',
+    feeds: 'The Long view charts on the Deep time page.',
+    method: 'Downloaded once by scripts/long_view.py: the Antarctic ice-core CO2 composite (800,000 years), the PAGES 2k global temperature reconstruction (2,000 years, 31-year average and 95% range) with its thermometer record, and Our World in Data long-run world population (10,000 BCE to 2023). Each row is labelled measured or reconstructed. Fixed history, so outside the monthly refresh; the live Mauna Loa CO2 line comes from indicators.csv.',
+    fixedSources: [
+      { name: 'NOAA: Antarctic ice-core CO2 composite', url: 'https://www.ncei.noaa.gov/pub/data/paleo/icecore/antarctica/antarctica2015co2composite-noaa.txt' },
+      { name: 'NOAA: PAGES 2k temperature', url: 'https://www.ncei.noaa.gov/pub/data/paleo/pages2k/neukom2019temp/recons/Full_ensemble_median_and_95pct_range.txt' },
+      { name: 'Our World in Data: population', url: 'https://ourworldindata.org/grapher/population' },
+    ],
+  },
+  {
     group: 'Site',
     file: 'changelog.csv',
     title: 'Change log',

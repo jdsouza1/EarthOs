@@ -12,6 +12,8 @@ import {
   type TestKind,
   type TestResult,
 } from '@/lib/historyTests';
+import { getLongView } from '@/lib/longView';
+import { LongViewChart } from '@/components/data/LongViewChart';
 
 export const dynamic = 'force-static';
 export const metadata: Metadata = { title: 'Deep time — EarthOS' };
@@ -97,7 +99,7 @@ function TestCard({ t }: { t: HistoryTest }) {
 }
 
 export default async function DeepTimePage() {
-  const tests = await getHistoryTests();
+  const [tests, longView] = await Promise.all([getHistoryTests(), getLongView()]);
   const n = (k: TestKind) => tests.filter((t) => t.test === k).length;
   const counts = TEST_ORDER.filter((k) => n(k) > 0).map((k) => `${n(k)} ${TEST_LABEL[k].replace('Tested ', '').toLowerCase()}`);
 
@@ -115,6 +117,8 @@ export default async function DeepTimePage() {
           <Link href="/forecasts" className="text-accent hover:underline">← Today&apos;s forecasts</Link>
           {' · '}
           <Link href="/forecasts/track-record" className="text-accent hover:underline">Track record</Link>
+          {' · '}
+          <a href="#long-view" className="text-accent hover:underline">The long view</a>
         </p>
       </PageHeader>
 
@@ -135,6 +139,45 @@ export default async function DeepTimePage() {
           </div>
         </section>
       ))}
+
+      <section id="long-view" className="scroll-mt-6" aria-labelledby="h-long-view">
+        <div className="mb-3">
+          <h2 id="h-long-view" className="eyebrow">
+            The long view
+          </h2>
+          <p className="mt-1 max-w-3xl text-xs text-muted">
+            The dashboard mostly shows the last few decades. These charts set three of its measures against published reconstructions reaching back
+            centuries to hundreds of thousands of years. Reconstructed stretches come from indirect evidence such as ice and tree rings, and are drawn
+            apart from the measured record, never joined into one line. Life expectancy and child mortality already go back to 1770 and 1800 on the
+            dashboard.
+          </p>
+        </div>
+        <div className="grid gap-4">
+          {longView.map((s) => (
+            <article key={s.id} className="card p-4">
+              <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <h3 className="text-base font-bold text-ink-2">{s.title}</h3>
+                <span className="tag text-[10px] text-subtle">{s.unit}</span>
+              </div>
+              <LongViewChart s={s} />
+              {s.note && <p className="mt-3 max-w-3xl text-xs text-muted">{s.note}</p>}
+              <div className="tag mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[10px]">
+                <a href={s.source.landing} target="_blank" rel="noreferrer" className="text-accent hover:underline" title={s.source.name}>
+                  Source
+                </a>
+                <a href={s.source.url} target="_blank" rel="noreferrer" className="text-accent hover:underline">
+                  Data file
+                </a>
+                {s.liveIndicator && (
+                  <a href={`/data?card=${s.liveIndicator}#embed`} className="text-accent hover:underline">
+                    Live card
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
       <section className="panel p-5">
         <h2 className="eyebrow mb-2">How methods get on this page</h2>
