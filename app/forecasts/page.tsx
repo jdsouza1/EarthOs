@@ -222,6 +222,9 @@ export default async function ForecastsPage() {
         <p className="text-sm">
           <Link href="/forecasts/track-record" className="font-semibold text-accent hover:underline">
             How have past forecasts turned out? See the track record →
+          </Link>{' '}
+          <Link href="/forecasts/deep-time" className="font-semibold text-accent hover:underline">
+            Can history warn us in time? →
           </Link>
         </p>
       </PageHeader>

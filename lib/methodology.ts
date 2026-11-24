@@ -247,6 +247,22 @@ const REGISTRY: RegistryEntry[] = [
     ],
   },
   {
+    group: 'Forecasts',
+    file: 'history_tests.csv',
+    title: 'Published tests of early-warning methods',
+    feeds: 'The Deep time page under Forecasts.',
+    method: 'Hand-researched: each row is a published method that claims to anticipate crises, with a published test of it. EarthOS runs no test of its own. The test label (real future, held-back data, or only the past) is checked by the build.',
+    fixedSources: [
+      { name: 'Turchin and Korotayev, PLOS ONE', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7430736' },
+      { name: 'Goldstone and others, AJPS', url: 'https://dash.harvard.edu/entities/publication/73120378-c06b-6bd4-e053-0100007fdf3b' },
+      { name: 'Bowlsby and others, BJPolS', url: 'https://www.hks.harvard.edu/publications/future-moving-target-predicting-political-instability' },
+      { name: 'Herrington, Journal of Industrial Ecology', url: 'https://ui.adsabs.harvard.edu/abs/2021JInEc..25..614H' },
+      { name: 'ViEWS competition, PRIO', url: 'https://www.prio.org/publications/13337' },
+      { name: 'Scheffer and others, PNAS', url: 'https://par.nsf.gov/servlets/purl/10273077' },
+      { name: 'Downey, Haas and Shennan, PNAS', url: 'https://discovery-pp.ucl.ac.uk/id/eprint/1535301/1/Shennan_European%20Neolithic%20societies%20showed%20early%20warning_.pdf' },
+    ],
+  },
+  {
     group: 'Site',
     file: 'changelog.csv',
     title: 'Change log',
