@@ -8,7 +8,7 @@ const fmtYear = (y: number, axis: LongSeries['axis'], end: number) => {
   if (axis === 'years_ago') {
     const ago = end - y;
     if (ago < 1000) return 'Today';
-    return `${(ago / 1000).toLocaleString('en-US')},000 years ago`;
+    return `${Math.round(ago / 1000).toLocaleString('en-US')},000 years ago`;
   }
   if (y < 0) return `${Math.abs(y).toLocaleString('en-US')} BCE`;
   return y === 0 ? '1 CE' : `${y}`;
