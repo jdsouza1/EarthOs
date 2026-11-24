@@ -6,19 +6,9 @@ import type { TargetStatus } from '@/lib/targets';
 import { CHART, TIER_THEME } from './theme';
 import { InfoTip } from '@/components/ui/InfoTip';
 
-const MONTH = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
-const COMPACT = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
+import { formatPeriod as period, formatValue } from '@/lib/format';
 
-export function formatValue(value: number) {
-  const abs = Math.abs(value);
-  if (abs >= 1_000_000) return COMPACT.format(value);
-  const digits = abs >= 1000 ? 0 : abs >= 100 ? 1 : 2;
-  return value.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits });
-}
-
-function period(date: string, annual: boolean) {
-  return annual ? date.slice(0, 4) : MONTH.format(new Date(date));
-}
+export { formatValue };
 
 function Change({ label, delta }: { label: string; delta: number | null }) {
   if (delta === null) return null;
@@ -151,9 +141,14 @@ export function IndicatorCard({ ind }: { ind: Indicator }) {
         <span>
           Since {period(ind.first.date, ind.annual)} · {ind.count} {ind.annual ? 'years' : 'months'}
         </span>
-        <a href={ind.sourceUrl} target="_blank" rel="noreferrer" className="truncate text-accent hover:underline" title={ind.source}>
-          Data source
-        </a>
+        <span className="flex shrink-0 items-center gap-2">
+          <a href={`/data?card=${ind.id}#embed`} className="text-accent hover:underline" title={`Share or embed the ${ind.name} card`}>
+            Share
+          </a>
+          <a href={ind.sourceUrl} target="_blank" rel="noreferrer" className="truncate text-accent hover:underline" title={ind.source}>
+            Data source
+          </a>
+        </span>
       </div>
     </article>
   );

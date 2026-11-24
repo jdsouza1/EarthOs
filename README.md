@@ -89,6 +89,20 @@ Every source gets the same checks: enough rows, every value in a plausible range
 
 **Adding a source:** add one `Source(...)` entry to `SOURCES` in `scripts/ingest.py`. Reuse a parser (`parse_noaa_gml`, `parse_gistemp`, `parse_owid_world`) or write a new one.
 
+## Use the data
+
+The **Data** page (`/data`) lets anyone share or download the numbers:
+
+| Address | What it is |
+|---|---|
+| `/data/latest.json` | Latest value of every indicator and the four area scores |
+| `/data/indicators.csv` | Full history of every indicator |
+| `/data/series/<id>.json` | Full history of one indicator |
+| `/embed/<id>` | A card other sites can show in an iframe; also the share link |
+| `/embed/<id>/image` | The same card as a 1200 × 630 picture, used for link previews |
+
+All are built with the site, so they update with every monthly refresh. Downloads allow cross-site reads; embed cards carry their own strict security headers (see `next.config.ts`).
+
 ## Monthly data refresh
 
 `.github/workflows/refresh.yml` runs `scripts/ingest.py` on GitHub on the 2nd of every month, and can be started by hand from the repo's **Actions** tab (**Monthly data refresh → Run workflow**).
