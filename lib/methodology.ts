@@ -7,7 +7,7 @@ const DATA_DIR = path.join(process.cwd(), 'data');
 export type DatasetStatus = 'real' | 'illustrative' | 'mixed' | 'missing' | 'retired';
 
 export interface DatasetInfo {
-  group: 'Dashboard' | 'Policies' | 'Forecasts' | 'Site';
+  group: 'Dashboard' | 'Policies' | 'Forecasts' | 'Funding' | 'Site';
   file: string;
   title: string;
   feeds: string;
@@ -18,7 +18,7 @@ export interface DatasetInfo {
   sources: { name: string; url?: string }[];
 }
 
-export const DATASET_GROUPS = ['Dashboard', 'Policies', 'Forecasts', 'Site'] as const;
+export const DATASET_GROUPS = ['Dashboard', 'Policies', 'Forecasts', 'Funding', 'Site'] as const;
 export type DatasetGroup = (typeof DATASET_GROUPS)[number];
 
 type RegistryEntry = Omit<DatasetInfo, 'status' | 'rows' | 'illustrativeRows' | 'sources'> & {
@@ -295,6 +295,31 @@ const REGISTRY: RegistryEntry[] = [
       { name: 'NOAA: Antarctic ice-core CO2 composite', url: 'https://www.ncei.noaa.gov/pub/data/paleo/icecore/antarctica/antarctica2015co2composite-noaa.txt' },
       { name: 'NOAA: PAGES 2k temperature', url: 'https://www.ncei.noaa.gov/pub/data/paleo/pages2k/neukom2019temp/recons/Full_ensemble_median_and_95pct_range.txt' },
       { name: 'Our World in Data: population', url: 'https://ourworldindata.org/grapher/population' },
+    ],
+  },
+  {
+    group: 'Funding',
+    file: 'funding.csv',
+    title: 'Funding by area',
+    feeds: 'The Funding page.',
+    method: 'Hand-researched from each named source. Spent is the latest published figure; needed is a published model or a funder\u2019s own target, labelled as such. The gap is worked out by the build from the two figures (needed minus spent), or is the source\u2019s own "extra needed" figure; it is never typed in. Amounts are nominal US dollars as each source reports them; yearly and five-year figures are labelled and not converted. Areas cover different kinds of money (private investment, aid, one government\u2019s budget) and are never added together.',
+    fixedSources: [
+      { name: 'IEA', url: 'https://www.iea.org/reports/world-energy-investment-2026/regional-dashboards' },
+      { name: 'Gavi, the Vaccine Alliance', url: 'https://www.gavi.org/news/document-library/05-resource-mobilisation-update-pdf' },
+      { name: 'Ceres2030 via IFPRI', url: 'https://www.ifpri.org/blog/big-costs-bigger-rewards-how-33-billion-spending-each-year-can-help-end-hunger-sustainably-2030' },
+      { name: 'UNEP State of Finance for Nature 2026 (IISD summary)', url: 'https://sdg.iisd.org/news/unep-report-calls-for-increase-in-nbs-investment-to-meet-global-goals/' },
+      { name: 'The Planetary Society', url: 'https://www.planetary.org/articles/advocacy-success-fy2026-nasa-budget' },
+    ],
+  },
+  {
+    group: 'Funding',
+    file: 'funding_benchmarks.csv',
+    title: 'Funding page: for scale',
+    feeds: 'The "For scale" panel on the Funding page.',
+    method: 'Two published yearly totals shown for context only, never combined with or compared against the areas by the page.',
+    fixedSources: [
+      { name: 'SIPRI', url: 'https://www.sipri.org/media/press-release/2026/world-military-expenditure-rises' },
+      { name: 'IMF', url: 'https://imf.org/en/Topics/climate-change/energy-subsidies' },
     ],
   },
   {

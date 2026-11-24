@@ -72,7 +72,11 @@ export default async function LeversPage() {
         label="Levers"
         title="What would move the weakest numbers."
         summary="Each lever names who can act and the evidence behind it, weakest indicator first. EarthOS does not rate or recommend governments itself."
-      />
+      >
+        <p className="text-xs text-subtle">
+          <Link href="/funding" className="text-accent hover:underline">What closing the gaps would cost →</Link>
+        </p>
+      </PageHeader>
 
       {researched.slice(0, SHOWN).map(lever)}
 
