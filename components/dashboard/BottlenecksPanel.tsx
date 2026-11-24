@@ -46,6 +46,7 @@ export function BottlenecksPanel({ bottlenecks, tiers }: { bottlenecks: Bottlene
                   </span>
                   <span className={`shrink-0 rounded-md border px-2 py-0.5 font-mono text-sm ${sev.border} ${sev.bg} ${sev.text}`} title={`${b.severity.toLowerCase()} · score out of 100`}>
                     {b.score}
+                    <span className="text-[11px] opacity-70">/100</span>
                   </span>
                   <ChevronDown size={16} className="shrink-0 text-subtle transition-transform group-open:rotate-180" aria-hidden="true" />
                 </summary>
