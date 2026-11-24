@@ -12,13 +12,13 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  // Main menu in story order: where we are, where we are heading, what governments do, what would change it,
-  // what it costs, proof it can be done, then the summary. NextStep follows the same order.
+  // Main menu in story order: where we are, what governments do, what would change it, what it costs,
+  // where experts think we are heading, proof it can be done, then the summary. NextStep follows the same order.
   { label: 'Dashboard', href: '/' },
-  { label: 'Forecasts', href: '/forecasts' },
   { label: 'Policies', href: '/policies' },
   { label: 'What if', href: '/what-if' },
   { label: 'Funding', href: '/funding' },
+  { label: 'Forecasts', href: '/forecasts' },
   { label: 'Solved', href: '/solved' },
   { label: 'Brief', href: '/report' },
   { label: 'Levers', href: '/levers', more: true },

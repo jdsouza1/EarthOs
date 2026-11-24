@@ -29,5 +29,9 @@ export function parseCsv(text: string): Record<string, string>[] {
   const [header, ...body] = rows;
   if (!header) return [];
   const keys = header.map((h) => h.trim().replace(/^﻿/, '')); // strip Excel BOM
-  return body.map((r) => Object.fromEntries(keys.map((k, i) => [k, (r[i] ?? '').trim()])));
+  return body.map((r, n) => {
+    // More fields than headers means an unquoted comma split a field; refuse instead of dropping text silently.
+    if (r.length > keys.length) throw new Error(`CSV data row ${n + 1} has ${r.length} fields but the header has ${keys.length}: quote any field that contains a comma`);
+    return Object.fromEntries(keys.map((k, i) => [k, (r[i] ?? '').trim()]));
+  });
 }

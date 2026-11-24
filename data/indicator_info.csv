@@ -2,7 +2,7 @@ indicator_id,about
 co2_ppm_mlo,"How much carbon dioxide is in the air, measured at Mauna Loa, Hawaii. CO2 is the main gas warming the planet; it comes mostly from burning coal, oil and gas."
 ch4_ppb_global,"How much methane is in the air worldwide. Methane traps far more heat than CO2 but breaks down within about a decade. It comes from livestock, rice fields, landfills and oil and gas leaks."
 n2o_ppb_global,"How much nitrous oxide is in the air worldwide. A long-lasting heat-trapping gas that also harms the ozone layer, mostly from farm fertiliser and manure."
-temp_anomaly_c_global,How much warmer the Earth's surface is than its 1951-1980 average, NASA's baseline. The target bar instead compares the latest 12-month average with 1880-1900, a stand-in for pre-industrial, because the Paris Agreement's 1.5 °C limit is measured from pre-industrial levels. NASA's record starts in 1880, so 1850-1900 cannot be used.
+temp_anomaly_c_global,"How much warmer the Earth's surface is than its 1951-1980 average, NASA's baseline. The target bar instead compares the latest 12-month average with 1880-1900, a stand-in for pre-industrial, because the Paris Agreement's 1.5 °C limit is measured from pre-industrial levels. NASA's record starts in 1880, so 1850-1900 cannot be used."
 nuclear_warheads_world,"Estimated number of nuclear weapons held by all countries, including retired ones waiting to be dismantled."
 near_earth_asteroids_140m_plus_world,How many near-Earth asteroids 140 m or larger (big enough to devastate a region) have been found. An asteroid can only be deflected if it is spotted years ahead.
 conflict_deaths_state_based_world,People killed each year in wars and armed conflicts where at least one side is a government.
