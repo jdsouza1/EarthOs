@@ -34,17 +34,17 @@ function Scale({ f }: { f: TrackedForecast }) {
   }
   const pos = (v: number) => ((v - min) / (max - min)) * 100;
   const left = pos(f.low);
-  const width = Math.max(pos(f.high) - left, 0.8);
+  const width = Math.max(pos(f.high) - left, 1.5);
   const mark = pos(f.outcomeValue);
   const label = f.kind === 'probability' ? 'Chance given' : 'Forecast';
   return (
     <div className="mt-4" role="img" aria-label={`${label} ${fmt(f.low)} to ${fmt(f.high)} ${f.unit}; outcome ${fmt(f.outcomeValue)} ${f.unit}`}>
       <div className="relative h-2 rounded-full bg-line">
-        <div className="absolute h-2 rounded-full bg-line-strong" style={{ left: `${left}%`, width: `${width}%` }} />
+        <div className="absolute h-2 rounded-full bg-subtle" style={{ left: `${left}%`, width: `${width}%` }} />
         <div className="absolute -top-1 h-4 w-1 -translate-x-1/2 rounded-sm bg-accent" style={{ left: `${mark}%` }} />
       </div>
       <div className="tag mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-subtle">
-        <span className="flex items-center gap-1.5"><span className="h-1.5 w-4 rounded bg-line-strong" />{label}</span>
+        <span className="flex items-center gap-1.5"><span className="h-1.5 w-4 rounded bg-subtle" />{label}</span>
         <span className="flex items-center gap-1.5"><span className="h-3 w-1 rounded-sm bg-accent" />What happened</span>
         <span>Scale {fmt(min)} to {fmt(max)} {f.unit}</span>
       </div>
