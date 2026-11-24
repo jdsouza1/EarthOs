@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "key": "2026-11",
+  "issueLabel": "November 2026",
+  "issued": "2026-11-22",
+  "indicatorCount": 20,
+  "tiers": [
+    {
+      "id": "tech",
+      "name": "Clean Tech & Access",
+      "score": 77,
+      "status": "Improving"
+    },
+    {
+      "id": "flourishing",
+      "name": "Human Flourishing",
+      "score": 50,
+      "status": "Improving"
+    },
+    {
+      "id": "existential",
+      "name": "Existential Survival",
+      "score": 39,
+      "status": "Degrading"
+    },
+    {
+      "id": "systemic",
+      "name": "Systemic Health",
+      "score": 21,
+      "status": "Stagnant"
+    }
+  ],
+  "alert": {
+    "name": "Global temperature rise",
+    "valueText": "1.55 °C",
+    "changeText": "It is up 0.36 °C on a year earlier (Oct 2026).",
+    "sourceName": "NASA GISTEMP v4 global land-ocean index",
+    "sourceUrl": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv"
+  },
+  "warming": {
+    "name": "Global temperature rise",
+    "levelText": "1.46 °C",
+    "limitText": "1.5 °C",
+    "label": "1.5 °C above pre-industrial"
+  },
+  "weakest": [
+    {
+      "name": "Deaths in armed conflicts",
+      "score": 0,
+      "latestText": "153,643 deaths (2025)",
+      "sourceName": "Uppsala Conflict Data Program and PRIO via Our World in Data",
+      "sourceUrl": "https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region.csv?v=1&csvType=full&useColumnShortNames=false",
+      "lever": {
+        "text": "Deploy UN peacekeeping missions with enough troops and police",
+        "who": "UN Security Council; troop-contributing countries",
+        "sourceName": "American Journal of Political Science",
+        "sourceUrl": "https://econpapers.repec.org/RePEc:wly:amposc:v:57:y:2013:i:4:p:875-891"
+      }
+    },
+    {
+      "name": "Childhood vaccination (DTP3)",
+      "score": 0,
+      "latestText": "85% of one-year-olds (2025)",
+      "sourceName": "WHO and UNICEF via Our World in Data",
+      "sourceUrl": "https://ourworldindata.org/grapher/global-vaccination-coverage.csv?v=1&csvType=full&useColumnShortNames=false",
+      "lever": {
+        "text": "Reach zero-dose children through primary health care, community demand and removing gender barriers",
+        "who": "National health ministries; Gavi; UNICEF",
+        "sourceName": "Gavi, the Vaccine Alliance",
+        "sourceUrl": "https://www.gavi.org/our-alliance/strategy/phase-5-2021-2025/equity-goal/zero-dose-children-missed-communities"
+      }
+    },
+    {
+      "name": "Wildlife populations",
+      "score": 0,
+      "latestText": "0.27 index (1970 = 1) (2022)",
+      "sourceName": "WWF and Zoological Society of London via Our World in Data",
+      "sourceUrl": "https://ourworldindata.org/grapher/global-living-planet-index.csv?v=1&csvType=full&useColumnShortNames=false",
+      "lever": {
+        "text": "Protect 30% of land and sea by 2030 (30x30)",
+        "who": "National governments; Indigenous and local communities",
+        "sourceName": "Convention on Biological Diversity",
+        "sourceUrl": "https://www.cbd.int/gbf/targets/3"
+      }
+    }
+  ],
+  "gains": [
+    {
+      "id": "internet_users_share_pct_world",
+      "name": "Internet users",
+      "latestText": "73.6% of population (2025)",
+      "changeText": "up 33.7 points in 10 years",
+      "sourceName": "International Telecommunication Union via World Bank and Our World in Data",
+      "sourceUrl": "https://ourworldindata.org/grapher/share-of-individuals-using-the-internet.csv?v=1&csvType=full&useColumnShortNames=false"
+    },
+    {
+      "id": "solar_pv_module_price_usd_per_w_world",
+      "name": "Solar panel price",
+      "latestText": "0.12 US$ per watt (constant dollars) (2025)",
+      "changeText": "down 84% in 10 years",
+      "sourceName": "IRENA, Nemet (2009) and Farmer & Lafond (2016) via Our World in Data",
+      "sourceUrl": "https://ourworldindata.org/grapher/solar-pv-prices.csv?v=1&csvType=full&useColumnShortNames=false"
+    },
+    {
+      "id": "near_earth_asteroids_140m_plus_world",
+      "name": "Large asteroids found",
+      "latestText": "11,501 asteroids (2025)",
+      "changeText": "up 68% in 10 years",
+      "sourceName": "NASA Center for Near-Earth Object Studies via Our World in Data",
+      "sourceUrl": "https://ourworldindata.org/grapher/near-earth-asteroids-discovered-over-time.csv?v=1&csvType=full&useColumnShortNames=false"
+    }
+  ],
+  "policy": [
+    {
+      "topicId": "climate",
+      "topicLabel": "Climate",
+      "label": "Where today's policies lead",
+      "value": "2.7 °C",
+      "context": "by 2100. The Paris Agreement goal is 1.5 °C.",
+      "confidence": "Modelled",
+      "sourceName": "Climate Action Tracker, Global Update, November 2026",
+      "sourceUrl": "https://climateactiontracker.org/press/release-global-update-2026/"
+    },
+    {
+      "topicId": "nuclear",
+      "topicLabel": "Nuclear weapons",
+      "label": "Warheads in military stockpiles",
+      "value": "about 9,745",
+      "context": "of about 12,187 in total. Estimates.",
+      "confidence": "Measured",
+      "sourceName": "Federation of American Scientists, Status of World Nuclear Forces, 2026",
+      "sourceUrl": "https://fas.org/issues/nuclear-weapons/status-world-nuclear-forces/"
+    },
+    {
+      "topicId": "nature",
+      "topicLabel": "Nature & biodiversity",
+      "label": "Fall in monitored wildlife populations",
+      "value": "73%",
+      "context": "on average, 1970 to 2022",
+      "confidence": "Measured",
+      "sourceName": "WWF and Zoological Society of London, Living Planet Report 2026",
+      "sourceUrl": "https://www.worldwildlife.org/publications/2026-living-planet-report/"
+    },
+    {
+      "topicId": "food",
+      "topicLabel": "Food & hunger",
+      "label": "People facing hunger",
+      "value": "about 645 million",
+      "context": "in 2025, 7.8% of the world",
+      "confidence": "Measured",
+      "sourceName": "PAHO, reporting the UN State of Food Security and Nutrition in the World 2026",
+      "sourceUrl": "https://www.paho.org/en/news/21-7-2026-report-global-hunger-levels-ease-third-consecutive-year-regional-disparities-persist"
+    },
+    {
+      "topicId": "health",
+      "topicLabel": "Health & vaccination",
+      "label": "Infants who completed three DTP doses",
+      "value": "85%",
+      "context": "in 2025, 1 point below 2019",
+      "confidence": "Measured",
+      "sourceName": "UNICEF and WHO, 2025 immunization coverage estimates (press release, 15 Jul 2026)",
+      "sourceUrl": "https://www.unicef.org/press-releases/global-childhood-immunization-coverage-inches-forward-despite-conflict-and-hesitancy"
+    },
+    {
+      "topicId": "ai",
+      "topicLabel": "AI governance",
+      "label": "Average responsible AI score",
+      "value": "about 35 of 100",
+      "context": "GIRAI 2026",
+      "confidence": "Measured",
+      "sourceName": "Global Center on AI Governance, GIRAI 2026 key findings",
+      "sourceUrl": "https://www.global-index.ai/"
+    }
+  ],
+  "forecast": {
+    "lo": "1%",
+    "hi": "6%",
+    "count": 3
+  }
+}
