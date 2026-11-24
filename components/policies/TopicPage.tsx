@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { NextStep } from '@/components/site/NextStep';
 import type { ReactNode } from 'react';
 import { POLICY_TOPICS } from '@/lib/policyTopics';
@@ -53,6 +54,10 @@ export async function TopicPage({
           <KeyNumbers items={keyNumbers} />
         </div>
         {children}
+        <p className="text-xs text-muted">
+          Topics without a page yet, such as pandemics, clean water and plastics:{' '}
+          <Link href="/not-covered" className="text-accent hover:underline">Not covered yet</Link>.
+        </p>
         <NextStep from="/policies" />
       </div>
     </div>

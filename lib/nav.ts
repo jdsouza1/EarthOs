@@ -22,6 +22,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Solved', href: '/solved' },
   { label: 'Brief', href: '/report' },
   { label: 'Levers', href: '/levers', more: true },
+  { label: 'Not covered yet', href: '/not-covered', more: true },
   { label: 'Data', href: '/data', more: true },
   { label: 'Methodology', href: '/methodology', more: true },
   { label: 'Change log', href: '/changelog', more: true },

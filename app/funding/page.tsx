@@ -50,6 +50,8 @@ export default async function FundingPage() {
           closing those gaps. See{' '}
           <Link href="/levers" className="text-accent hover:underline">Levers</Link> for who can act and{' '}
           <Link href="/policies" className="text-accent hover:underline">Policies</Link> for how countries compare.
+          Areas with no card yet, such as pandemics, clean water and plastics, are on{' '}
+          <Link href="/not-covered" className="text-accent hover:underline">Not covered yet</Link>.
         </p>
         <h2 className="eyebrow mb-2 mt-5">How to read this page</h2>
         <ul className="max-w-3xl list-disc space-y-1 pl-5 text-xs text-muted">

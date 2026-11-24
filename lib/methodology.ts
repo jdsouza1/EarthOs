@@ -323,6 +323,13 @@ const REGISTRY: RegistryEntry[] = [
     ],
   },
   {
+    group: 'Policies',
+    file: 'not_covered.csv',
+    title: 'Not covered yet',
+    feeds: 'The Not covered yet page.',
+    method: 'Hand-researched: for each area EarthOS does not cover in depth, one headline number and one line on where things stand, each with its named source and labelled measured, modelled or expert judgement. Not scored and not used by any other page. Checked by hand, outside the monthly refresh.',
+  },
+  {
     group: 'Site',
     file: 'changelog.csv',
     title: 'Change log',
