@@ -234,6 +234,19 @@ const REGISTRY: RegistryEntry[] = [
     ],
   },
   {
+    group: 'Forecasts',
+    file: 'coming_due.csv',
+    title: 'Forecasts coming due',
+    feeds: 'The Coming due list on the Track record page.',
+    method: 'Hand-researched: published forecasts whose date has not passed, each linked to its source and, where EarthOS tracks the same thing, to the live indicator. When the date passes, a row moves to track_record.csv with its outcome.',
+    fixedSources: [
+      { name: 'World Meteorological Organization', url: 'https://wmo.int/publication-series/wmo-global-annual-decadal-climate-update-2025-2029' },
+      { name: 'UN Sustainable Development Goals Report', url: 'https://unstats.un.org/sdgs/report/2025/goal-01/' },
+      { name: 'FAO and partners (SOFI)', url: 'https://www.fao.org/newsroom/detail/un-report--global-hunger-levels-ease-for-third-consecutive-year-as-regional-disparities-persist/en' },
+      { name: 'Tracking SDG7', url: 'https://www.seforall.org/system/files/2026-07/SEforALL%20Tracking%20SDG7%20-%20The%20Energy%20Progress%20Report%202026_22Jul2026.pdf' },
+    ],
+  },
+  {
     group: 'Site',
     file: 'changelog.csv',
     title: 'Change log',

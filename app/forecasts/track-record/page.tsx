@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/site/PageHeader';
 import { AREA_LABEL, getTrackRecord, VERDICT_LABEL, type TrackedForecast, type Verdict } from '@/lib/trackRecord';
+import { getComingDue, type ComingDue } from '@/lib/comingDue';
+import { getIndicators, type Indicator } from '@/lib/indicators';
+import { formatPeriod, formatValue } from '@/lib/format';
 
 export const dynamic = 'force-static';
 export const metadata: Metadata = { title: 'Track record — EarthOS' };
@@ -94,8 +97,47 @@ function Card({ f }: { f: TrackedForecast }) {
   );
 }
 
+function DueCard({ d, ind, thisYear }: { d: ComingDue; ind: Indicator | undefined; thisYear: number }) {
+  const left = d.dueYear - thisYear;
+  const when = d.status === 'awaiting_outcome' ? 'Due date passed: awaiting the published outcome' : left <= 0 ? `Due this year` : `Due ${d.dueYear}, in ${left} year${left === 1 ? '' : 's'}`;
+  return (
+    <article className="card flex flex-col p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="tag text-[10px] text-subtle">{AREA_LABEL[d.area]}</p>
+          <h3 className="mt-1 text-sm font-bold leading-snug text-ink-2">{d.title}</h3>
+          <p className="mt-0.5 text-xs text-muted">
+            {d.who}, {d.published.slice(0, 4)}
+          </p>
+        </div>
+        <span className="tag shrink-0 rounded border border-accent-line bg-accent-bg px-2 py-0.5 text-[11px] text-accent">{d.dueYear}</span>
+      </div>
+      <p className="tag mt-3 text-[10px] text-subtle">{d.kind === 'probability' ? 'The chance they gave' : 'What they say'}</p>
+      <p className="mt-1 text-sm text-body">{d.forecast}</p>
+      {ind && (
+        <p className="mt-3 text-xs text-muted">
+          Live on EarthOS:{' '}
+          <a href={`/data?card=${ind.id}#embed`} className="font-semibold text-ink-2 hover:text-accent hover:underline">
+            {ind.name} {formatValue(ind.latest.value)} {ind.unit}
+          </a>{' '}
+          ({formatPeriod(ind.latest.date, ind.annual)})
+        </p>
+      )}
+      {d.note && <p className="mt-2 text-xs text-subtle">{d.note}</p>}
+      <div className="tag mt-auto flex flex-wrap items-center justify-between gap-2 pt-3 text-[10px]">
+        <span className="text-muted">{when}</span>
+        <a href={d.source.url} target="_blank" rel="noreferrer" className="text-accent hover:underline" title={d.source.name}>
+          Forecast source
+        </a>
+      </div>
+    </article>
+  );
+}
+
 export default async function TrackRecordPage() {
-  const list = await getTrackRecord();
+  const [list, due, indicators] = await Promise.all([getTrackRecord(), getComingDue(), getIndicators()]);
+  const byId = new Map(indicators.map((i) => [i.id, i]));
+  const thisYear = new Date().getFullYear();
   const count = (v: Verdict) => list.filter((f) => f.verdict === v).length;
   const parts = (['close', 'too_high', 'too_low', 'wrong_direction'] as Verdict[])
     .filter((v) => count(v) > 0)
@@ -109,7 +151,12 @@ export default async function TrackRecordPage() {
         summary="Well-known forecasts whose date has passed, set against what then happened. Some were close, some too gloomy, some too hopeful."
       >
         <p className="text-sm text-ink-2">
-          {list.length} forecasts checked: {parts.join(', ')}.
+          {list.length} forecasts checked: {parts.join(', ')}.{' '}
+          {due.length > 0 && (
+            <a href="#coming-due" className="text-accent hover:underline">
+              {due.length} more coming due
+            </a>
+          )}
         </p>
         <p className="text-xs text-subtle">
           <Link href="/forecasts" className="text-accent hover:underline">← Today&apos;s forecasts</Link>
@@ -121,6 +168,21 @@ export default async function TrackRecordPage() {
           <Card key={f.id} f={f} />
         ))}
       </section>
+
+      {due.length > 0 && (
+        <section id="coming-due" className="panel scroll-mt-6 p-5">
+          <h2 className="eyebrow mb-1">Coming due</h2>
+          <p className="mb-4 max-w-3xl text-xs text-muted">
+            Published forecasts whose date has not arrived yet. These are forecasts of where things will land, not goals. When the date passes and the
+            result is published, each one moves up to the checked list with its verdict. Where EarthOS tracks the same thing, the live figure is shown.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2">
+            {due.map((d) => (
+              <DueCard key={d.id} d={d} ind={d.indicatorId ? byId.get(d.indicatorId) : undefined} thisYear={thisYear} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="panel p-5">
         <h2 className="eyebrow mb-2">How forecasts get on this page</h2>
