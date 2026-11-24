@@ -219,6 +219,11 @@ export default async function ForecastsPage() {
           <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full border-2 border-muted bg-canvas" /> Other forecasters and researchers</span>
           <span className="flex items-center gap-1.5"><span className="h-1 w-5 rounded bg-line-strong" /> Range the source gives</span>
         </div>
+        <p className="text-sm">
+          <Link href="/forecasts/track-record" className="font-semibold text-accent hover:underline">
+            How have past forecasts turned out? See the track record →
+          </Link>
+        </p>
       </PageHeader>
 
       {outcomeSection(firstOutcome)}
