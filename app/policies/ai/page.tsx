@@ -27,7 +27,7 @@ export default async function AiPage() {
       about={
         <>
             Scores are from the Global Index on Responsible AI (GIRAI) 2026, the second edition, published in July 2026 by the Global Center on AI Governance. It assesses 135 countries on 38 indicators in five dimensions, using evidence from November 2023 to
-            September 2025. The countries shown are the top 15 in the Stanford HAI Global AI Vibrancy ranking for 2024 that GIRAI assesses: Luxembourg (12th) is not in GIRAI, so Brazil (16th) is included. EarthOS shows the figures as
+            September 2025. The countries shown are the top 15 in the latest Stanford HAI Global AI Vibrancy ranking (released November 2025, using data through 2024) that GIRAI assesses: Luxembourg (12th) is not in GIRAI, so Brazil (16th) is included. EarthOS shows the figures as
             published and does not rate countries itself.
         </>
       }
@@ -72,7 +72,7 @@ export default async function AiPage() {
           </li>
           <li>
             Country selection:{' '}
-            <a href={VIBRANCY} target="_blank" rel="noreferrer" className="text-accent hover:underline">Stanford HAI Global AI Vibrancy Tool</a>, 2024 ranking.
+            <a href={VIBRANCY} target="_blank" rel="noreferrer" className="text-accent hover:underline">Stanford HAI Global AI Vibrancy Tool</a>, 2025 release (data through 2024). Stanford says its next update is due by the end of 2026.
           </li>
         </ul>
         <p className="mt-3 max-w-3xl text-xs text-muted">
