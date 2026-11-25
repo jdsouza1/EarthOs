@@ -25,7 +25,7 @@ export interface ExpertForecast {
   outcome: Outcome;
   outcomeDefinition: string;
   horizon: string;
-  /** When the people were asked, if that differs from the publication date (e.g. "2022"). Shown beside the group. */
+  /** A short dated tag shown beside the group, e.g. "asked 2022" or "published 2020". */
   asked: string;
   /** Percent, as published. */
   value: number;

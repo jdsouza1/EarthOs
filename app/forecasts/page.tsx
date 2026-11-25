@@ -108,7 +108,7 @@ function Row({ f, axis }: { f: ExpertForecast; axis: Axis }) {
         <div className="font-bold text-ink-2">{f.risk}</div>
         <div className="text-muted">
           {f.group}
-          {f.asked && <span className="text-subtle"> · asked {f.asked}</span>}
+          {f.asked && <span className="text-subtle"> · {f.asked}</span>}
         </div>
       </div>
       <Track axis={axis}>
@@ -156,7 +156,7 @@ function PairRow({ sf, ex, axis }: { sf: ExpertForecast; ex: ExpertForecast; axi
         <div className="font-bold text-ink-2">{sf.risk}</div>
         <div className="text-muted">
           {ex.group} put it {times} times as high as superforecasters
-          {sf.asked && <span className="text-subtle"> · asked {sf.asked}</span>}
+          {sf.asked && <span className="text-subtle"> · {sf.asked}</span>}
         </div>
       </div>
       <Track axis={axis} tall>
@@ -443,7 +443,7 @@ export default async function ForecastsPage() {
       {otherOutcomes.some((o) => byOutcome(o).length > 0) && (
         <details className="group">
           <summary className={`${fold} panel p-5 text-[15px] font-semibold text-accent hover:underline`}>
-            <span className="group-open:hidden">Show estimates for a global catastrophe and an existential catastrophe, by cause</span>
+            <span className="group-open:hidden">Show estimates for a global catastrophe (newest: mid-2026) and an existential catastrophe, by cause</span>
             <span className="hidden group-open:inline">Hide other definitions</span>
             {ordTotal && (
               <span className="mt-1 block text-sm font-normal text-muted no-underline">
