@@ -59,6 +59,9 @@ function fmt(f: ExpertForecast) {
   return fmtPct(f.value);
 }
 
+/** The tournament's two groups first, so the paired row leads each cause. */
+const groupRank = (g: string) => (g.startsWith('Superforecasters') ? 0 : g.startsWith('Domain experts') ? 1 : 2);
+
 function dotClass(group: string) {
   if (group.startsWith('Superforecasters')) return 'bg-accent border-accent';
   if (group.startsWith('Domain experts')) return 'bg-ink border-ink';
@@ -73,7 +76,7 @@ function Scale({ axis }: { axis: Axis }) {
       {axis.ticks.map((t, i) => (
         <span
           key={t}
-          className={`absolute text-center font-mono leading-tight ${i === 0 ? '' : i === axis.ticks.length - 1 ? '-translate-x-full' : '-translate-x-1/2'}`}
+          className={`absolute whitespace-nowrap text-center font-mono leading-tight ${i === 0 ? '' : i === axis.ticks.length - 1 ? '-translate-x-full' : '-translate-x-1/2'}`}
           style={{ left: `${axis.pos(t)}%` }}
         >
           {tickPct(t)}
@@ -219,7 +222,7 @@ function ScenarioChart({
           By central estimate, {above.from} of {rows.length} published scenarios end the century above {band.from} {unit}, and {above.to} above{' '}
           {band.to} {unit}.
           <span className="ml-2 whitespace-nowrap text-[10px] text-muted">
-            <span className="mr-1 inline-block h-2.5 w-4 translate-y-0.5 rounded-sm bg-good-bg ring-1 ring-good-line" /> {band.label}
+            <span className="mr-1 inline-block h-2.5 w-4 translate-y-0.5 rounded-sm bg-good/25 ring-1 ring-good-line" /> {band.label}
           </span>
         </p>
       )}
@@ -255,7 +258,7 @@ function ScenarioChart({
                     ))}
                     {band && (
                       <span
-                        className="absolute -bottom-1.5 -top-1.5 bg-good-bg/70"
+                        className="absolute -bottom-1.5 -top-1.5 bg-good/15"
                         style={{ left: `${x(band.from)}%`, width: `${x(band.to) - x(band.from)}%` }}
                       />
                     )}
@@ -359,7 +362,7 @@ export default async function ForecastsPage() {
   const byOutcome = (o: Outcome) =>
     all
       .filter((f) => f.outcome === o)
-      .sort((a, b) => RISK_ORDER.indexOf(a.risk) - RISK_ORDER.indexOf(b.risk) || a.group.localeCompare(b.group));
+      .sort((a, b) => RISK_ORDER.indexOf(a.risk) - RISK_ORDER.indexOf(b.risk) || groupRank(a.group) - groupRank(b.group) || a.group.localeCompare(b.group));
 
   // Headline, worked out from the data rather than typed: the spread of published all-cause extinction estimates for 2100.
   const ext = all.filter((f) => f.outcome === 'extinction' && f.risk === 'All causes' && f.horizon === '2100');
