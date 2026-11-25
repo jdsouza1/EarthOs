@@ -69,11 +69,11 @@ function dotClass(group: string) {
 }
 
 function Scale({ axis }: { axis: Axis }) {
-  // The "1 in N" line is dropped on charts with many decades, where the labels would collide.
+  // On charts with many decades the "1 in N" line is dropped and every other tick is labelled, so labels never collide.
   const plain = axis.ticks.length <= 5;
   return (
     <div className={`relative mb-1 text-[9px] text-subtle ${plain ? 'h-7' : 'h-4'}`}>
-      {axis.ticks.map((t, i) => (
+      {axis.ticks.map((t, i) => (plain || (axis.ticks.length - 1 - i) % 2 === 0) && (
         <span
           key={t}
           className={`absolute whitespace-nowrap text-center font-mono leading-tight ${i === 0 ? '' : i === axis.ticks.length - 1 ? '-translate-x-full' : '-translate-x-1/2'}`}
