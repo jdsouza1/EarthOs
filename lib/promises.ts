@@ -45,6 +45,13 @@ export interface Pledge {
   checked: string;
 }
 
+/** Indicator rows store the download link; a reader wants the page that shows the chart. */
+function readablePage(url: string) {
+  if (/^https:\/\/ourworldindata\.org\/grapher\//.test(url)) return url.replace(/\.csv(\?.*)?$/, '');
+  if (/^https:\/\/data\.giss\.nasa\.gov\/gistemp\//.test(url)) return 'https://data.giss.nasa.gov/gistemp/';
+  return url;
+}
+
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export async function getPromises(): Promise<Pledge[]> {
@@ -100,7 +107,7 @@ export async function getPromises(): Promise<Pledge[]> {
         text: r.now_unit,
         asOf,
         kind: 'measured',
-        source: { name: ind.source, url: ind.sourceUrl },
+        source: { name: ind.source, url: readablePage(ind.sourceUrl) },
       };
       const t = ind.target;
       if (r.show_progress === 'yes') {

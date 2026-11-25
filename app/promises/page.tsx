@@ -12,8 +12,8 @@ const SECTION: Record<PromiseGroup, { title: string; intro: string }> = {
     intro: 'What was promised, the latest measured figure, and what a named source projects. EarthOS gives no verdict before a deadline.',
   },
   standing: {
-    title: 'No deadline',
-    intro: 'Long-standing commitments with no end date, beside the latest figure.',
+    title: 'No end date',
+    intro: 'Standing commitments that set no deadline, beside the latest figure.',
   },
   passed: {
     title: 'Deadline passed',
@@ -49,7 +49,7 @@ function Progress({ p }: { p: NonNullable<Pledge['progress']> }) {
 }
 
 function Card({ p }: { p: Pledge }) {
-  const when = p.deadline ? (p.group === 'passed' ? `Deadline was ${p.deadline}` : `Deadline ${p.deadline}`) : 'No deadline';
+  const when = p.deadline ? (p.group === 'passed' ? `Deadline was ${p.deadline}` : `Deadline ${p.deadline}`) : 'No end date';
   return (
     <li id={p.id} className="card flex flex-col p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -84,7 +84,7 @@ function Card({ p }: { p: Pledge }) {
 
       {p.outlook && (
         <div className="mt-4 border-t border-line pt-3">
-          <p className="tag text-[10px] text-subtle">{p.group === 'open' ? 'Where it is heading' : 'Where it stands'}</p>
+          <p className="tag text-[10px] text-subtle">{p.outlook.kind === 'modelled' ? 'Where it is heading' : 'Where it stands'}</p>
           <p className="mt-1 text-sm text-muted">{p.outlook.text}</p>
           <p className="mt-1 text-xs text-subtle">
             {KIND_LABEL[p.outlook.kind]} · <Src {...p.outlook.source} />
