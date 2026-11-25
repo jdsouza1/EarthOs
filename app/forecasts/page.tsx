@@ -1,19 +1,32 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import { NextStep } from '@/components/site/NextStep';
 import Link from 'next/link';
 import { getExpertForecasts, getScenarios, OUTCOMES, OUTCOME_LABEL, type ExpertForecast, type Outcome, type Scenario } from '@/lib/forecasts';
-import { getIndicators } from '@/lib/indicators';
+import { getIndicators, loadIndicatorSeries } from '@/lib/indicators';
 import { ChevronDown } from 'lucide-react';
 import { PageHeader } from '@/components/site/PageHeader';
 
 export const dynamic = 'force-static';
 export const metadata: Metadata = { title: 'Forecasts — EarthOS' };
 
-/** Log scale from 0.0001% to 100%: six decades, so 1 in a million and 1 in 6 both fit. */
-const MIN_EXP = -4;
-const MAX_EXP = 2;
-const TICKS = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100];
-const pos = (v: number) => ((Math.log10(v) - MIN_EXP) / (MAX_EXP - MIN_EXP)) * 100;
+/**
+ * Log scale fitted to each chart: from the decade below its smallest figure to the decade above its largest,
+ * so no chart carries empty decades and no range bar runs off the edge.
+ */
+interface Axis {
+  ticks: number[];
+  pos: (v: number) => number;
+}
+function axisFor(rows: ExpertForecast[]): Axis {
+  const vals = rows.flatMap((f) => [f.value, f.low ?? f.value, f.high ?? f.value]);
+  const minExp = Math.floor(Math.log10(Math.min(...vals)) + 1e-9);
+  const maxExp = Math.min(2, Math.ceil(Math.log10(Math.max(...vals)) - 1e-9));
+  const ticks = Array.from({ length: maxExp - minExp + 1 }, (_, i) => Number((10 ** (minExp + i)).toPrecision(1)));
+  return { ticks, pos: (v) => ((Math.log10(v) - minExp) / (maxExp - minExp || 1)) * 100 };
+}
+const tickPct = (t: number) => `${t >= 1 ? t : t.toFixed(Math.max(0, -Math.floor(Math.log10(t))))}%`;
+const oneIn = (t: number) => (t >= 100 ? '' : `1 in ${Math.round(100 / t).toLocaleString('en-US')}`);
 
 /** Results of the tests on past data (data/backtest_p1.csv, backtest.csv, backtest_p3.csv). Method and pass marks: B5 design. */
 const BACKTESTS = [
@@ -52,41 +65,58 @@ function dotClass(group: string) {
   return 'bg-canvas border-muted';
 }
 
-function Scale() {
+function Scale({ axis }: { axis: Axis }) {
+  // The "1 in N" line is dropped on charts with many decades, where the labels would collide.
+  const plain = axis.ticks.length <= 5;
   return (
-    <div className="relative mb-1 h-4 text-[9px] text-subtle">
-      {TICKS.map((t) => (
-        <span key={t} className="absolute -translate-x-1/2 font-mono" style={{ left: `${pos(t)}%` }}>
-          {t >= 1 ? `${t}%` : `${t}%`}
+    <div className={`relative mb-1 text-[9px] text-subtle ${plain ? 'h-7' : 'h-4'}`}>
+      {axis.ticks.map((t, i) => (
+        <span
+          key={t}
+          className={`absolute text-center font-mono leading-tight ${i === 0 ? '' : i === axis.ticks.length - 1 ? '-translate-x-full' : '-translate-x-1/2'}`}
+          style={{ left: `${axis.pos(t)}%` }}
+        >
+          {tickPct(t)}
+          {plain && <span className="block font-sans text-[9px] text-subtle">{oneIn(t)}</span>}
         </span>
       ))}
     </div>
   );
 }
 
-function Row({ f }: { f: ExpertForecast }) {
+const GRID = 'md:grid-cols-[minmax(0,15rem)_minmax(0,1fr)_7.5rem]';
+
+function Track({ axis, children, tall }: { axis: Axis; children: ReactNode; tall?: boolean }) {
   return (
-    <li className="grid gap-1 border-t border-line py-2 md:grid-cols-[minmax(0,15rem)_minmax(0,1fr)_4.5rem] md:items-center md:gap-3">
+    <div className={`relative ${tall ? 'h-7' : 'h-5'}`}>
+      {axis.ticks.map((t) => (
+        <span key={t} className="absolute top-0 h-full w-px bg-line" style={{ left: `${axis.pos(t)}%` }} />
+      ))}
+      {children}
+    </div>
+  );
+}
+
+function Row({ f, axis }: { f: ExpertForecast; axis: Axis }) {
+  return (
+    <li className={`grid gap-1 border-t border-line py-2 ${GRID} md:items-center md:gap-3`}>
       <div className="text-xs">
         <div className="font-bold text-ink-2">{f.risk}</div>
         <div className="text-muted">{f.group}</div>
       </div>
-      <div className="relative h-5">
-        {TICKS.map((t) => (
-          <span key={t} className="absolute top-0 h-full w-px bg-line" style={{ left: `${pos(t)}%` }} />
-        ))}
+      <Track axis={axis}>
         {f.low !== null && f.high !== null && (
           <span
             className="absolute top-1/2 h-1 -translate-y-1/2 rounded bg-line-strong"
-            style={{ left: `${pos(f.low)}%`, width: `${pos(f.high) - pos(f.low)}%` }}
+            style={{ left: `${axis.pos(f.low)}%`, width: `${axis.pos(f.high) - axis.pos(f.low)}%` }}
           />
         )}
         <span
           className={`absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 ${dotClass(f.group)}`}
-          style={{ left: `${pos(f.value)}%` }}
+          style={{ left: `${axis.pos(f.value)}%` }}
           title={`${f.group}: ${fmt(f)}`}
         />
-      </div>
+      </Track>
       <div className="flex items-baseline justify-between gap-2 md:block md:text-right">
         <span className="font-mono text-sm font-bold text-ink">{fmt(f)}</span>
         <a href={f.sourceUrl} target="_blank" rel="noreferrer" className="tag text-[9px] text-accent hover:underline md:block">
@@ -97,9 +127,73 @@ function Row({ f }: { f: ExpertForecast }) {
   );
 }
 
+/**
+ * Two groups from the same tournament answering the same question, drawn on one line so the gap between them shows.
+ * The "times" figure is only the ratio of the two published numbers; nothing is averaged.
+ */
+function PairRow({ sf, ex, axis }: { sf: ExpertForecast; ex: ExpertForecast; axis: Axis }) {
+  const ratio = ex.value / sf.value;
+  const times = ratio >= 3 ? Math.round(ratio) : Number(ratio.toFixed(1));
+  const a = axis.pos(Math.min(sf.value, ex.value));
+  const b = axis.pos(Math.max(sf.value, ex.value));
+  const side = (f: ExpertForecast, cls: string, label: string) => (
+    <span className="flex items-baseline gap-1.5 md:justify-end">
+      <span className={`h-2 w-2 shrink-0 translate-y-[-1px] rounded-full border-2 ${cls}`} aria-hidden="true" />
+      <span className="text-[10px] text-muted">{label}</span>
+      <span className="font-mono text-sm font-bold text-ink">{fmt(f)}</span>
+    </span>
+  );
+  return (
+    <li className={`grid gap-1 border-t border-line py-2.5 ${GRID} md:items-center md:gap-3`}>
+      <div className="text-xs">
+        <div className="font-bold text-ink-2">{sf.risk}</div>
+        <div className="text-muted">
+          {ex.group} put it {times} times as high as superforecasters
+        </div>
+      </div>
+      <Track axis={axis} tall>
+        <span className="absolute top-1/2 h-0.5 -translate-y-1/2 bg-muted" style={{ left: `${a}%`, width: `${b - a}%` }} />
+        <span
+          className={`absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 ${dotClass(sf.group)}`}
+          style={{ left: `${axis.pos(sf.value)}%` }}
+          title={`${sf.group}: ${fmt(sf)}`}
+        />
+        <span
+          className={`absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 ${dotClass(ex.group)}`}
+          style={{ left: `${axis.pos(ex.value)}%` }}
+          title={`${ex.group}: ${fmt(ex)}`}
+        />
+      </Track>
+      <div className="flex flex-wrap items-baseline justify-between gap-x-3 md:block md:text-right">
+        {side(sf, dotClass(sf.group), 'Super.')}
+        {side(ex, dotClass(ex.group), 'Experts')}
+        <span className="tag block text-[9px]">
+          {[...new Map([sf, ex].map((f) => [f.sourceUrl, f])).values()].map((f) => (
+            <a key={f.sourceUrl} href={f.sourceUrl} target="_blank" rel="noreferrer" className="ml-2 text-accent hover:underline">
+              Source
+            </a>
+          ))}
+        </span>
+      </div>
+    </li>
+  );
+}
 
 /** One indicator's published long-range scenarios on a linear scale, with today's measured value marked. */
-function ScenarioChart({ name, today, todayLabel, rows }: { name: string; today: number | null; todayLabel: string; rows: Scenario[] }) {
+function ScenarioChart({
+  name,
+  today,
+  todayLabel,
+  rows,
+  band,
+}: {
+  name: string;
+  today: number | null;
+  todayLabel: string;
+  rows: Scenario[];
+  /** An agreed limit drawn behind every row, e.g. the Paris Agreement's 1.5 to 2 °C. */
+  band?: { from: number; to: number; label: string };
+}) {
   const unit = rows[0]?.unit ?? '';
   const values = rows.flatMap((r) => [r.value, r.low ?? r.value, r.high ?? r.value]).concat(today !== null ? [today] : []);
   // Temperature starts at 0 °C (pre-industrial) so warming reads as distance from it; other units start near their data.
@@ -108,6 +202,8 @@ function ScenarioChart({ name, today, todayLabel, rows }: { name: string; today:
   const x = (v: number) => ((v - lo) / (hi - lo || 1)) * 100;
   const ticks = Array.from({ length: hi - lo + 1 }, (_, i) => lo + i).filter((t, _, a) => a.length <= 8 || t % 2 === 0);
   const groups = [...new Set(rows.map((r) => r.sourceName))];
+  // Counts of the published central estimates against the agreed limit: a tally, not a new estimate.
+  const above = band ? { from: rows.filter((r) => r.value > band.from).length, to: rows.filter((r) => r.value > band.to).length } : null;
   return (
     <div className="card p-3">
       <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
@@ -118,6 +214,15 @@ function ScenarioChart({ name, today, todayLabel, rows }: { name: string; today:
           </span>
         )}
       </div>
+      {band && above && (
+        <p className="mb-3 text-sm text-ink-2">
+          By central estimate, {above.from} of {rows.length} published scenarios end the century above {band.from} {unit}, and {above.to} above{' '}
+          {band.to} {unit}.
+          <span className="ml-2 whitespace-nowrap text-[10px] text-muted">
+            <span className="mr-1 inline-block h-2.5 w-4 translate-y-0.5 rounded-sm bg-good-bg ring-1 ring-good-line" /> {band.label}
+          </span>
+        </p>
+      )}
       <div className="md:grid md:grid-cols-[minmax(0,14rem)_minmax(0,1fr)_4.5rem] md:gap-3">
         <div className="hidden md:block" />
         <div className="relative mb-1 h-4 text-[9px] text-subtle">
@@ -148,11 +253,20 @@ function ScenarioChart({ name, today, todayLabel, rows }: { name: string; today:
                     {ticks.map((t) => (
                       <span key={t} className="absolute top-0 h-full w-px bg-line" style={{ left: `${x(t)}%` }} />
                     ))}
-                    {today !== null && <span className="absolute top-0 h-full w-0.5 bg-accent" style={{ left: `${x(today)}%` }} />}
+                    {band && (
+                      <span
+                        className="absolute -bottom-1.5 -top-1.5 bg-good-bg/70"
+                        style={{ left: `${x(band.from)}%`, width: `${x(band.to) - x(band.from)}%` }}
+                      />
+                    )}
+                    {today !== null && <span className="absolute -bottom-1.5 -top-1.5 w-0.5 bg-accent" style={{ left: `${x(today)}%` }} />}
                     {r.low !== null && r.high !== null && (
                       <span className="absolute top-1/2 h-1 -translate-y-1/2 rounded bg-line-strong" style={{ left: `${x(r.low)}%`, width: `${x(r.high) - x(r.low)}%` }} />
                     )}
-                    <span className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-ink bg-canvas" style={{ left: `${x(r.value)}%` }} />
+                    <span
+                      className={`absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-ink ${groups.indexOf(g) === 0 ? 'bg-canvas' : 'bg-ink'}`}
+                      style={{ left: `${x(r.value)}%` }}
+                    />
                   </div>
                   <div className="font-mono text-sm font-bold text-ink md:text-right">
                     {r.value}
@@ -169,8 +283,79 @@ function ScenarioChart({ name, today, todayLabel, rows }: { name: string; today:
   );
 }
 
+/**
+ * A measured history with one published projection for a single future year: the line is the record,
+ * the dashed stretch and open dot are the source's projection. Drawn only from the two published series.
+ */
+function TrendChart({ name, points, sc, from }: { name: string; points: { date: string; value: number }[]; sc: Scenario; from: number }) {
+  const pts = points.map((p) => ({ year: Number(p.date.slice(0, 4)), value: p.value })).filter((p) => p.year >= from);
+  const target = Number(sc.period);
+  const last = pts[pts.length - 1];
+  const vals = pts.map((p) => p.value).concat(sc.value);
+  const lo = Math.floor(Math.min(...vals) / 10) * 10;
+  const hi = Math.ceil(Math.max(...vals) / 10) * 10;
+  const x = (y: number) => ((y - from) / (target - from)) * 100;
+  const y = (v: number) => 100 - ((v - lo) / (hi - lo)) * 100;
+  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${x(p.year).toFixed(2)} ${y(p.value).toFixed(2)}`).join(' ');
+  const yTicks = Array.from({ length: (hi - lo) / 10 + 1 }, (_, i) => lo + i * 10);
+  const xTicks = [from, ...[1950, 1975, 2000, 2025].filter((t) => t > from + 10 && t < target - 10), target];
+  return (
+    <div className="card p-3">
+      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="text-xs font-bold text-ink-2">{name}</h3>
+        <span className="flex flex-wrap gap-3 text-[10px] text-muted">
+          <span className="flex items-center gap-1"><span className="h-0.5 w-4 bg-accent" /> Measured</span>
+          <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-full border-2 border-ink bg-canvas" /> Projected, {sc.scenario.toLowerCase()}</span>
+        </span>
+      </div>
+      <div className="flex gap-2">
+        <div className="relative w-6 shrink-0 text-right font-mono text-[9px] text-subtle">
+          {yTicks.map((t) => (
+            <span key={t} className="absolute right-0 -translate-y-1/2" style={{ top: `${y(t)}%` }}>{t}</span>
+          ))}
+        </div>
+        <div
+          className="relative h-44 flex-1"
+          role="img"
+          aria-label={`${name}: ${pts[0].value} ${sc.unit} in ${pts[0].year}, ${last.value} in ${last.year}, projected ${sc.value} in ${target}.`}
+        >
+          {yTicks.map((t) => (
+            <span key={t} className="absolute left-0 h-px w-full bg-line" style={{ top: `${y(t)}%` }} />
+          ))}
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden="true">
+            <path d={d} fill="none" className="stroke-accent" strokeWidth={2.5} vectorEffect="non-scaling-stroke" strokeLinejoin="round" />
+            <line
+              x1={x(last.year)} y1={y(last.value)} x2={100} y2={y(sc.value)}
+              className="stroke-muted" strokeWidth={1.5} strokeDasharray="4 4" vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+          <span className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent" style={{ left: `${x(last.year)}%`, top: `${y(last.value)}%` }} />
+          <span className="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-ink bg-canvas" style={{ left: '100%', top: `${y(sc.value)}%` }} />
+          <span className="absolute -translate-x-full -translate-y-full pr-2 pb-1 text-right font-mono text-xs font-bold text-ink" style={{ left: `${x(last.year)}%`, top: `${y(last.value)}%` }}>
+            {last.value}
+            <span className="block font-sans text-[9px] font-normal text-muted">{last.year}</span>
+          </span>
+          <span className="absolute -translate-x-full translate-y-1 pr-2 pt-1 text-right font-mono text-xs font-bold text-ink" style={{ left: '100%', top: `${y(sc.value)}%` }}>
+            {sc.value}
+            <span className="block font-sans text-[9px] font-normal text-muted">{target}, projected</span>
+          </span>
+        </div>
+      </div>
+      <div className="relative ml-8 mt-1 h-4 font-mono text-[9px] text-subtle">
+        {xTicks.map((t, i) => (
+          <span key={t} className={`absolute ${i === 0 ? '' : i === xTicks.length - 1 ? '-translate-x-full' : '-translate-x-1/2'}`} style={{ left: `${x(t)}%` }}>{t}</span>
+        ))}
+      </div>
+      <p className="mt-2 text-[10px] text-subtle">
+        <span className="text-muted">{sc.unit === 'years' ? 'Years, at birth. ' : ''}{sc.description}.</span> Modelled ·{' '}
+        <a href={sc.sourceUrl} target="_blank" rel="noreferrer" className="text-accent hover:underline">{sc.sourceName}</a> · {sc.note}
+      </p>
+    </div>
+  );
+}
+
 export default async function ForecastsPage() {
-  const [all, scenarios, indicators] = await Promise.all([getExpertForecasts(), getScenarios(), getIndicators()]);
+  const [all, scenarios, indicators, series] = await Promise.all([getExpertForecasts(), getScenarios(), getIndicators(), loadIndicatorSeries()]);
   const byOutcome = (o: Outcome) =>
     all
       .filter((f) => f.outcome === o)
@@ -186,16 +371,30 @@ export default async function ForecastsPage() {
   const outcomeSection = (o: Outcome) => {
     const rows = byOutcome(o);
     if (rows.length === 0) return null;
+    const axis = axisFor(rows);
     return (
       <section key={o} className="panel p-5" aria-labelledby={`outcome-${o}`}>
         <h2 id={`outcome-${o}`} className="eyebrow">{OUTCOME_LABEL[o]}</h2>
         <p className="mb-3 mt-1 max-w-3xl text-sm text-muted">{OUTCOME_INTRO[o]} Log scale: each step to the right is 10 times larger.</p>
-        <div className="md:grid md:grid-cols-[minmax(0,15rem)_minmax(0,1fr)_4.5rem] md:gap-3">
+        <div className={`md:grid ${GRID} md:gap-3`}>
           <div className="hidden md:block" />
-          <Scale />
+          <Scale axis={axis} />
           <div className="hidden md:block" />
         </div>
-        <ul>{rows.map((f) => <Row key={f.id} f={f} />)}</ul>
+        <ul>
+          {rows.map((f) => {
+            // Same source, same cause: the superforecaster row carries its expert partner; the partner draws nothing itself.
+            const partner = rows.find(
+              (g) => g !== f && g.risk === f.risk && g.sourceName === f.sourceName && g.horizon === f.horizon &&
+                g.group.startsWith('Domain experts') !== f.group.startsWith('Domain experts') &&
+                (g.group.startsWith('Domain experts') || g.group.startsWith('Superforecasters')) &&
+                (f.group.startsWith('Domain experts') || f.group.startsWith('Superforecasters')),
+            );
+            if (!partner) return <Row key={f.id} f={f} axis={axis} />;
+            if (f.group.startsWith('Domain experts')) return null;
+            return <PairRow key={f.id} sf={f} ex={partner} axis={axis} />;
+          })}
+        </ul>
       </section>
     );
   };
@@ -219,6 +418,7 @@ export default async function ForecastsPage() {
           <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full border-2 border-ink bg-ink" /> Domain experts</span>
           <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full border-2 border-muted bg-canvas" /> Other forecasters and researchers</span>
           <span className="flex items-center gap-1.5"><span className="h-1 w-5 rounded bg-line-strong" /> Range the source gives</span>
+          <span className="flex items-center gap-1.5"><span className="h-0.5 w-5 bg-muted" /> Same tournament, two groups</span>
         </div>
         <p className="text-sm">
           <Link href="/forecasts/track-record" className="font-semibold text-accent hover:underline">
@@ -251,7 +451,7 @@ export default async function ForecastsPage() {
         <section className="panel p-5" aria-labelledby="scenarios-title">
           <h2 id="scenarios-title" className="eyebrow">Published long-range scenarios</h2>
           <p className="mb-3 mt-1 max-w-3xl text-sm text-muted">
-            Modelled, as published. Each assumes different choices by the world, so none is a prediction. The blue line is today&apos;s measured value.
+            Modelled, as published. Each assumes different choices by the world, so none is a prediction. On the temperature chart the blue line is today&apos;s measured value and the shaded band is the Paris Agreement range.
           </p>
           <div className="grid gap-3">
             {[...new Set(scenarios.map((sc) => sc.indicatorId))].map((id) => {
@@ -262,7 +462,14 @@ export default async function ForecastsPage() {
                 id === 'temp_anomaly_c_global'
                   ? `Today: about ${today?.toFixed(2)} °C (latest 12-month mean)`
                   : `Today: ${ind?.latest.value} ${ind?.unit} (${ind?.latest.date.slice(0, 4)})`;
-              return <ScenarioChart key={id} name={ind?.name ?? id} today={today} todayLabel={label} rows={scenarios.filter((sc) => sc.indicatorId === id)} />;
+              const rows = scenarios.filter((sc) => sc.indicatorId === id);
+              const pts = series.get(id)?.points ?? [];
+              // One projection for one named year, and a yearly record to lead up to it: draw the trend, not a single bar.
+              if (rows.length === 1 && /^\d{4}$/.test(rows[0].period) && pts.length > 10) {
+                return <TrendChart key={id} name={ind?.name ?? id} points={pts} sc={rows[0]} from={1900} />;
+              }
+              const band = id === 'temp_anomaly_c_global' ? { from: 1.5, to: 2, label: 'Paris Agreement: 1.5 °C goal, 2 °C upper limit' } : undefined;
+              return <ScenarioChart key={id} name={ind?.name ?? id} today={today} todayLabel={label} rows={rows} band={band} />;
             })}
           </div>
         </section>
