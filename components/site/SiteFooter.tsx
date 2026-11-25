@@ -19,6 +19,17 @@ export async function SiteFooter() {
             </Link>
           </span>
         )}
+        <span>
+          Free to reuse.{' '}
+          <a
+            href="https://github.com/jdsouza1/EarthOs/blob/main/docs/use-this-for-your-city.md"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-dotted underline-offset-2 hover:text-body"
+          >
+            Use this format for your city or country
+          </a>
+        </span>
       </div>
       <nav aria-label="Footer">
         <ul className="flex flex-wrap gap-x-4 gap-y-1">

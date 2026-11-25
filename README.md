@@ -10,6 +10,7 @@ A free, open dashboard of how humanity is doing, built from measured indicators 
 |---|---|
 | Dashboard | Four area scores (0 to 100) built from 20 measured indicators, the weakest points, and what is moving the wrong way |
 | Levers | Who can act on each weak spot, with sources |
+| Promises | Public commitments beside the measured number, with deadlines |
 | Policies | Country ratings and game plans for climate, nuclear weapons, AI governance, nature, food and health |
 | Forecasts | The range of published expert estimates |
 | What if | Scenarios from published models, for example warming if countries keep their climate promises |
@@ -17,6 +18,10 @@ A free, open dashboard of how humanity is doing, built from measured indicators 
 | Brief | A short monthly read on the latest numbers |
 | Methodology | How every score is calculated, and the list of every data file |
 | Change log | Every change to the data or the site |
+
+## Use this format for your own city, state or country
+
+The code is MIT-licensed, so anyone may copy and adapt it. [docs/use-this-for-your-city.md](docs/use-this-for-your-city.md) explains which files to change, where local data usually lives, and the rules worth keeping.
 
 ## Principles
 

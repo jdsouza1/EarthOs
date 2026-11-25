@@ -330,6 +330,13 @@ const REGISTRY: RegistryEntry[] = [
     method: 'Hand-researched: for each area EarthOS does not cover in depth, one headline number and one line on where things stand, each with its named source and labelled measured, modelled or expert judgement. Not scored and not used by any other page. Checked by hand, outside the monthly refresh.',
   },
   {
+    group: 'Policies',
+    file: 'promises.csv',
+    title: 'Promises',
+    feeds: 'The Promises page.',
+    method: 'Hand-researched: public commitments that have a source anyone can open and can be set beside a published number. Each row holds what was promised, who promised it and when, the deadline, the latest figure and, where one exists, a named source\'s projection. Where a promise matches a live indicator the latest figure is read from indicators.csv. EarthOS gives no verdict before a deadline; a result is shown only once a deadline has passed, and it is the named source\'s finding. Checked by hand each month.',
+  },
+  {
     group: 'Site',
     file: 'changelog.csv',
     title: 'Change log',
