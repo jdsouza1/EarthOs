@@ -41,9 +41,9 @@ function Progress({ p }: { p: NonNullable<Pledge['progress']> }) {
   return (
     <div className="mt-3">
       <div className="h-1.5 overflow-hidden rounded-full bg-line" role="img" aria-label={text}>
-        <div className={`h-full rounded-full ${p.share < 0 ? 'bg-critical' : 'bg-accent'}`} style={{ width: `${Math.max(pct * 100, p.share < 0 ? 100 : 2)}%` }} />
+        {p.share >= 0 && <div className="h-full rounded-full bg-accent" style={{ width: `${Math.max(pct * 100, 2)}%` }} />}
       </div>
-      <p className="tag mt-1 text-[10px] text-subtle">{text}</p>
+      <p className={`tag mt-1 text-[10px] ${p.share < 0 ? 'text-critical' : 'text-subtle'}`}>{text}</p>
     </div>
   );
 }
