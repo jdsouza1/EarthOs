@@ -39,9 +39,10 @@ const RISK_ORDER = ['All causes', 'Artificial intelligence', 'Engineered pandemi
 
 const OUTCOME_INTRO: Record<Outcome, string> = {
   extinction: 'Fewer than 5,000 people left alive (Metaculus asks simply whether humans go extinct). By 2100.',
-  catastrophe: 'More than 10% of the world’s people die within a 5-year period. By 2100.',
+  catastrophe:
+    'More than 10% of the world’s people die within a 5-year period. By 2100. The 2022 tournament and the 2026 panel come from the same institute but asked different people, so the two are not a trend.',
   existential:
-    'Wider than extinction: the permanent loss of humanity’s long-term potential, including an unrecoverable collapse of civilisation. Over the 100 years from 2020.',
+    'Wider than extinction: the permanent loss of humanity’s long-term potential, including an unrecoverable collapse of civilisation or a permanent loss of human control. Toby Ord’s figures cover the 100 years from 2020; the survey of AI researchers sets no deadline.',
 };
 
 function fmtPct(v: number) {
@@ -52,7 +53,7 @@ function fmtPct(v: number) {
 
 /** Ord states his figures as "1 in N"; show them the way he wrote them. */
 function fmt(f: ExpertForecast) {
-  if (f.outcome === 'existential') {
+  if (f.group.startsWith('Toby Ord')) {
     const n = Math.round(100 / f.value);
     return `1 in ${n.toLocaleString('en-US')}`;
   }
@@ -105,7 +106,10 @@ function Row({ f, axis }: { f: ExpertForecast; axis: Axis }) {
     <li className={`grid gap-1 border-t border-line py-2 ${GRID} md:items-center md:gap-3`}>
       <div className="text-xs">
         <div className="font-bold text-ink-2">{f.risk}</div>
-        <div className="text-muted">{f.group}</div>
+        <div className="text-muted">
+          {f.group}
+          {f.asked && <span className="text-subtle"> · asked {f.asked}</span>}
+        </div>
       </div>
       <Track axis={axis}>
         {f.low !== null && f.high !== null && (
@@ -152,6 +156,7 @@ function PairRow({ sf, ex, axis }: { sf: ExpertForecast; ex: ExpertForecast; axi
         <div className="font-bold text-ink-2">{sf.risk}</div>
         <div className="text-muted">
           {ex.group} put it {times} times as high as superforecasters
+          {sf.asked && <span className="text-subtle"> · asked {sf.asked}</span>}
         </div>
       </div>
       <Track axis={axis} tall>
@@ -362,7 +367,7 @@ export default async function ForecastsPage() {
   const byOutcome = (o: Outcome) =>
     all
       .filter((f) => f.outcome === o)
-      .sort((a, b) => RISK_ORDER.indexOf(a.risk) - RISK_ORDER.indexOf(b.risk) || groupRank(a.group) - groupRank(b.group) || a.group.localeCompare(b.group));
+      .sort((a, b) => RISK_ORDER.indexOf(a.risk) - RISK_ORDER.indexOf(b.risk) || groupRank(a.group) - groupRank(b.group) || b.published.localeCompare(a.published) || a.group.localeCompare(b.group));
 
   // Headline, worked out from the data rather than typed: the spread of published all-cause extinction estimates for 2100.
   const ext = all.filter((f) => f.outcome === 'extinction' && f.risk === 'All causes' && f.horizon === '2100');
@@ -499,6 +504,8 @@ export default async function ForecastsPage() {
             <li className="card p-3">
               <span className="font-semibold text-ink-2">The 2022 tournament came before ChatGPT.</span> Forecasts were made from June
               to October 2022. A later study by the same institute found that participants underestimated how fast AI improved (<a href="https://forecastingresearch.org/research/near-term-xpt-accuracy" target="_blank" rel="noreferrer" className="text-accent hover:underline">FRI near-term accuracy report</a>).
+              No later tournament has repeated its extinction question, so those figures are still the newest of their kind. The
+              institute&apos;s mid-2026 panel asked about a global catastrophe, and its answers are shown beside the 2022 ones in that chart.
             </li>
             <li className="card p-3">
               <span className="font-semibold text-ink-2">Metaculus moves daily.</span> The figure is a dated snapshot, refreshed

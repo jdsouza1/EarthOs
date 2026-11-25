@@ -25,6 +25,8 @@ export interface ExpertForecast {
   outcome: Outcome;
   outcomeDefinition: string;
   horizon: string;
+  /** When the people were asked, if that differs from the publication date (e.g. "2022"). Shown beside the group. */
+  asked: string;
   /** Percent, as published. */
   value: number;
   low: number | null;
@@ -81,6 +83,7 @@ export async function getExpertForecasts(): Promise<ExpertForecast[]> {
       outcome: r.outcome as Outcome,
       outcomeDefinition: r.outcome_definition,
       horizon: r.horizon,
+      asked: r.asked ?? '',
       value: value!,
       low,
       high,
