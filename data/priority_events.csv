@@ -1,0 +1,3 @@
+id,order,name,what,kind,source,source_url
+pandemic,1,The 2020 pandemic,COVID-19 was linked to 14.9 million excess deaths in 2020 and 2021 (range 13.3 to 16.6 million).,modelled,"WHO, excess mortality estimates (May 2022)",https://www.who.int/news/item/05-05-2022-14.9-million-excess-deaths-were-associated-with-the-COVID-19-pandemic-in-2020-and-2021
+war,2,The rise in war deaths,"Deaths in fighting involving a state rose from 52,676 in 2019 to 284,981 in 2022, more than five times as many.",measured,Uppsala Conflict Data Program and PRIO via Our World in Data,https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region

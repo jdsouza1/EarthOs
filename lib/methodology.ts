@@ -358,6 +358,20 @@ const REGISTRY: RegistryEntry[] = [
     method: 'Hand-researched: one row for every lens and every problem. A row either holds a published figure with its source, year and label (measured, modelled or expert judgement), or holds no figure and a note saying why. Nothing is estimated to fill a gap. Positions, coverage, stability and the top-three count are calculated from these rows; EarthOS sets no weights and publishes no combined ranking. In a reader\'s own ranking, a problem that fewer than three of the weighted lenses can see has its score topped up with neutral scores of 50, so thin evidence cannot reach the top or the bottom. The page also offers one fixed formula, how big × how neglected × how solvable, built only from the lenses on the page; a factor with no figure is set to a neutral middle value, and the page says so on each row. Checked by hand each month.',
   },
   {
+    group: 'Policies',
+    file: 'priority_events.csv',
+    title: 'Priorities: look-back events',
+    feeds: 'The Priorities page.',
+    method: 'The large harms used to test the lenses: each must be one of the problems on the list, have a published figure, and have happened after the date the lenses are checked at (the start of 2020).',
+  },
+  {
+    group: 'Policies',
+    file: 'priority_lookback.csv',
+    title: 'Priorities: look-back results',
+    feeds: 'The Priorities page.',
+    method: 'Hand-researched: for every lens and every look-back event, what the lens said before the event (flagged it, partly, did not flag it, or not testable) with the reason and, where one exists, the earlier edition it comes from. A lens published after the event, or with no earlier edition, is marked not testable instead of being scored.',
+  },
+  {
     group: 'Site',
     file: 'changelog.csv',
     title: 'Change log',

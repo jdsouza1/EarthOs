@@ -48,6 +48,25 @@ export interface Lens {
   stability: { stable: number; pairs: number; rule: string } | null;
   /** False when the lens ranks too few problems for "top three" to mean anything. */
   inAgreement: boolean;
+  /** What the lens said before each look-back event. */
+  lookback: Lookback[];
+}
+
+export type LookbackResult = 'yes' | 'partly' | 'no' | 'untested';
+export const LOOKBACK_LABEL: Record<LookbackResult, string> = { yes: 'Flagged it', partly: 'Partly', no: 'Did not flag it', untested: 'Not testable' };
+export interface Lookback {
+  eventId: string;
+  result: LookbackResult;
+  text: string;
+  source: { name: string; url: string } | null;
+}
+/** A large harm on the problem list that happened after 2020 began; each lens is checked against what it said beforehand. */
+export interface LookbackEvent {
+  id: string;
+  name: string;
+  what: string;
+  kind: Kind;
+  source: { name: string; url: string };
 }
 
 /** A lens must rank at least this many problems before its top three counts towards agreement. */
@@ -58,6 +77,7 @@ export interface Priorities {
   lenses: Lens[];
   /** For each problem: how many of the lenses that count towards agreement rank it, and in how many it is in the top three. */
   agreement: Record<string, { rankedBy: number; top3: number }>;
+  events: LookbackEvent[];
 }
 
 async function read(file: string) {
@@ -78,6 +98,16 @@ export async function getPriorities(): Promise<Priorities> {
 
   const scoreRows = await read('priority_scores.csv');
   const lensRows = (await read('priority_lenses.csv')).sort((a, b) => Number(a.order) - Number(b.order));
+
+  const events: LookbackEvent[] = (await read('priority_events.csv'))
+    .sort((a, b) => Number(a.order) - Number(b.order))
+    .map((r, i) => {
+      for (const k of ['id', 'name', 'what', 'source']) if (!r[k]) throw new Error(`data/priority_events.csv line ${i + 2}: ${k} is required`);
+      if (!(r.kind in KIND_LABEL)) throw new Error(`data/priority_events.csv line ${i + 2}: kind must be measured, modelled or expert`);
+      if (!/^https:\/\//.test(r.source_url ?? '')) throw new Error(`data/priority_events.csv line ${i + 2}: source_url must be an https link`);
+      return { id: r.id, name: r.name, what: r.what, kind: r.kind as Kind, source: { name: r.source, url: r.source_url } };
+    });
+  const lookRows = await read('priority_lookback.csv');
 
   const lenses: Lens[] = lensRows.map((l, li) => {
     const lfail = (m: string): never => {
@@ -157,6 +187,14 @@ export async function getPriorities(): Promise<Priorities> {
       kinds: [...new Set(ranked.map((e) => e.kind))],
       stability,
       inAgreement: ranked.length >= AGREEMENT_MIN,
+      lookback: events.map((ev) => {
+        const r = lookRows.find((x) => x.lens_id === l.id && x.event_id === ev.id);
+        if (!r) return lfail(`data/priority_lookback.csv has no row for this lens and event ${ev.id}`);
+        if (!(r.result in LOOKBACK_LABEL)) lfail(`look-back result for ${ev.id} must be yes, partly, no or untested`);
+        if (!r.text) lfail(`look-back text for ${ev.id} is required`);
+        if (r.source_url && !/^https:\/\//.test(r.source_url)) lfail(`look-back source_url for ${ev.id} must be an https link`);
+        return { eventId: ev.id, result: r.result as LookbackResult, text: r.text, source: r.source_url ? { name: r.source, url: r.source_url } : null };
+      }),
     };
   });
   if (new Set(lenses.map((l) => l.id)).size !== lenses.length) throw new Error('data/priority_lenses.csv: duplicate id');
@@ -167,5 +205,5 @@ export async function getPriorities(): Promise<Priorities> {
     const hits = lenses.filter((l) => l.inAgreement).map((l) => l.ranked.find((e) => e.problemId === p.id)).filter((e): e is Entry => !!e);
     agreement[p.id] = { rankedBy: hits.length, top3: hits.filter((e) => e.rank <= 3).length };
   }
-  return { problems, lenses, agreement };
+  return { problems, lenses, agreement, events };
 }

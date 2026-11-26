@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/site/PageHeader';
 import { MIN_LENSES, WeightedList, type Row } from '@/components/priorities/WeightedList';
-import { AGREEMENT_MIN, getPriorities, KIND_LABEL, type Lens } from '@/lib/priorities';
+import { AGREEMENT_MIN, getPriorities, KIND_LABEL, LOOKBACK_LABEL, type Lens, type LookbackResult } from '@/lib/priorities';
 
 export const dynamic = 'force-static';
 export const metadata: Metadata = { title: 'Priorities — EarthOS' };
@@ -25,6 +25,20 @@ function Src({ name, url }: { name: string; url: string }) {
       {name}
     </a>
   );
+}
+
+const LOOK_CLS: Record<LookbackResult, string> = {
+  yes: 'border-good-line bg-good-bg/40 text-good',
+  partly: 'border-warning-line bg-warning-bg/40 text-warning-text',
+  no: 'border-critical-line bg-critical-bg/40 text-critical',
+  untested: 'border-line text-subtle',
+};
+
+/** Flagged counts 1, partly counts a half; a lens is only scored on the events it could be tested on. */
+function lookScore(l: Lens) {
+  const tested = l.lookback.filter((x) => x.result !== 'untested');
+  const hit = tested.reduce((n, x) => n + (x.result === 'yes' ? 1 : x.result === 'partly' ? 0.5 : 0), 0);
+  return tested.length ? `Flagged ${hit} of ${tested.length} it could be tested on` : 'Could not be tested on either';
 }
 
 function Meter({ label, value, of, text }: { label: string; value: number; of: number; text: string }) {
@@ -110,7 +124,7 @@ function LensCard({ l, total, name }: { l: Lens; total: number; name: (id: strin
 }
 
 export default async function PrioritiesPage() {
-  const { problems, lenses, agreement } = await getPriorities();
+  const { problems, lenses, agreement, events } = await getPriorities();
   const name = (id: string) => problems.find((p) => p.id === id)?.name ?? id;
   const rows: Row[] = problems.map((p) => ({
     id: p.id,
@@ -167,6 +181,50 @@ export default async function PrioritiesPage() {
         </ul>
       </section>
 
+      <section aria-labelledby="pri-look" className="flex flex-col gap-3">
+        <div>
+          <h2 id="pri-look" className="text-xl font-semibold text-ink">Look-back test: what did each lens say at the start of 2020?</h2>
+          <p className="mt-1 max-w-2xl text-sm text-muted">
+            Two large harms on this list came after 2020 began. This checks whether each lens, as it stood beforehand, pointed at them. Two events is a small test, so read it as a first check, not a score to rely on.
+          </p>
+        </div>
+        <ul className="grid gap-3 md:grid-cols-2" aria-label="Events used in the look-back test">
+          {events.map((ev) => (
+            <li key={ev.id} className="panel p-4">
+              <h3 className="text-sm font-semibold text-ink">{ev.name}</h3>
+              <p className="mt-1 text-xs text-muted">{ev.what}</p>
+              <p className="mt-1 text-xs text-subtle">
+                {KIND_LABEL[ev.kind]} · <Src {...ev.source} />
+              </p>
+            </li>
+          ))}
+        </ul>
+        <ul className="grid gap-3 md:grid-cols-2" aria-label="Look-back result for each lens">
+          {lenses.map((l) => (
+            <li key={l.id} className="card p-4">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <h3 className="text-base font-semibold text-ink">{l.name}</h3>
+                <span className="tag text-[10px] text-subtle">{lookScore(l)}</span>
+              </div>
+              <ul className="mt-2 flex flex-col gap-2">
+                {l.lookback.map((x) => (
+                  <li key={x.eventId} className="text-xs text-muted">
+                    <span className={`tag mr-1.5 rounded border px-1.5 py-0.5 text-[10px] ${LOOK_CLS[x.result]}`}>{LOOKBACK_LABEL[x.result]}</span>
+                    <span className="text-ink-2">{events.find((e) => e.id === x.eventId)?.name}.</span> {x.text}
+                    {x.source && (
+                      <>
+                        {' '}
+                        <Src {...x.source} />
+                      </>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="panel p-5" aria-labelledby="pri-how">
         <h2 id="pri-how" className="eyebrow mb-2">How to read this page</h2>
         <ul className="max-w-3xl list-disc space-y-1 pl-5 text-xs text-muted">
@@ -185,7 +243,7 @@ export default async function PrioritiesPage() {
             &quot;Top 3 in&quot; counts only lenses that rank at least {AGREEMENT_MIN} problems{skipped.length ? ` (so ${skipped.map((l) => l.name.toLowerCase()).join(', ')} is left out of that count)` : ''}.
           </li>
           <li>Stability asks one thing: if the figures were off by the amount stated on the card, how many pairs of problems would still be in the same order? A low share means the order inside that lens should be held loosely.</li>
-          <li>Not tested yet: whether any lens would have pointed at the problems that later did the most harm. That needs a look back over past decades and is not on this page.</li>
+          <li>The look-back test uses only two events, both chosen after the fact, and a lens that warns about everything would pass it. Lenses that count present harm fail it by design: they are built to show what is happening now, not what is coming. A longer look back over past decades has not been done.</li>
           <li>
             No lens here measures how hard a problem is to solve or how neglected it is; no source covers all {problems.length} problems on that. Money spent against money needed is on <Link href="/funding" className="text-accent hover:underline">Funding</Link>, who can act is on{' '}
             <Link href="/levers" className="text-accent hover:underline">Levers</Link>, and the full expert estimates are on <Link href="/forecasts" className="text-accent hover:underline">Forecasts</Link>.

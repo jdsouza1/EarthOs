@@ -18,7 +18,7 @@ checks its publisher for a newer edition. This file is the checklist for that ch
 
 `expert_forecasts.csv` (refresh the Metaculus question 578 snapshot every month), `scenarios.csv`,
 `whatif.csv`, `coming_due.csv`, `track_record.csv`, `funding.csv`, `funding_benchmarks.csv`,
-`not_covered.csv`, `promises.csv`, `priority_scores.csv` (and `priority_lenses.csv` for each lens's source edition), `indicator_notes.csv`, `levers.csv`, `solved.csv`, `targets.csv`, `policy_impact.csv`,
+`not_covered.csv`, `promises.csv`, `priority_scores.csv` (and `priority_lenses.csv` for each lens's source edition), `priority_lookback.csv` (fixed history; change only if a source corrects an old edition), `indicator_notes.csv`, `levers.csv`, `solved.csv`, `targets.csv`, `policy_impact.csv`,
 `policy_steps.csv`, `policy_keynumbers.csv`, `policy_ratings.csv`, and the country tables
 `policy_ai.csv`, `policy_food.csv`, `policy_health.csv`, `policy_nature.csv`, `policy_nuclear.csv`
 (when a country table changes, `policy_gameplans.csv` quotes its scores and must change with it).

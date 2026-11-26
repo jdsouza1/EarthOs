@@ -1,0 +1,17 @@
+lens_id,event_id,result,text,source,source_url
+deaths,pandemic,no,"By design it counts deaths that are already happening. A pandemic had no yearly toll before it began, so this lens gave it no place.",,
+deaths,war,no,War deaths were the smallest figure in this lens before the rise. It reports the present and cannot flag an increase in advance.,,
+people,pandemic,no,By design it counts people already affected. A risk that has not happened has no count.,,
+people,war,no,It reports people already displaced and cannot flag an increase in advance.,,
+future,pandemic,untested,"Published in March 2020, as the pandemic began, so it cannot count as an earlier forecast. It put engineered pandemics second.",,
+future,war,untested,"Published in 2020, and it lists nuclear war, not war in general.",,
+experts,pandemic,partly,In the January 2020 edition infectious diseases ranked 10th of the top ten risks by impact and were not among the ten most likely. The five most likely were all environmental.,"Power magazine, reporting the Global Risks Report 2020",https://www.powermag.com/environmental-concerns-dominate-global-risks-list/
+experts,war,no,In the January 2020 edition conflict between states was not among the ten most likely risks. Weapons of mass destruction ranked 2nd by impact.,"World Economic Forum, Global Risks Report 2020 (January 2020)",https://www.weforum.org/agenda/2020/01/top-global-risks-report-climate-change-cyberattacks-economic-political/
+value,pandemic,untested,This study was first published in 2023.,,
+value,war,untested,This study was first published in 2023.,,
+worry,pandemic,no,The poll had no pandemic topic before 2020; its topic is named after Covid-19.,"Ipsos, What Worries the World, October 2026",https://resources.ipsos.com/rs/297-CXJ-795/images/What-Worries-the-World-October-26.pdf?version=0
+worry,war,no,"The poll had no topic for war until April 2022, when it added one because of events in Ukraine.","Ipsos, What Worries the World, April 2022",https://www.ipsos.com/en-jo/node/891566
+money,pandemic,untested,No earlier set of spending figures was gathered for this check.,,
+money,war,untested,No earlier set of spending figures was gathered for this check.,,
+list80k,pandemic,yes,"The group says it has ranked catastrophic pandemics among its top problems since 2016, four years before COVID-19.","80,000 Hours, career guide",https://80000hours.org/career-guide/cause-selection
+list80k,war,untested,What the list said about war at the start of 2020 could not be confirmed from the source.,,
