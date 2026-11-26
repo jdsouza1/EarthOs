@@ -121,7 +121,7 @@ export default async function PrioritiesPage() {
   }));
   const tabs = lenses.map((l) => ({ id: l.id, short: SHORT[l.id] ?? l.name, name: l.name }));
   const presets = PRESETS.map((p) => ({ label: p.label, weights: lenses.map((l) => (p.on.includes(l.id) ? 2 : 0)) }));
-  const tops = lenses.map((l) => `${l.name.toLowerCase()}: ${name(l.ranked[0].problemId).toLowerCase()}`);
+  const tops = lenses.map((l) => `${l.name}: ${name(l.ranked[0].problemId)}`);
   const distinctTops = new Set(lenses.map((l) => l.ranked[0].problemId)).size;
   const skipped = lenses.filter((l) => !l.inAgreement);
 
@@ -149,7 +149,7 @@ export default async function PrioritiesPage() {
           <p className="mt-1 max-w-2xl text-sm text-muted">
             Each lens answers one question with one source. Two checks sit on every card: coverage, how many of the {problems.length} problems it can rank at all, and stability, how much of its order survives if the figures are somewhat wrong.
           </p>
-          <p className="mt-1 max-w-2xl text-xs text-subtle">Top of each lens: {tops.join('; ')}.</p>
+          <p className="mt-1 max-w-2xl text-xs text-subtle">First in each lens. {tops.join('. ')}.</p>
         </div>
         <ul className="grid gap-4 md:grid-cols-2" aria-label="Lenses">
           {lenses.map((l) => (
