@@ -8,13 +8,16 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = { title: 'Priorities — EarthOS' };
 
 /** Short chip labels; a lens added to the data without one falls back to its full name. */
-const SHORT: Record<string, string> = { deaths: 'Deaths', people: 'People', future: 'Future', experts: 'Experts', value: 'Value', worry: 'Worry' };
+const SHORT: Record<string, string> = { deaths: 'Deaths', people: 'People', future: 'Future', experts: 'Experts', value: 'Value', worry: 'Worry', money: 'Money', list80k: '80k list' };
 /** Starting points only: each is a named way of looking, not a recommendation. */
 const PRESETS: { label: string; on: string[] }[] = [
-  { label: 'Every lens equally', on: ['deaths', 'people', 'future', 'experts', 'value', 'worry'] },
+  { label: 'Every lens equally', on: ['*'] },
   { label: 'Harm today', on: ['deaths', 'people'] },
   { label: 'Risk ahead', on: ['future', 'experts'] },
 ];
+
+/** The priority formula: which lenses stand for how big, how neglected and how solvable a problem is. */
+const FORMULA = { big: ['deaths', 'people', 'future', 'experts'], neglected: 'money', solvable: 'value' };
 
 function Src({ name, url }: { name: string; url: string }) {
   return (
@@ -120,7 +123,13 @@ export default async function PrioritiesPage() {
     ...agreement[p.id],
   }));
   const tabs = lenses.map((l) => ({ id: l.id, short: SHORT[l.id] ?? l.name, name: l.name }));
-  const presets = PRESETS.map((p) => ({ label: p.label, weights: lenses.map((l) => (p.on.includes(l.id) ? 2 : 0)) }));
+  const presets = PRESETS.map((p) => ({ label: p.label, weights: lenses.map((l) => (p.on.includes('*') || p.on.includes(l.id) ? 2 : 0)) }));
+  const at = (id: string) => {
+    const i = lenses.findIndex((l) => l.id === id);
+    if (i < 0) throw new Error(`Priorities: the formula needs a lens called ${id}`);
+    return i;
+  };
+  const formula = { big: FORMULA.big.map(at), neglected: at(FORMULA.neglected), solvable: at(FORMULA.solvable) };
   const tops = lenses.map((l) => `${l.name}: ${name(l.ranked[0].problemId)}`);
   const distinctTops = new Set(lenses.map((l) => l.ranked[0].problemId)).size;
   const skipped = lenses.filter((l) => !l.inAgreement);
@@ -137,10 +146,10 @@ export default async function PrioritiesPage() {
         <div>
           <h2 id="pri-yours" className="text-xl font-semibold text-ink">Your ranking</h2>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Choose how much each lens counts. The small labels show where each problem sits in each lens, for example Deaths 1/6 means first of the 6 problems that lens can rank.
+            Pick a starting point, or choose how much each lens counts. The small labels show where each problem sits in each lens, for example Deaths 1/6 means first of the 6 problems that lens can rank.
           </p>
         </div>
-        <WeightedList rows={rows} lenses={tabs} presets={presets} />
+        <WeightedList rows={rows} lenses={tabs} presets={presets} formula={formula} />
       </section>
 
       <section aria-labelledby="pri-lenses" className="flex flex-col gap-3">
@@ -165,6 +174,9 @@ export default async function PrioritiesPage() {
           <li>Every figure is labelled measured, modelled or expert judgement and links to its source. The figures belong to the sources named, not to EarthOS.</li>
           <li>
             Your score: in each lens the top problem scores 100 and the bottom 0, spaced by position, and equal figures share a score. A problem&apos;s score is the weighted average over the lenses that rank it. A lens with no figure for a problem is left out of that problem&apos;s average, not counted as zero.
+          </li>
+          <li>
+            The priority formula in the drop-down is one fixed rule, shown in full: how big × how neglected × how solvable, the three questions some research groups use to compare problems. Big is the average position across the four lenses about harm and risk; neglected comes from how little money goes to the problem; solvable comes from benefit per dollar, which covers only {lenses[formula.solvable].ranked.length} problems, all of them fixes that study rates as high-return, so a figure there can raise the factor above a neutral 50 but not lower it; for the rest it stays at 50. It is a rule, not a verdict, and a different rule gives a different order.
           </li>
           <li>
             Thin evidence is pulled toward the middle. If fewer than {MIN_LENSES} of the lenses you weighted have a figure for a problem, its score is topped up to {MIN_LENSES} with neutral scores of 50, so one or two lenses alone cannot put a problem first or last. Each row shows how many lenses its score uses and says when this was applied.

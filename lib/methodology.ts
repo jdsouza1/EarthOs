@@ -355,7 +355,7 @@ const REGISTRY: RegistryEntry[] = [
     file: 'priority_scores.csv',
     title: 'Priorities: figures by lens',
     feeds: 'The Priorities page.',
-    method: 'Hand-researched: one row for every lens and every problem. A row either holds a published figure with its source, year and label (measured, modelled or expert judgement), or holds no figure and a note saying why. Nothing is estimated to fill a gap. Positions, coverage, stability and the top-three count are calculated from these rows; EarthOS sets no weights and publishes no combined ranking. In a reader\'s own ranking, a problem that fewer than three of the weighted lenses can see has its score topped up with neutral scores of 50, so thin evidence cannot reach the top or the bottom. Checked by hand each month.',
+    method: 'Hand-researched: one row for every lens and every problem. A row either holds a published figure with its source, year and label (measured, modelled or expert judgement), or holds no figure and a note saying why. Nothing is estimated to fill a gap. Positions, coverage, stability and the top-three count are calculated from these rows; EarthOS sets no weights and publishes no combined ranking. In a reader\'s own ranking, a problem that fewer than three of the weighted lenses can see has its score topped up with neutral scores of 50, so thin evidence cannot reach the top or the bottom. The page also offers one fixed formula, how big × how neglected × how solvable, built only from the lenses on the page; a factor with no figure is set to a neutral middle value, and the page says so on each row. Checked by hand each month.',
   },
   {
     group: 'Site',
