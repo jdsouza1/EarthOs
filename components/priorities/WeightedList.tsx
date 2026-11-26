@@ -39,6 +39,8 @@ export function WeightedList({ rows, lenses, presets }: { rows: Row[]; lenses: L
   const active = w.some((x) => x > 0);
 
   const weighted = w.filter((x) => x > 0).length;
+  const match = presets.findIndex((p) => p.weights.every((x, i) => x === w[i]));
+  const choice = !active ? 'none' : match >= 0 ? String(match) : 'custom';
   const avgWeight = weighted ? w.reduce((x, y) => x + y, 0) / weighted : 0;
   const scored = rows.map((r) => {
     let sum = 0;
@@ -64,22 +66,26 @@ export function WeightedList({ rows, lenses, presets }: { rows: Row[]; lenses: L
   return (
     <div className="flex flex-col gap-4">
       <div className="panel p-4">
-        <div className="flex flex-wrap items-center gap-2">
+        <label className="flex flex-wrap items-center gap-2">
           <span className="tag text-[10px] text-subtle">Start from</span>
-          {presets.map((p) => (
-            <button
-              key={p.label}
-              type="button"
-              onClick={() => setW(p.weights)}
-              className="rounded border border-line-strong px-2 py-1 text-xs text-ink-2 hover:border-accent-line focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
-            >
-              {p.label}
-            </button>
-          ))}
-          <button type="button" onClick={() => setW(lenses.map(() => 0))} className="rounded px-2 py-1 text-xs text-subtle hover:text-ink-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-accent">
-            Clear
-          </button>
-        </div>
+          <select
+            value={choice}
+            onChange={(e) => {
+              const v = e.target.value;
+              if (v === 'none') setW(lenses.map(() => 0));
+              else if (v !== 'custom') setW(presets[Number(v)].weights);
+            }}
+            className="rounded border border-line-strong bg-transparent px-2 py-1.5 text-sm text-ink-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+          >
+            <option value="none">No weights (A to Z)</option>
+            {presets.map((p, k) => (
+              <option key={p.label} value={k}>
+                {p.label}
+              </option>
+            ))}
+            {choice === 'custom' && <option value="custom">Your own mix</option>}
+          </select>
+        </label>
         <div className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
           {lenses.map((l, i) => (
             <label key={l.id} className="flex flex-col gap-1 text-xs text-muted">
@@ -105,7 +111,7 @@ export function WeightedList({ rows, lenses, presets }: { rows: Row[]; lenses: L
       <p className="text-sm text-muted" aria-live="polite">
         {active
           ? `Ordered by your weights across ${weighted} ${weighted === 1 ? 'lens' : 'lenses'}. This order is yours, not EarthOS's.`
-          : 'No weights set, so the list is A to Z. Move a slider or pick a starting point.'}
+          : 'No weights set, so the list is A to Z. Pick a starting point or move a slider.'}
       </p>
 
       <ol className="flex flex-col gap-2" aria-label={active ? 'Problems, ordered by your weights' : 'Problems, A to Z'}>
