@@ -23,6 +23,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Brief', href: '/report' },
   { label: 'Levers', href: '/levers', more: true },
   { label: 'Promises', href: '/promises', more: true },
+  { label: 'Priorities', href: '/priorities', more: true },
   { label: 'Not covered yet', href: '/not-covered', more: true },
   { label: 'Data', href: '/data', more: true },
   { label: 'Methodology', href: '/methodology', more: true },

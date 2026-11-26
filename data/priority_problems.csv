@@ -1,0 +1,13 @@
+id,order,name,href
+climate,1,Climate change,/policies
+nuclear,2,Nuclear weapons,/policies/nuclear
+pandemics,3,Pandemics,/not-covered
+ai,4,Advanced AI,/policies/ai
+nature,5,Nature loss,/policies/nature
+hunger,6,Hunger,/policies/food
+poverty,7,Extreme poverty,
+child,8,Child deaths,/policies/health
+war,9,War and armed conflict,
+air,10,Air pollution,
+water,11,Unsafe water and sanitation,/not-covered
+amr,12,Drug-resistant infections,/not-covered

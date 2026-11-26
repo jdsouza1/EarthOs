@@ -337,6 +337,27 @@ const REGISTRY: RegistryEntry[] = [
     method: 'Hand-researched: public commitments that have a source anyone can open and can be set beside a published number. Each row holds what was promised, who promised it and when, the deadline, the latest figure and, where one exists, a named source\'s projection. Where a promise matches a live indicator the latest figure is read from indicators.csv. EarthOS gives no verdict before a deadline; a result is shown only once a deadline has passed, and it is the named source\'s finding. Checked by hand each month.',
   },
   {
+    group: 'Policies',
+    file: 'priority_problems.csv',
+    title: 'Priorities: the problem list',
+    feeds: 'The Priorities page.',
+    method: 'The fixed list of problems that every lens on the Priorities page is applied to. The list is set before any lens is applied, so no lens chooses its own candidates. The order in the file is not a ranking.',
+  },
+  {
+    group: 'Policies',
+    file: 'priority_lenses.csv',
+    title: 'Priorities: the lenses',
+    feeds: 'The Priorities page.',
+    method: 'One row per way of ranking: the question it answers, its source, when the source asked or published, its main limit, and the size of error used for the stability test (25% either way unless the source states its own range). A lens with no figure-based ranking has no stability test.',
+  },
+  {
+    group: 'Policies',
+    file: 'priority_scores.csv',
+    title: 'Priorities: figures by lens',
+    feeds: 'The Priorities page.',
+    method: 'Hand-researched: one row for every lens and every problem. A row either holds a published figure with its source, year and label (measured, modelled or expert judgement), or holds no figure and a note saying why. Nothing is estimated to fill a gap. Positions, coverage, stability and the top-three count are calculated from these rows; EarthOS sets no weights and publishes no combined ranking. Checked by hand each month.',
+  },
+  {
     group: 'Site',
     file: 'changelog.csv',
     title: 'Change log',

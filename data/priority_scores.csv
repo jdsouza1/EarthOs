@@ -1,0 +1,73 @@
+lens_id,problem_id,value,display,detail,year,kind,source,source_url,note
+deaths,climate,369900,"369,900","heat deaths a year attributed to climate change, 2016 to 2023 average; heat only, other climate harms are not counted",2023,modelled,"Lancet Countdown on Health and Climate Change, 2026 report (News-Medical summary)",https://www.news-medical.net/news/20261027/Climate-change-intensifies-global-health-risks-Lancet-Countdown-report-warns.aspx,
+deaths,nuclear,,,,,,,,No deaths in war since 1945.
+deaths,pandemics,,,,,,,,"Deaths come in rare, large events, not a steady yearly toll. COVID-19: 14.9 million excess deaths in 2020 and 2021 (WHO)."
+deaths,ai,,,,,,,,No published yearly count.
+deaths,nature,,,,,,,,No published yearly count of deaths.
+deaths,hunger,,,,,,,,"No single published yearly count. More than 100,000 children under 5 died directly of severe acute malnutrition in 2024 (UN IGME), counted within child deaths."
+deaths,poverty,,,,,,,,Not recorded as a cause of death.
+deaths,child,4900000,4.9 million,children who died before age 5,2024,modelled,"UN Inter-agency Group for Child Mortality Estimation, Report 2025 (UNICEF release)",https://www.unicef.org/press-releases/progress-reducing-child-deaths-slows-49-million-children-under-five-die-2024,
+deaths,war,153643,"153,643",deaths in fighting where at least one side is a state; other violence is not counted,2025,measured,Uppsala Conflict Data Program and PRIO via Our World in Data,https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region,
+deaths,air,7900000,7.9 million,deaths linked to outdoor and household air pollution,2023,modelled,"Health Effects Institute and IHME, State of Global Air 2025",https://www.stateofglobalair.org/resources/report/state-global-air-report-2025,
+deaths,water,1400000,1.4 million,"deaths that safe water, sanitation and hygiene could have prevented",2019,modelled,"WHO, Burden of disease attributable to unsafe water, sanitation and hygiene (2023)",https://www.who.int/news/item/28-06-2023-improving-access-to-water--sanitation-and-hygiene-can-save-1.4-million-lives-per-year--says-new-who-report,
+deaths,amr,1140000,1.14 million,deaths caused directly by antibiotic-resistant bacteria,2021,modelled,"GRAM study, The Lancet (2024)",https://healthdata.org/node/12105,
+people,climate,,,,,,,,No single published count; exposure varies by place and by hazard.
+people,nuclear,,,,,,,,"A risk, not a present condition, so there is no count."
+people,pandemics,,,,,,,,"A risk, not a present condition, so there is no count."
+people,ai,,,,,,,,"A risk, not a present condition, so there is no count."
+people,nature,,,,,,,,No single published count of people affected.
+people,hunger,645000000,about 645 million,people facing hunger,2025,measured,"PAHO, reporting the UN State of Food Security and Nutrition in the World 2026",https://www.paho.org/en/news/21-7-2026-report-global-hunger-levels-ease-third-consecutive-year-regional-disparities-persist,
+people,poverty,811000000,811 million,people living on less than $3 a day,2026,modelled,"World Bank, Poverty, Prosperity and Planet Report 2026",https://www.worldbank.org/poverty,
+people,child,,,,,,,,"Counted as deaths, not as people living with a condition."
+people,war,117800000,117.8 million,"people forced from their homes by conflict, violence or persecution, end of 2025",2025,measured,"UNHCR, Global Trends 2025 (June 2026)",https://www.unhcr.org/global-trends,
+people,air,2000000000,2.0 billion,people who cook with polluting fuels (range 1.8 to 2.4 billion); outdoor air pollution reaches more people but has no single count here,2024,measured,"IEA, IRENA, UN, World Bank and WHO, Tracking SDG7 2026",https://trackingsdg7.esmap.org/sites/default/files/download-documents/ExecutiveSummary.pdf,
+people,water,2100000000,2.1 billion,people without safely managed drinking water,2024,measured,WHO and UNICEF Joint Monitoring Programme (August 2025),https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef,
+people,amr,,,,,,,,No published count of people affected.
+future,climate,0.1,"1 in 1,000",climate change,2020,expert,"Toby Ord, The Precipice (2020), Table 6.1 (via Notre Dame Philosophical Reviews)",https://ndpr.nd.edu/reviews/the-precipice-existential-risk-and-the-future-of-humanity/,
+future,nuclear,0.1,"1 in 1,000",nuclear war,2020,expert,"Toby Ord, The Precipice (2020), Table 6.1 (via Notre Dame Philosophical Reviews)",https://ndpr.nd.edu/reviews/the-precipice-existential-risk-and-the-future-of-humanity/,
+future,pandemics,3.333,1 in 30,engineered pandemics,2020,expert,"Toby Ord, The Precipice (2020), Table 6.1 (via Notre Dame Philosophical Reviews)",https://ndpr.nd.edu/reviews/the-precipice-existential-risk-and-the-future-of-humanity/,
+future,ai,10,1 in 10,unaligned artificial intelligence,2020,expert,"Toby Ord, The Precipice (2020), Table 6.1 (via Notre Dame Philosophical Reviews)",https://ndpr.nd.edu/reviews/the-precipice-existential-risk-and-the-future-of-humanity/,
+future,nature,0.1,"1 in 1,000",other environmental damage,2020,expert,"Toby Ord, The Precipice (2020), Table 6.1 (reproduced on the Effective Altruism Forum)",https://forum.effectivealtruism.org/posts/Z5KZ2cui8WDjyF6gJ/some-thoughts-on-toby-ord-s-existential-risk-estimates,
+future,hunger,,,,,,,,Not on this source's list of threats to humanity's survival.
+future,poverty,,,,,,,,Not on this source's list of threats to humanity's survival.
+future,child,,,,,,,,Not on this source's list of threats to humanity's survival.
+future,war,,,,,,,,Not on this source's list of threats to humanity's survival.
+future,air,,,,,,,,Not on this source's list of threats to humanity's survival.
+future,water,,,,,,,,Not on this source's list of threats to humanity's survival.
+future,amr,,,,,,,,Not on this source's list of threats to humanity's survival.
+experts,climate,1,1st of 33,survey item: Extreme weather events,2025,expert,"World Economic Forum, Global Risks Report 2026",https://www.weforum.org/publications/global-risks-report-2026/,
+experts,nuclear,20,20th of 33,"survey item: Biological, chemical or nuclear weapons or hazards",2025,expert,"World Economic Forum, Global Risks Report 2026",https://www.weforum.org/publications/global-risks-report-2026/,
+experts,pandemics,22,22nd of 33,survey item: Infectious diseases,2025,expert,"World Economic Forum, Global Risks Report 2026",https://www.weforum.org/publications/global-risks-report-2026/,
+experts,ai,5,5th of 33,survey item: Adverse outcomes of AI technologies,2025,expert,"World Economic Forum, Global Risks Report 2026",https://www.weforum.org/publications/global-risks-report-2026/,
+experts,nature,2,2nd of 33,survey item: Biodiversity loss and ecosystem collapse,2025,expert,"World Economic Forum, Global Risks Report 2026",https://www.weforum.org/publications/global-risks-report-2026/,
+experts,hunger,,,,,,,,"No close match on the survey list. ""Natural resource shortages"" ranks 6th."
+experts,poverty,,,,,,,,"No close match on the survey list. ""Inequality"" ranks 7th."
+experts,child,,,,,,,,No matching item on the survey list.
+experts,war,12,12th of 33,survey item: State-based armed conflict,2025,expert,"World Economic Forum, Global Risks Report 2026",https://www.weforum.org/publications/global-risks-report-2026/,
+experts,air,10,10th of 33,survey item: Pollution,2025,expert,"World Economic Forum, Global Risks Report 2026",https://www.weforum.org/publications/global-risks-report-2026/,
+experts,water,,,,,,,,"No close match on the survey list. ""Natural resource shortages"" ranks 6th."
+experts,amr,,,,,,,,No matching item on the survey list.
+value,climate,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,nuclear,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,pandemics,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,ai,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,nature,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,hunger,33,$33 per $1,"agricultural research, the higher of two fixes studied (nutrition: $18 per $1)",2023,modelled,"Copenhagen Consensus Center, Best Things First: the 12 policies (2023 research)",https://copenhagenconsensus.com/sites/default/files/2025-10/BTF%20Folded%20Leaflet%20WEB.pdf,
+value,poverty,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,child,101,$101 per $1,"childhood immunization, the higher of two fixes studied (maternal and newborn health: $87 per $1)",2023,modelled,"Copenhagen Consensus Center, Best Things First: the 12 policies (2023 research)",https://copenhagenconsensus.com/sites/default/files/2025-10/BTF%20Folded%20Leaflet%20WEB.pdf,
+value,war,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,air,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,water,,,,,,,,No fix for this problem is among the 12 policies studied.
+value,amr,,,,,,,,No fix for this problem is among the 12 policies studied.
+worry,climate,17,17%,poll topic: Climate change,2026,measured,"Ipsos, What Worries the World, October 2026",https://resources.ipsos.com/rs/297-CXJ-795/images/What-Worries-the-World-October-26.pdf?version=0,
+worry,nuclear,,,,,,,,Not one of the 18 topics in the poll.
+worry,pandemics,2,2%,poll topic: Coronavirus (Covid-19),2026,measured,"Ipsos, What Worries the World, October 2026",https://resources.ipsos.com/rs/297-CXJ-795/images/What-Worries-the-World-October-26.pdf?version=0,
+worry,ai,,,,,,,,Not one of the 18 topics in the poll.
+worry,nature,8,8%,poll topic: Threats against the environment,2026,measured,"Ipsos, What Worries the World, October 2026",https://resources.ipsos.com/rs/297-CXJ-795/images/What-Worries-the-World-October-26.pdf?version=0,
+worry,hunger,,,,,,,,Not one of the 18 topics in the poll.
+worry,poverty,29,29%,poll topic: Poverty and social inequality,2026,measured,"Ipsos, What Worries the World, October 2026",https://resources.ipsos.com/rs/297-CXJ-795/images/What-Worries-the-World-October-26.pdf?version=0,
+worry,child,,,,,,,,Not one of the 18 topics in the poll.
+worry,war,12,12%,poll topic: Military conflict between nations,2026,measured,"Ipsos, What Worries the World, October 2026",https://resources.ipsos.com/rs/297-CXJ-795/images/What-Worries-the-World-October-26.pdf?version=0,
+worry,air,,,,,,,,Not one of the 18 topics in the poll.
+worry,water,,,,,,,,Not one of the 18 topics in the poll.
+worry,amr,,,,,,,,Not one of the 18 topics in the poll.

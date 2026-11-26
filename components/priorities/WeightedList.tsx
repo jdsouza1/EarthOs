@@ -1,0 +1,156 @@
+'use client';
+
+import Link from 'next/link';
+import { useState } from 'react';
+
+export interface Cell {
+  rank: number;
+  of: number;
+  tied: boolean;
+  score: number;
+}
+export interface Row {
+  id: string;
+  name: string;
+  href: string | null;
+  /** One entry per lens, in lens order; null where the lens has no figure. */
+  cells: (Cell | null)[];
+  rankedBy: number;
+  top3: number;
+}
+export interface LensTab {
+  id: string;
+  short: string;
+  name: string;
+}
+
+const LEVEL = ['Off', 'Low', 'Medium', 'High'];
+
+/**
+ * The reader's own ranking. EarthOS sets no default weights: until one is set the list is A to Z.
+ * A problem's score is the weighted average of its position in the lenses that rank it; a lens with
+ * no figure for a problem is left out of that problem's average, not counted as zero.
+ */
+export function WeightedList({ rows, lenses, presets }: { rows: Row[]; lenses: LensTab[]; presets: { label: string; weights: number[] }[] }) {
+  const [w, setW] = useState<number[]>(lenses.map(() => 0));
+  const active = w.some((x) => x > 0);
+
+  const scored = rows.map((r) => {
+    let sum = 0;
+    let total = 0;
+    let used = 0;
+    r.cells.forEach((c, i) => {
+      if (c && w[i] > 0) {
+        sum += w[i] * c.score;
+        total += w[i];
+        used++;
+      }
+    });
+    return { r, score: total ? sum / total : null, used };
+  });
+  const weighted = w.filter((x) => x > 0).length;
+  const list = active
+    ? [...scored].sort((a, b) => (b.score ?? -1) - (a.score ?? -1) || a.r.name.localeCompare(b.r.name))
+    : [...scored].sort((a, b) => a.r.name.localeCompare(b.r.name));
+  let place = 0;
+
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="panel p-4">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="tag text-[10px] text-subtle">Start from</span>
+          {presets.map((p) => (
+            <button
+              key={p.label}
+              type="button"
+              onClick={() => setW(p.weights)}
+              className="rounded border border-line-strong px-2 py-1 text-xs text-ink-2 hover:border-accent-line focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+            >
+              {p.label}
+            </button>
+          ))}
+          <button type="button" onClick={() => setW(lenses.map(() => 0))} className="rounded px-2 py-1 text-xs text-subtle hover:text-ink-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-accent">
+            Clear
+          </button>
+        </div>
+        <div className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+          {lenses.map((l, i) => (
+            <label key={l.id} className="flex flex-col gap-1 text-xs text-muted">
+              <span className="flex justify-between gap-2">
+                <span className="text-ink-2">{l.name}</span>
+                <span className={w[i] ? 'text-accent' : 'text-subtle'}>{LEVEL[w[i]]}</span>
+              </span>
+              <input
+                type="range"
+                min={0}
+                max={3}
+                step={1}
+                value={w[i]}
+                onChange={(e) => setW(w.map((x, j) => (j === i ? Number(e.target.value) : x)))}
+                aria-valuetext={LEVEL[w[i]]}
+                className="w-full accent-[var(--color-accent)]"
+              />
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <p className="text-sm text-muted" aria-live="polite">
+        {active
+          ? `Ordered by your weights across ${weighted} ${weighted === 1 ? 'lens' : 'lenses'}. This order is yours, not EarthOS's.`
+          : 'No weights set, so the list is A to Z. Move a slider or pick a starting point.'}
+      </p>
+
+      <ol className="flex flex-col gap-2" aria-label={active ? 'Problems, ordered by your weights' : 'Problems, A to Z'}>
+        {list.map(({ r, score, used }) => {
+          const has = active && score !== null;
+          if (has) place++;
+          return (
+            <li key={r.id} className="card p-4">
+              <div className="flex items-baseline gap-3">
+                <span className="w-6 shrink-0 font-mono text-lg font-bold text-ink-2">{has ? place : '–'}</span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                    <h3 className="text-base font-semibold text-ink">
+                      {r.href ? (
+                        <Link href={r.href} className="hover:underline">
+                          {r.name}
+                        </Link>
+                      ) : (
+                        r.name
+                      )}
+                    </h3>
+                    <span className="tag text-[10px] text-subtle">
+                      {r.rankedBy ? `Top 3 in ${r.top3} of ${r.rankedBy} ${r.rankedBy === 1 ? 'lens' : 'lenses'}` : 'Too few lenses to compare'}
+                    </span>
+                  </div>
+                  {active && (
+                    <div className="mt-2">
+                      <div className="h-1.5 overflow-hidden rounded-full bg-line" role="img" aria-label={has ? `Score ${Math.round((score ?? 0) * 100)} out of 100` : 'No figure under these weights'}>
+                        {has && <div className="h-full rounded-full bg-accent" style={{ width: `${Math.max((score ?? 0) * 100, 2)}%` }} />}
+                      </div>
+                      <p className="tag mt-1 text-[10px] text-subtle">
+                        {has ? `Score ${Math.round((score ?? 0) * 100)} of 100, from ${used} of your ${weighted} weighted ${weighted === 1 ? 'lens' : 'lenses'}` : 'None of the lenses you weighted has a figure for this'}
+                      </p>
+                    </div>
+                  )}
+                  <ul className="mt-2 flex flex-wrap gap-1.5" aria-label="Position in each lens">
+                    {r.cells.map((c, i) => (
+                      <li
+                        key={lenses[i].id}
+                        className={`tag rounded border px-1.5 py-0.5 text-[10px] ${c ? (w[i] ? 'border-accent-line text-ink-2' : 'border-line text-muted') : 'border-line text-subtle opacity-60'}`}
+                        title={c ? `${lenses[i].name}: ${c.rank}${c.tied ? ' equal' : ''} of ${c.of}` : `${lenses[i].name}: no figure`}
+                      >
+                        {lenses[i].short} {c ? `${c.rank}${c.tied ? '=' : ''}/${c.of}` : '–'}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
