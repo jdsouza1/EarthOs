@@ -25,16 +25,21 @@ export interface LensTab {
 }
 
 const LEVEL = ['Off', 'Low', 'Medium', 'High'];
+/** Below this many lenses a score is topped up with neutral 50s, so one or two lenses cannot put a problem first or last. */
+export const MIN_LENSES = 3;
 
 /**
  * The reader's own ranking. EarthOS sets no default weights: until one is set the list is A to Z.
  * A problem's score is the weighted average of its position in the lenses that rank it; a lens with
- * no figure for a problem is left out of that problem's average, not counted as zero.
+ * no figure for a problem is left out of that problem's average, not counted as zero. A problem seen
+ * by fewer than MIN_LENSES of the weighted lenses is pulled toward the middle.
  */
 export function WeightedList({ rows, lenses, presets }: { rows: Row[]; lenses: LensTab[]; presets: { label: string; weights: number[] }[] }) {
   const [w, setW] = useState<number[]>(lenses.map(() => 0));
   const active = w.some((x) => x > 0);
 
+  const weighted = w.filter((x) => x > 0).length;
+  const avgWeight = weighted ? w.reduce((x, y) => x + y, 0) / weighted : 0;
   const scored = rows.map((r) => {
     let sum = 0;
     let total = 0;
@@ -46,9 +51,11 @@ export function WeightedList({ rows, lenses, presets }: { rows: Row[]; lenses: L
         used++;
       }
     });
-    return { r, score: total ? sum / total : null, used };
+    // Thin evidence is pulled toward the middle: a problem seen by fewer than MIN_LENSES of the weighted
+    // lenses is topped up to that number with neutral scores of 50, each carrying the reader's average weight.
+    const pad = used ? Math.max(0, Math.min(MIN_LENSES, weighted) - used) : 0;
+    return { r, score: used ? (sum + pad * avgWeight * 0.5) / (total + pad * avgWeight) : null, used, pad };
   });
-  const weighted = w.filter((x) => x > 0).length;
   const list = active
     ? [...scored].sort((a, b) => (b.score ?? -1) - (a.score ?? -1) || a.r.name.localeCompare(b.r.name))
     : [...scored].sort((a, b) => a.r.name.localeCompare(b.r.name));
@@ -102,7 +109,7 @@ export function WeightedList({ rows, lenses, presets }: { rows: Row[]; lenses: L
       </p>
 
       <ol className="flex flex-col gap-2" aria-label={active ? 'Problems, ordered by your weights' : 'Problems, A to Z'}>
-        {list.map(({ r, score, used }) => {
+        {list.map(({ r, score, used, pad }) => {
           const has = active && score !== null;
           if (has) place++;
           return (
@@ -130,7 +137,9 @@ export function WeightedList({ rows, lenses, presets }: { rows: Row[]; lenses: L
                         {has && <div className="h-full rounded-full bg-accent" style={{ width: `${Math.max((score ?? 0) * 100, 2)}%` }} />}
                       </div>
                       <p className="tag mt-1 text-[10px] text-subtle">
-                        {has ? `Score ${Math.round((score ?? 0) * 100)} of 100, from ${used} of your ${weighted} weighted ${weighted === 1 ? 'lens' : 'lenses'}` : 'None of the lenses you weighted has a figure for this'}
+                        {has
+                          ? `Score ${Math.round((score ?? 0) * 100)} of 100, from ${used} of your ${weighted} weighted ${weighted === 1 ? 'lens' : 'lenses'}${pad ? `, pulled toward 50 because that is few` : ''}`
+                          : 'None of the lenses you weighted has a figure for this'}
                       </p>
                     </div>
                   )}

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/site/PageHeader';
-import { WeightedList, type Row } from '@/components/priorities/WeightedList';
+import { MIN_LENSES, WeightedList, type Row } from '@/components/priorities/WeightedList';
 import { AGREEMENT_MIN, getPriorities, KIND_LABEL, type Lens } from '@/lib/priorities';
 
 export const dynamic = 'force-static';
@@ -164,7 +164,10 @@ export default async function PrioritiesPage() {
           <li>The list of problems is fixed first, then every lens is applied to the same list. Where a lens has no figure for a problem it says so and gives the reason; nothing is estimated to fill a gap.</li>
           <li>Every figure is labelled measured, modelled or expert judgement and links to its source. The figures belong to the sources named, not to EarthOS.</li>
           <li>
-            Your score: in each lens the top problem scores 100 and the bottom 0, spaced by position, and equal figures share a score. A problem&apos;s score is the weighted average over the lenses that rank it. A lens with no figure for a problem is left out of that problem&apos;s average, not counted as zero, so a problem that few lenses can see rests on less evidence; each row shows how many lenses its score uses.
+            Your score: in each lens the top problem scores 100 and the bottom 0, spaced by position, and equal figures share a score. A problem&apos;s score is the weighted average over the lenses that rank it. A lens with no figure for a problem is left out of that problem&apos;s average, not counted as zero.
+          </li>
+          <li>
+            Thin evidence is pulled toward the middle. If fewer than {MIN_LENSES} of the lenses you weighted have a figure for a problem, its score is topped up to {MIN_LENSES} with neutral scores of 50, so one or two lenses alone cannot put a problem first or last. Each row shows how many lenses its score uses and says when this was applied.
           </li>
           <li>
             &quot;Top 3 in&quot; counts only lenses that rank at least {AGREEMENT_MIN} problems{skipped.length ? ` (so ${skipped.map((l) => l.name.toLowerCase()).join(', ')} is left out of that count)` : ''}.
