@@ -66,10 +66,12 @@ export function SiteNav() {
             <ChevronDown size={14} className="transition-transform group-open:rotate-180" aria-hidden="true" />
           </summary>
           <ul className="absolute right-0 z-30 mt-1 min-w-40 rounded-lg border border-line bg-surface p-1 shadow-lg">
-            {more.map((item) => {
+            {more.map((item, i) => {
               const active = isActive(pathname, item.href!);
+              const heading = item.group && item.group !== more[i - 1]?.group ? item.group : null;
               return (
                 <li key={item.href}>
+                  {heading && <p className={`tag px-3 pb-1 text-[10px] text-subtle ${i > 0 ? 'mt-1 border-t border-line pt-2' : 'pt-1'}`}>{heading}</p>}
                   <Link
                     href={item.href!}
                     aria-current={active ? 'page' : undefined}

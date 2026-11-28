@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { KindBadge } from '@/components/ui/KindBadge';
 import { PageHeader } from '@/components/site/PageHeader';
-import { getPromises, KIND_LABEL, type Pledge, type PromiseGroup, type PromiseResult } from '@/lib/promises';
+import { getPromises, type Pledge, type PromiseGroup, type PromiseResult } from '@/lib/promises';
 
 export const dynamic = 'force-static';
 export const metadata: Metadata = { title: 'Promises — EarthOS' };
@@ -77,7 +78,7 @@ function Card({ p }: { p: Pledge }) {
         </div>
       </dl>
       <p className="mt-2 text-xs text-subtle">
-        {KIND_LABEL[p.now.kind]} · <Src {...p.now.source} />
+        <KindBadge kind={p.now.kind} /> <Src {...p.now.source} />
       </p>
 
       {p.progress && <Progress p={p.progress} />}
@@ -87,7 +88,7 @@ function Card({ p }: { p: Pledge }) {
           <p className="tag text-[10px] text-subtle">{p.outlook.kind === 'modelled' ? 'Where it is heading' : 'Where it stands'}</p>
           <p className="mt-1 text-sm text-muted">{p.outlook.text}</p>
           <p className="mt-1 text-xs text-subtle">
-            {KIND_LABEL[p.outlook.kind]} · <Src {...p.outlook.source} />
+            <KindBadge kind={p.outlook.kind} /> <Src {...p.outlook.source} />
           </p>
         </div>
       )}

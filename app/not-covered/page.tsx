@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/site/PageHeader';
 import { COVER_KIND_LABEL, getNotCovered } from '@/lib/notCovered';
+import { KindBadge } from '@/components/ui/KindBadge';
 
 export const dynamic = 'force-static';
 export const metadata: Metadata = { title: 'Not covered yet — EarthOS' };
@@ -28,7 +29,7 @@ export default async function NotCoveredPage() {
             <p className="mt-4 font-mono text-3xl font-bold text-ink-2">{a.figure}</p>
             <p className="mt-1 text-sm text-muted">{a.figureText}.</p>
             <p className="mt-1 text-xs text-subtle">
-              {COVER_KIND_LABEL[a.kind]} ·{' '}
+              <KindBadge kind={a.kind} label={COVER_KIND_LABEL[a.kind]} />{' '}
               <a href={a.source.url} target="_blank" rel="noreferrer" className="text-accent hover:underline">
                 {a.source.name}
               </a>

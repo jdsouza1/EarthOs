@@ -22,6 +22,9 @@ export interface LensTab {
   id: string;
   short: string;
   name: string;
+  /** How many of the problems this lens can rank, shown beside its slider so thin lenses are not over-weighted by accident. */
+  covered: number;
+  total: number;
 }
 
 const LEVEL = ['Off', 'Low', 'Medium', 'High'];
@@ -123,7 +126,12 @@ export function WeightedList({ rows, lenses, presets, formula }: { rows: Row[]; 
           {lenses.map((l, i) => (
             <label key={l.id} className="flex flex-col gap-1 text-xs text-muted">
               <span className="flex justify-between gap-2">
-                <span className="text-ink-2">{l.name}</span>
+                <span className="text-ink-2">
+                  {l.name}{' '}
+                  <span className="tag text-[10px] text-subtle" title={`This lens ranks ${l.covered} of the ${l.total} problems`}>
+                    {l.covered}/{l.total} problems
+                  </span>
+                </span>
                 <span className={w[i] ? 'text-accent' : 'text-subtle'}>{LEVEL[w[i]]}</span>
               </span>
               <input

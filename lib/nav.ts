@@ -9,6 +9,8 @@ export interface NavItem {
   batch?: string; // roadmap batch for planned pages
   /** Shown under "More" in the header (the footer lists every page). */
   more?: boolean;
+  /** Section heading inside the More menu. */
+  group?: 'Explore' | 'About and data';
 }
 
 export const NAV_ITEMS: NavItem[] = [
@@ -21,13 +23,13 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Forecasts', href: '/forecasts' },
   { label: 'Solved', href: '/solved' },
   { label: 'Brief', href: '/report' },
-  { label: 'Levers', href: '/levers', more: true },
-  { label: 'Promises', href: '/promises', more: true },
-  { label: 'Priorities', href: '/priorities', more: true },
-  { label: 'Not covered yet', href: '/not-covered', more: true },
-  { label: 'Data', href: '/data', more: true },
-  { label: 'Methodology', href: '/methodology', more: true },
-  { label: 'Change log', href: '/changelog', more: true },
+  { group: 'Explore', label: 'Levers', href: '/levers', more: true },
+  { group: 'Explore', label: 'Promises', href: '/promises', more: true },
+  { group: 'Explore', label: 'Priorities', href: '/priorities', more: true },
+  { group: 'Explore', label: 'Not covered yet', href: '/not-covered', more: true },
+  { group: 'About and data', label: 'Data', href: '/data', more: true },
+  { group: 'About and data', label: 'Methodology', href: '/methodology', more: true },
+  { group: 'About and data', label: 'Change log', href: '/changelog', more: true },
 ];
 
 export function isActive(pathname: string, href: string) {

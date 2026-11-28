@@ -30,6 +30,8 @@ export interface Entry {
   year: string;
   kind: Kind;
   source: { name: string; url: string };
+  /** True when the figure covers only part of what the lens asks about (for example one funder). */
+  partial: boolean;
 }
 
 export interface Lens {
@@ -141,9 +143,10 @@ export async function getPriorities(): Promise<Priorities> {
       for (const k of ['display', 'detail', 'year', 'source']) if (!r[k]) fail(`${k} is required when there is a figure`);
       if (!(r.kind in KIND_LABEL)) fail('kind must be measured, modelled or expert');
       if (!/^https:\/\//.test(r.source_url ?? '')) fail('source_url must be an https link');
+      if (r.scope && r.scope !== 'partial') fail('scope must be partial or empty');
       raw.push({
         value,
-        e: { problemId: r.problem_id, display: r.display, detail: r.detail, year: r.year, kind: r.kind as Kind, source: { name: r.source, url: r.source_url } },
+        e: { problemId: r.problem_id, display: r.display, detail: r.detail, year: r.year, kind: r.kind as Kind, source: { name: r.source, url: r.source_url }, partial: r.scope === 'partial' },
       });
     }
     for (const id of ids) if (!seen.has(id)) lfail(`no row for problem ${id}; every lens must list every problem, with a note where it has no figure`);

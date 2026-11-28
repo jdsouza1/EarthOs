@@ -1,5 +1,7 @@
 'use client';
 
+import { KindBadge } from '@/components/ui/KindBadge';
+
 import { useState } from 'react';
 import type { Block, FigureKind, FundingArea } from '@/lib/funding';
 
@@ -18,7 +20,7 @@ function moneyRange(low: number, high: number): string {
 }
 
 function Kind({ k }: { k: FigureKind }) {
-  return <span className="tag rounded border border-line px-1.5 py-0.5 text-[10px] text-subtle">{KIND_LABEL[k]}</span>;
+  return <KindBadge kind={k} label={KIND_LABEL[k]} />;
 }
 
 function Links({ list }: { list: { name: string; url: string }[] }) {

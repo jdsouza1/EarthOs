@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/site/PageHeader';
+import { KindBadge } from '@/components/ui/KindBadge';
 import { MIN_LENSES, WeightedList, type Row } from '@/components/priorities/WeightedList';
-import { AGREEMENT_MIN, getPriorities, KIND_LABEL, LOOKBACK_LABEL, type Lens, type LookbackResult } from '@/lib/priorities';
+import { AGREEMENT_MIN, getPriorities, LOOKBACK_LABEL, type Lens, type LookbackResult } from '@/lib/priorities';
 
 export const dynamic = 'force-static';
 export const metadata: Metadata = { title: 'Priorities — EarthOS' };
@@ -58,9 +59,7 @@ function LensCard({ l, total, name }: { l: Lens; total: number; name: (id: strin
     <li id={l.id} className="card flex flex-col p-5">
       <div className="flex flex-wrap items-center gap-1.5">
         {l.kinds.map((k) => (
-          <span key={k} className="tag rounded border border-line px-1.5 py-0.5 text-[10px] text-subtle">
-            {KIND_LABEL[k]}
-          </span>
+          <KindBadge key={k} kind={k} />
         ))}
         <span className="tag text-[10px] text-subtle">{l.asOf}</span>
       </div>
@@ -90,12 +89,13 @@ function LensCard({ l, total, name }: { l: Lens; total: number; name: (id: strin
             <div className="min-w-0">
               <p className="text-sm text-ink">
                 {name(e.problemId)} <span className="font-mono font-bold text-ink-2">{e.display}</span>
+                {e.partial && <span className="tag ml-1.5 rounded border border-line px-1.5 py-0.5 text-[10px] text-subtle" title="This figure covers only part of the money going to the problem; see the note under it.">Partial scope</span>}
               </p>
               <p className="text-xs text-subtle">
                 {e.detail}
                 {l.source ? '' : (
                   <>
-                    {' '}· {KIND_LABEL[e.kind]}, {e.year} · <Src {...e.source} />
+                    {' '}· <KindBadge kind={e.kind} /> {e.year} · <Src {...e.source} />
                   </>
                 )}
               </p>
@@ -136,7 +136,7 @@ export default async function PrioritiesPage() {
     }),
     ...agreement[p.id],
   }));
-  const tabs = lenses.map((l) => ({ id: l.id, short: SHORT[l.id] ?? l.name, name: l.name }));
+  const tabs = lenses.map((l) => ({ id: l.id, short: SHORT[l.id] ?? l.name, name: l.name, covered: l.ranked.length, total: problems.length }));
   const presets = PRESETS.map((p) => ({ label: p.label, weights: lenses.map((l) => (p.on.includes('*') || p.on.includes(l.id) ? 2 : 0)) }));
   const at = (id: string) => {
     const i = lenses.findIndex((l) => l.id === id);
@@ -194,7 +194,7 @@ export default async function PrioritiesPage() {
               <h3 className="text-sm font-semibold text-ink">{ev.name}</h3>
               <p className="mt-1 text-xs text-muted">{ev.what}</p>
               <p className="mt-1 text-xs text-subtle">
-                {KIND_LABEL[ev.kind]} · <Src {...ev.source} />
+                <KindBadge kind={ev.kind} /> <Src {...ev.source} />
               </p>
             </li>
           ))}

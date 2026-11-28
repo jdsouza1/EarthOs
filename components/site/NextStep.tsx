@@ -18,6 +18,8 @@ export const STORY: Record<string, { label: string; text: string; href: string; 
 export function NextStep({ from }: { from: keyof typeof STORY }) {
   const s = STORY[from];
   if (!s) return null;
+  const steps = Object.keys(STORY);
+  const at = steps.indexOf(from);
   return (
     <nav aria-label="Next in the story" className="print:hidden">
       <Link
@@ -27,6 +29,14 @@ export function NextStep({ from }: { from: keyof typeof STORY }) {
         <span className="text-muted">
           <span className="tag mr-2 text-[10px] text-subtle">{s.label}</span>
           {s.text}
+          <span className="mt-1 flex items-center gap-1.5" aria-label={`Step ${at + 1} of ${steps.length} in the story`}>
+            <span className="tag text-[10px] text-subtle" aria-hidden="true">
+              Step {at + 1} of {steps.length}
+            </span>
+            {steps.map((k, i) => (
+              <span key={k} aria-hidden="true" className={`h-1.5 w-1.5 rounded-full ${i <= at ? 'bg-accent' : 'bg-line-strong'}`} />
+            ))}
+          </span>
         </span>
         <span className="flex items-center gap-1.5 font-semibold text-ink group-hover:text-accent">
           {s.page}

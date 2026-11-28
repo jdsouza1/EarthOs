@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
+import { KindBadge } from '@/components/ui/KindBadge';
 import type { WhatIf } from '@/lib/whatif';
 
 const LIMIT = 1.5; // Paris Agreement limit, °C
@@ -15,6 +16,10 @@ export function WhatIfCard({ w }: { w: WhatIf }) {
   const s = w.states[sel];
   const single = w.states.length === 1;
   const celsius = s.unit === '°C' && s.valueNum !== null;
+  // Difference from today's path, shown only when both figures come from this one source in the same unit.
+  const base = w.states.find((x) => x.isBaseline);
+  const diff = base && base !== s && base.valueNum !== null && s.valueNum !== null && base.unit === s.unit ? s.valueNum - base.valueNum : null;
+  const diffText = diff === null || diff === 0 ? null : `${diff > 0 ? '+' : '−'}${Math.abs(diff).toLocaleString('en-US', { maximumFractionDigits: 2 })}${s.unit ? ` ${s.unit}` : ''} vs today's path`;
 
   const onKey = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
     const n = w.states.length;
@@ -66,14 +71,21 @@ export function WhatIfCard({ w }: { w: WhatIf }) {
         <span className="text-sm text-muted">
           {w.metric}, {w.period}
         </span>
-        <span className="font-mono text-3xl font-bold leading-tight text-ink">
-          {s.value}
-          {s.unit && <span className="ml-1.5 text-lg font-normal text-muted">{s.unit}</span>}
+        <span key={sel} className="eo-fade flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className="font-mono text-3xl font-bold leading-tight text-ink">
+            {s.value}
+            {s.unit && <span className="ml-1.5 text-lg font-normal text-muted">{s.unit}</span>}
+          </span>
+          {diffText && (
+            <span className="tag rounded border border-accent-line bg-accent-bg px-1.5 py-0.5 text-[11px] text-accent" title="The difference between two figures from the same source named below">
+              {diffText}
+            </span>
+          )}
         </span>
         {celsius && (
           <div className="mt-2" aria-hidden="true">
             <div className="relative h-2.5 rounded-full bg-inset">
-              <div className={`h-2.5 rounded-full ${barColour}`} style={{ width: `${pct}%` }} />
+              <div className={`h-2.5 rounded-full transition-[width] duration-300 ease-out motion-reduce:transition-none ${barColour}`} style={{ width: `${pct}%` }} />
               <div className="absolute -top-1 h-4.5 w-0.5 bg-ink" style={{ left: `${(LIMIT / SCALE_MAX) * 100}%` }} />
             </div>
             <div className="mt-1 flex justify-between text-xs text-subtle">
@@ -99,7 +111,7 @@ export function WhatIfCard({ w }: { w: WhatIf }) {
         </p>
       </div>
       <p className="border-t border-line pt-3 text-xs text-subtle">
-        Modelled ·{' '}
+        <KindBadge kind="modelled" />{' '}
         <a href={w.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-line-strong underline-offset-2 hover:text-accent">
           {w.sourceName}
         </a>{' '}

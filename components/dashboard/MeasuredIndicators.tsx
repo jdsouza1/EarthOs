@@ -2,8 +2,7 @@ import Link from 'next/link';
 import type { Indicator } from '@/lib/indicators';
 import type { TierSnapshot } from '@/lib/types';
 import { formatDay, type RefreshStatus } from '@/lib/refresh';
-import { IndicatorCard } from './IndicatorCard';
-import { TIER_THEME } from './theme';
+import { IndicatorGroups } from './IndicatorGroups';
 
 /**
  * Real, downloaded data, grouped by tier. Unlike the tier scores above it, nothing here is illustrative.
@@ -50,18 +49,7 @@ export function MeasuredIndicators({ indicators, tiers, refresh }: { indicators:
           </p>
         </div>
       ) : (
-        <div className="flex flex-col gap-5">
-          {byTier.map(({ tier, items }) => (
-            <div key={tier.id} id={`tier-${tier.id}`} className="scroll-mt-6">
-              <h3 className={`eyebrow mb-2 ${TIER_THEME[tier.id].text}`}>{tier.name}</h3>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {items.map((ind) => (
-                  <IndicatorCard key={ind.id} ind={ind} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <IndicatorGroups groups={byTier.map(({ tier, items }) => ({ id: tier.id, name: tier.name, items }))} />
       )}
     </section>
   );

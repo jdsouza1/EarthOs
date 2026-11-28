@@ -10,6 +10,7 @@ import { getRefreshStatus } from '@/lib/refresh';
 import Link from 'next/link';
 import { NextStep } from '@/components/site/NextStep';
 import { SubscribeBox } from '@/components/report/SubscribeBox';
+import { SUBSTACK_URL } from '@/lib/site';
 
 // Built once per deploy: CSVs are read at build time. Updating data = commit new CSVs -> Vercel redeploys.
 export const dynamic = 'force-static';
@@ -36,6 +37,11 @@ export default async function DashboardPage() {
           <Link href="/report" className="w-fit text-sm font-semibold text-accent hover:underline">
             Read this month&apos;s Brief: the numbers in one short read &rarr;
           </Link>
+          {SUBSTACK_URL && (
+            <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer" className="w-fit text-sm text-muted hover:text-accent hover:underline print:hidden">
+              Get the monthly Brief by email &rarr;
+            </a>
+          )}
         </div>
         <TierTrendChart data={data.tierTrend} tiers={data.tiers} />
       </section>
