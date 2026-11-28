@@ -19,7 +19,13 @@ export function WhatIfCard({ w }: { w: WhatIf }) {
   // Difference from today's path, shown only when both figures come from this one source in the same unit.
   const base = w.states.find((x) => x.isBaseline);
   const diff = base && base !== s && base.valueNum !== null && s.valueNum !== null && base.unit === s.unit ? s.valueNum - base.valueNum : null;
-  const diffText = diff === null || diff === 0 ? null : `${diff > 0 ? '+' : '−'}${Math.abs(diff).toLocaleString('en-US', { maximumFractionDigits: 2 })}${s.unit ? ` ${s.unit}` : ''} vs today's path`;
+  // A figure published as "about 2.5" gives an "about" difference; one published as a bound ("below 1.5") gives none, because the gap is not a single number.
+  const plain = (v: string) => /^[\d.,]+$/.test(v.trim());
+  const about = (v: string) => /^about\s+[\d.,]+$/i.test(v.trim());
+  const usable = base && (plain(base.value) || about(base.value)) && (plain(s.value) || about(s.value));
+  const approx = base && (about(base.value) || about(s.value)) ? 'about ' : '';
+  const diffText =
+    diff === null || diff === 0 || !usable ? null : `${approx}${diff > 0 ? '+' : '−'}${Math.abs(diff).toLocaleString('en-US', { maximumFractionDigits: 2 })}${s.unit ? ` ${s.unit}` : ''} vs today's path`;
 
   const onKey = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
     const n = w.states.length;
