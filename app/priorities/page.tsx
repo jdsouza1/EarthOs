@@ -89,7 +89,7 @@ function LensCard({ l, total, name }: { l: Lens; total: number; name: (id: strin
             <div className="min-w-0">
               <p className="text-sm text-ink">
                 {name(e.problemId)} <span className="font-mono font-bold text-ink-2">{e.display}</span>
-                {e.partial && <span className="tag ml-1.5 rounded border border-line px-1.5 py-0.5 text-[10px] text-subtle" title="This figure covers only part of the money going to the problem; see the note under it.">Partial scope</span>}
+                {e.partial && <span className="tag ml-1.5 whitespace-nowrap rounded border border-line px-1.5 py-0.5 text-[10px] text-subtle" title="This figure covers only part of the money going to the problem; see the note under it.">Partial scope</span>}
               </p>
               <p className="text-xs text-subtle">
                 {e.detail}
